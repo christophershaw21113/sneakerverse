@@ -1,14 +1,17 @@
 # sneakerverse
 
-<<<<<<< HEAD
+# ‘SneakerVerse’ Group Project Proposal
 
-<<<<<<< HEAD
-# A full-stack MERN e-commerce website allowing users to browse, shop, and checkout their favorite sneakers. My inspiration was my love for shopping browsing new and old sneakers, as well as creating a modern e-commerce website using an SPA.
+# Tech Stack: MERN
 
-> > > > > > > 47db73e821417ead4e225bc830d337f36103ebfc
-=======
-A full-stack MERN e-commerce website allowing users to browse, shop, and checkout their favorite sneakers. My inspiration was my love for shopping browsing new and old sneakers, as well as creating a modern e-commerce website using an SPA.
-=======
-Testing changes from vscode
+# Front-End: Tyler/Chris/Cesar
 
->>>>>>> 3b4f3d7a08994f638aee3f937b45984220e77a9d
+# Back-End and API integration: Chris/Tyler
+
+# Building a sneaker store with comprehensive CRUD functionality that will have two sites. On the first site, users will login/logout, explore and purchase sneakers from a curated catalog. On the second site, too complete the CRUD task, admins will have access to login and create, update, edit, and/or delete store inventory.
+
+# MVP: CRUD, CSS Framework, Project is on GitHub, Data validation, Checkout using Stripe or PayPal
+
+# Bonuses that will be included: Deploying Application, Protected Routes, Responsive Application, File Upload on database
+
+# Product Backlog: Pagination and Sorting, Filtering sneakers by brand, size, gender, featuring a third party API
