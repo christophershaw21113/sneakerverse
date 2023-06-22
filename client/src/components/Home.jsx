@@ -14,6 +14,11 @@ const Home = () => {
                 <img src="" alt="" />
                 <img src="" alt="" />
             </div>
+            <div className="featuredShoes">
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+            </div>
         </div>
     )
 }
