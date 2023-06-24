@@ -11,21 +11,23 @@ module.exports = {
     //         .then(createdSneaker => res.json(createdSneaker))
     //         .catch(err => res.json(err));
     // },
-    createSneaker: (req, res) => {
-        const newSneaker = new SneakerFinder({
-            name: req.body.name,
-            brand: req.body.brand,
-            price: req.body.price,
-            discountedPrice: req.body.discountedPrice,
-            image: req.file.image,
-            color: req.body.color,
-            size: req.body.size,
-            description: req.body.description
-        })
+    getSneakerImage: async (req, res) => {
+        const allPhotos = await upload.find().sort({ createdAt: "descending" })
+        res.status(200).send(allPhotos)
+    },
+    createSneaker: async (req, res) => {
+        console.log(req.body)
+        try {
+            const { name, brand, price, color, size, description } = req.body;
+            const image = req.file.filename;
 
-        newSneaker.save()
-        .then(()=> res.json("New sneaker added!"))
-        .catch((err)=> res.status(400).json("controller error", err))
+            const sneaker = new SneakerFinder({ name, brand, price, color, size, description, image });
+            await sneaker.save();
+
+            res.status(201).json({ message: 'Sneaker uploaded successfully!' });
+        } catch (error) {
+            res.status(500).json({ message: 'Something went worng creating a sneaker', error });
+        }
     },
     saveSneaker: (req, res) => {
         SneakerFinder.save()
@@ -91,7 +93,7 @@ module.exports = {
 }
 
 module.exports.addPicture = async (req, res) => {
-    
+
     try {
         const id = req.params.id
         const { Picture } = req.body
