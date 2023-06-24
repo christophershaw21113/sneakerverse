@@ -47,7 +47,7 @@ const Nav = (props) => {
                         // (loggedIn) ?
                         <><button onClick={logout}>Logout</button>&nbsp;&nbsp;</>
                         :
-                        <><button onClick={logout}>Register/Login</button>&nbsp;&nbsp;</>
+                        <><button onClick={()=>navigate("/register")}>Register/Login</button>&nbsp;&nbsp;</>
                 }
             </div>
         </nav>

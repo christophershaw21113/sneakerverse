@@ -7,9 +7,10 @@ const Register = () => {
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const [userInfo, setUserInfo] = useState({
-        name: "",
-        displayName: "",
+        firstName: "",
+        lastName: "",
         email: "",
+        phoneNumber: "",
         password: "",
         confirmPassword: ""
     })
@@ -32,10 +33,12 @@ const Register = () => {
             .catch(err => {
                 console.log(`reg errer`, err)
                 setErrors({
-                    name: err.response.data,
-                    email: err.response.data,
-                    password: err.response.data,
-                    confirmPassword: err.response.data,
+                    firstName: err.response.data.errors?.firstName,
+                    lastName: err.response.data.errors?.lastName,
+                    email: err.response.data.errors?.email,
+                    phoneNumber: err.response.data.errors?.phoneNumber,
+                    password: err.response.data.errors?.password,
+                    confirmPassword: err.response.data.errors?.confirmPassword,
                 })
             })
     }
@@ -44,28 +47,33 @@ const Register = () => {
             <form onSubmit={handleFormSubmit}>
                     <h3>Register</h3>
                     <div>
-                        <label>Name</label>
-                        {errors?.errors?.name ? <p style={{color: "red"}}>{errors?.errors.name.message}</p> : null}
-                        <input type="text" name="name" value={userInfo.name} onChange={handleFormChange} />
+                        <label>First Name</label>
+                        {errors?.firstName ? <p style={{color: "red"}}>{errors?.firstName.message}</p> : null}
+                        <input type="text" name="firstName" value={userInfo.firstName} onChange={handleFormChange} />
                     </div>
                     <div>
-                        <label>Display Name</label>
-                        {errors?.errors?.displayName ? <p style={{color: "red"}}>{errors?.errors.displayName.message}</p> : null}
-                        <input type="text" name="displayName" value={userInfo.displayName} onChange={handleFormChange} />
+                        <label>Last Name</label>
+                        {errors?.lastName ? <p style={{color: "red"}}>{errors?.lastName.message}</p> : null}
+                        <input type="text" name="lastName" value={userInfo.lastName} onChange={handleFormChange} />
                     </div>
                     <div>
                         <label>Email</label>
-                        {errors?.errors?.email ? <p style={{color: "red"}}>{errors?.errors.email.message}</p> : null}
+                        {errors?.email ? <p style={{color: "red"}}>{errors?.email.message}</p> : null}
                         <input type="email" name="email" value={userInfo.email} onChange={handleFormChange} />
                     </div>
                     <div>
+                        <label>Phone Number</label>
+                        {errors?.phoneNumber ? <p style={{color: "red"}}>{errors?.phoneNumber.message}</p> : null}
+                        <input type="email" name="email" value={userInfo.phoneNumber} onChange={handleFormChange} />
+                    </div>
+                    <div>
                         <label>Password</label>
-                        {errors?.errors?.password ? <p style={{color: "red"}}>{errors?.errors.password.message}</p> : null}
+                        {errors?.password ? <p style={{color: "red"}}>{errors?.password.message}</p> : null}
                         <input type="password" name="password" value={userInfo.password} onChange={handleFormChange} />
                     </div>
                     <div>
                         <label>Confirm Password</label>
-                        {errors?.errors?.confirmPassword ? <p style={{color: "red"}}>{errors?.errors.confirmPassword.message}</p> : null}
+                        {errors?.confirmPassword ? <p style={{color: "red"}}>{errors?.confirmPassword.message}</p> : null}
                         <input type="password" name="confirmPassword" value={userInfo.confirmPassword} onChange={handleFormChange} />
                     </div>
                     <div>

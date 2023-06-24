@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json());
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
-app.use(cors())
+app.use(cors({ credentials: true, origin: 'http://localhost:3000'}))
 
 require('./config/mongoose.config')
 require('./routes/sneakers.routes')(app)
