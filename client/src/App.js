@@ -13,6 +13,9 @@ import NotFound from './NotFound'
 import PrivateRoutes from './components/PrivateRoutes'
 import AddProduct from './components/AddProduct'
 import Home from './components/Home'
+import AdminDashboard from './components/AdminDashboard'
+import ViewProducts from './components/ViewProducts'
+import Cart from './components/Cart'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -42,11 +45,14 @@ function App() {
       {/* <ToastContainer transition={Slide} /> */}
       <Routes>
         <Route element={<PrivateRoutes />}>
-          <Route path='/addProduct' element={<AddProduct />} />
+          <Route path='/adminDashboard' element={<AdminDashboard />} />
+          <Route path='/addProducts' element={<AddProduct cookieValue={cookieValue}/>} />
+          <Route path='/viewProducts' element={<ViewProducts user={user} count={count} setCount={setCount}/>} />
         </Route>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} darkMode={darkMode} />} />
         <Route path="/login" element={<Login setLoggedIn={setLoggedIn} count={count} setCount={setCount} darkMode={darkMode} />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer darkMode={darkMode} />
