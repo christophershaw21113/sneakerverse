@@ -29,8 +29,7 @@ const Login = () => {
             .catch(err => {
                 console.log(`log errer`, err)
                 setErrors({
-                    email: err.response.data,
-                    password: err.response.data,
+                    logErr: err.response?.data?.logErrMsg
                 })
             })
     }
@@ -38,14 +37,13 @@ const Login = () => {
         <div style={{marginTop: "100px"}}>
             <form onSubmit={handleFormSubmit}>
                     <h3>Login</h3>
+                        {errors?.logErr ? <p style={{color: "red"}}>{errors.logErr}</p> : null}
                     <div>
                         <label>Email</label>
-                        {errors?.errors?.email ? <p style={{color: "red"}}>{errors?.errors.email.message}</p> : null}
                         <input type="email" name="email" value={userInfo.email} onChange={handleFormChange} />
                     </div>
                     <div>
                         <label>Password</label>
-                        {errors?.errors?.password ? <p style={{color: "red"}}>{errors?.errors.password.message}</p> : null}
                         <input type="password" name="password" value={userInfo.password} onChange={handleFormChange} />
                     </div>
                     
