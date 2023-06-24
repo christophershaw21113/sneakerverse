@@ -3,7 +3,8 @@ import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 
 
-const Login = () => {
+const Login = (props) => {
+    const {count, setCount} = props
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const [userInfo, setUserInfo] = useState({
@@ -24,7 +25,7 @@ const Login = () => {
             .then(res => {
                 // console.log(res)
                 navigate("/")
-
+                setCount(count+1)
             })
             .catch(err => {
                 console.log(`log errer`, err)
