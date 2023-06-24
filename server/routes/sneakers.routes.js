@@ -1,11 +1,11 @@
-const SneakerController = require("./controllers/sneakers.controller");
+const SneakerController = require("../controllers/sneakers.controller");
 
 module.exports = (app) => {
-    app.get('/api')
     app.get('/api/', SneakerController.index);
-    app.get('/api/stores', SneakerController.getAllStores);
-    app.get('/api/stores/:id', SneakerController.getOneStore);
-    app.post('/api/stores', SneakerController.createStore);
-    app.patch('/api/stores/:id', SneakerController.updateStore);
-    app.delete('/api/stores/:id', SneakerController.deleteStore);
+    app.get('/api/shoes', SneakerController.getAllSneakers);
+    app.get('/api/shoes/:id', SneakerController.getOneSneaker);
+    app.post('/api/shoes', SneakerController.createSneaker);
+    app.patch('/api/shoes/:id', SneakerController.updateSneaker);
+    app.delete('/api/shoes/:id', SneakerController.deleteSneaker);
 }
+
