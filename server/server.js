@@ -17,8 +17,6 @@ app.use(cors({ credentials: true, origin: 'http://localhost:3000'}))
 require('./config/mongoose.config')
 require('./routes/sneakers.routes')(app)
 require('./routes/userAdmin.routes')(app)
-// require("./routes/upload.routes")(app)
-
 
 app.listen(port, () => {
     console.log(`Example app listening at port: ${port}`)

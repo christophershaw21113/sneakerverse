@@ -8,10 +8,10 @@ const PrivateRoutes = () => {
 
     if (cookieValue) {
         isAuthenticated = true
-        console.log(isAuthenticated)
+        // console.log(isAuthenticated)
     } else {
         isAuthenticated = false
-        console.log(isAuthenticated)
+        // console.log(isAuthenticated)
     }    return (
         isAuthenticated ? <Outlet /> : <Navigate to='/login' />
     )
