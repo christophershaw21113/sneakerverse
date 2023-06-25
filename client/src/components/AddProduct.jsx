@@ -22,17 +22,6 @@ const AddProduct = (props) => {
 
     const addShoe =  (e) => {
         e.preventDefault();
-        // const formData = new FormData()
-        // console.log(shoe)
-        // formData.append('name', shoe.name)
-        // formData.append('brand', shoe.brand)
-        // formData.append('price', shoe.price)
-        // formData.append('discountedPrice', shoe.discountedPrice)
-        // formData.append('color', shoe.color)
-        // formData.append('size', shoe.size)
-        // formData.append('description', shoe.description)
-        // formData.append('image', shoe.image)
-
         // try {
             axios.post('http://localhost:8000/api/shoes', shoe, { headers: { 'Content-Type': 'multipart/form-data', }, })
                 .then((res) => {
