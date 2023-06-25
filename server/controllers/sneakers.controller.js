@@ -13,6 +13,7 @@ module.exports = {
             const image = req.file.filename;
 
             const sneaker = new SneakerFinder({ name, brand, gender, price, discountedPrice, color, size, description, image });
+            console.log(sneaker)
             await sneaker.save();
 
             res.status(201).json({ message: 'Sneaker uploaded successfully!' });
