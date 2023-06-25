@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const EditProduct = () => {
-    const {id} = useParams()
+    const { id } = useParams()
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const [oneShoe, setOneShoe] = useState({})
@@ -19,12 +19,24 @@ const EditProduct = () => {
 
     const editShoe = (e) => {
         e.preventDefault()
-        axios.put(`http://localhost:8000/api/shoes/${id}`, oneShoe)
+        const formData = new FormData();
+        formData.append("name", oneShoe.name);
+        formData.append("brand", oneShoe.brand);
+        formData.append("gender", oneShoe.gender);
+        formData.append("price", oneShoe.price);
+        formData.append("discountedPrice", oneShoe.discountedPrice);
+        formData.append("color", oneShoe.color);
+        formData.append("size", oneShoe.size);
+        formData.append("description", oneShoe.description);
+        formData.append("image", e.target.image.files[0]);
+
+        axios.put(`http://localhost:8000/api/shoes/${id}`, formData, { headers: { 'Content-Type': 'multipart/form-data', }, })
             .then(res => {
                 console.log(oneShoe)
                 navigate(`/viewProducts`)
             })
             .catch(err => {
+                console.log(err)
                 setErrors({
                     name: err.response.data.error.errors?.name,
                     brand: err.response.data.error.errors?.brand,
@@ -35,9 +47,8 @@ const EditProduct = () => {
                     size: err.response.data.error.errors?.size,
                     description: err.response.data.error.errors?.description,
                     image: err.response.data.error.errors?.image,
-                    data: err.response
+                    data: err.response.data
                 })
-                console.log(err)
             })
 
     }
@@ -99,7 +110,7 @@ const EditProduct = () => {
                 <div>
                     <label>Image</label>
                     {/* {errors?.image ? <p style={{ color: "red" }}>{errors?.image.message}</p> : null} */}
-                    <input type="file" name="image" onChange={handleChange} />
+                    <input type="file" name="image" accept="image/*" onChange={handleChange} />
                 </div>
                 <div>
                     <button type="submit">Submit</button>

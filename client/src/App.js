@@ -17,6 +17,7 @@ import AdminDashboard from './components/AdminDashboard'
 import ViewProducts from './components/ViewProducts'
 import Cart from './components/Cart'
 import EditProduct from './EditProduct'
+// import SneaksAPI from './components/SneaksAPI'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -50,6 +51,7 @@ function App() {
           <Route path='/addProducts' element={<AddProduct cookieValue={cookieValue}/>} />
           <Route path='/editProduct/:id' element={<EditProduct cookieValue={cookieValue}/>} />
           <Route path='/viewProducts' element={<ViewProducts user={user} count={count} setCount={setCount}/>} />
+          {/* <Route path='/sneaksapi' element={<SneaksAPI user={user} count={count} setCount={setCount}/>} /> */}
         </Route>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} darkMode={darkMode} />} />

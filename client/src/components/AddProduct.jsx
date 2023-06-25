@@ -23,7 +23,6 @@ const AddProduct = (props) => {
 
     const addShoe =  (e) => {
         e.preventDefault();
-
         // try {
             axios.post('http://localhost:8000/api/shoes', shoe, { headers: { 'Content-Type': 'multipart/form-data', }, })
                 .then((res) => {

@@ -13,6 +13,7 @@ module.exports = {
             const image = req.file.filename;
 
             const sneaker = new SneakerFinder({ name, brand, gender, price, discountedPrice, color, size, description, image });
+            console.log(sneaker)
             await sneaker.save();
 
             res.status(201).json({ message: 'Sneaker uploaded successfully!' });
@@ -57,30 +58,24 @@ module.exports = {
     },
 
     updateSneaker: async (req, res) => {
-
         console.log(req.body)
         try {
-            const { name, brand, gender, price, discountedPrice, color, size, description } = req.body;
-            const image = req.file.filename;
+            console.log(req.body, "...", req.file)
+            const { name, brand, gender, price, discountedPrice, color, size, description } = req.body
+            const image = req.file ? req.file.filename : null
 
-            SneakerFinder.findOneAndUpdate({ _id: req.params.id }, { name, brand, gender, price, discountedPrice, color, size, description, image }, { new: true })
-            .then(updatedSneaker => {
-                res.json(updatedSneaker)
-                console.log(updatedSneaker)
-            })
-            .catch(err => {
-                console.log("something went worng updating a shoe", err)
-                res.json(err)
-            })
+            const updatedSneaker = await SneakerFinder.findOneAndUpdate(
+                { _id: req.params.id },
+                { name, brand, gender, price, discountedPrice, color, size, description, image },
+                { new: true }
+            )
 
-            res.status(201).json({ message: 'Sneaker uploaded successfully!' });
+            res.status(201).json({ message: 'Sneaker updated successfully!', sneaker: updatedSneaker })
+            console.log(updatedSneaker)
         } catch (error) {
-            res.status(500).json({ message: 'Something went wrong updating a sneaker', error: error });
+            console.log("Something went wrong updating a shoe", error)
+            res.status(500).json({ message: 'Error updating sneaker', error: error })
         }
-
-
-        
-
     },
 
     deleteSneaker: (req, res) => {
