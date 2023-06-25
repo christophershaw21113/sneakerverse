@@ -11,6 +11,7 @@ const AddProduct = (props) => {
     const [shoe, setShoe] = useState({
         name: "",
         brand: "",
+        gender: "",
         price: 0,
         discountedPrice: 0,
         gender: "M",
