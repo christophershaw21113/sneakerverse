@@ -7,8 +7,6 @@ const AddProduct = (props) => {
     const { cookieValue } = props
     const [shoeList, setShoeList] = useState([])
     const [errors, setErrors] = useState({})
-    const [selectedFile, setSelectedFile] = useState(null)
-    const [file, setFile] = useState()
 
     const [shoe, setShoe] = useState({
         name: "",
@@ -16,28 +14,18 @@ const AddProduct = (props) => {
         gender: "",
         price: 0,
         discountedPrice: 0,
+        gender: "M",
         image: null,
         color: "",
         size: 0,
-        description: ""
+        description: "",
     })
 
-    const addShoe = async (e) => {
+    const addShoe =  (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        console.log(shoe)
-        formData.append('name', shoe.name);
-        formData.append('brand', shoe.brand);
-        formData.append('gender', shoe.gender);
-        formData.append('price', shoe.price);
-        formData.append('discountedPrice', shoe.discountedPrice);
-        formData.append('color', shoe.color);
-        formData.append('size', shoe.size);
-        formData.append('description', shoe.description);
-        formData.append('image', shoe.image);
 
-        try {
-            await axios.post('http://localhost:8000/api/shoes', formData, { headers: { 'Content-Type': 'multipart/form-data', }, })
+        // try {
+            axios.post('http://localhost:8000/api/shoes', shoe, { headers: { 'Content-Type': 'multipart/form-data', }, })
                 .then((res) => {
                     setShoe({
                         name: "",
@@ -51,13 +39,25 @@ const AddProduct = (props) => {
                         description: ""
                     })
                 })
-        }
-        catch (error) {
-            console.error('Error uploading sneaker:', error);
-            // setErrors({
-            //     name: error
-            // })
-        }
+                .catch((err) => {
+                    console.log(err)
+                    setErrors({
+                        name: err.response.data.error.errors?.name,
+                        brand: err.response.data.error.errors?.brand,
+                        gender: err.response.data.error.errors?.gender,
+                        price: err.response.data.error.errors?.price,
+                        discountedPrice: err.response.data.error.errors?.discountedPrice,
+                        color: err.response.data.error.errors?.color,
+                        size: err.response.data.error.errors?.size,
+                        description: err.response.data.error.errors?.description,
+                        image: err.response.data.error.errors?.image,
+                        generic: err.response.data
+                    })
+                })
+        // }
+        // catch (error) {
+        //     console.error('Error uploading sneaker:', error);
+        // }
     };
 
     const handleChange = (e) => {
@@ -74,48 +74,52 @@ const AddProduct = (props) => {
             <form onSubmit={addShoe}>
                 <h3>Add a shoe</h3>
                 <div>
+                    {errors?.generic ? <p style={{ color: "red" }}>{errors?.generic?.message}</p> : null}
                     <label>Name</label>
-                    {errors?.name ? <p style={{ color: "red" }}>{errors?.name.message}</p> : null}
+                    {errors?.name ? <p style={{ color: "red" }}>{errors?.name?.message}</p> : null}
                     <input type="text" name="name" value={shoe.name} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Brand</label>
-                    {errors?.brand ? <p style={{ color: "red" }}>{errors?.brand.message}</p> : null}
+                    {errors?.brand ? <p style={{ color: "red" }}>{errors?.brand?.message}</p> : null}
                     <input type="text" name="brand" value={shoe.brand} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Gender</label>
-                    {errors?.gender ? <p style={{ color: "red" }}>{errors?.gender.message}</p> : null}
-                    <input type="text" name="gender" value={shoe.gender} onChange={handleChange} />
+                    {errors?.gender ? <p style={{ color: "red" }}>{errors?.gender?.message}</p> : null}
+                    <select name="gender" id="gender" onChange={handleChange}>
+                        <option value="M">M</option>
+                        <option value="F">F</option>
+                    </select>
                 </div>
                 <div>
                     <label>Price</label>
-                    {errors?.price ? <p style={{ color: "red" }}>{errors?.email.message}</p> : null}
+                    {errors?.price ? <p style={{ color: "red" }}>{errors?.email?.message}</p> : null}
                     <input type="number" name="price" value={shoe.price} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Discounted Price</label>
-                    {errors?.discountedPrice ? <p style={{ color: "red" }}>{errors?.discountedPrice.message}</p> : null}
+                    {errors?.discountedPrice ? <p style={{ color: "red" }}>{errors?.discountedPrice?.message}</p> : null}
                     <input type="number" name="discountedPrice" value={shoe.discountedPrice} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Color</label>
-                    {errors?.color ? <p style={{ color: "red" }}>{errors?.color.message}</p> : null}
+                    {errors?.color ? <p style={{ color: "red" }}>{errors?.color?.message}</p> : null}
                     <input type="text" name="color" value={shoe.color} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Size</label>
-                    {errors?.size ? <p style={{ color: "red" }}>{errors?.size.message}</p> : null}
+                    {errors?.size ? <p style={{ color: "red" }}>{errors?.size?.message}</p> : null}
                     <input type="text" name="size" value={shoe.size} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Description</label>
-                    {errors?.description ? <p style={{ color: "red" }}>{errors?.description.message}</p> : null}
+                    {errors?.description ? <p style={{ color: "red" }}>{errors?.description?.message}</p> : null}
                     <input type="text" name="description" value={shoe.description} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Image</label>
-                    {errors?.image ? <p style={{ color: "red" }}>{errors?.image.message}</p> : null}
+                    {errors?.image ? <p style={{ color: "red" }}>{errors?.image?.message}</p> : null}
                     <input type="file" name="image" onChange={handleChange} />
                 </div>
                 <div>

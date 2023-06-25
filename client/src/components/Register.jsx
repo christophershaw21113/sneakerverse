@@ -27,7 +27,7 @@ const Register = () => {
         axios.post('http://localhost:8000/api/users/register', userInfo, { withCredentials: true })
             .then(res => {
                 // console.log(res)
-                navigate("/")
+                navigate("/login")
 
             })
             .catch(err => {
