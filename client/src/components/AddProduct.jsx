@@ -13,6 +13,7 @@ const AddProduct = (props) => {
     const [shoe, setShoe] = useState({
         name: "",
         brand: "",
+        gender: "",
         price: 0,
         discountedPrice: 0,
         image: null,
@@ -27,6 +28,7 @@ const AddProduct = (props) => {
         console.log(shoe)
         formData.append('name', shoe.name);
         formData.append('brand', shoe.brand);
+        formData.append('gender', shoe.gender);
         formData.append('price', shoe.price);
         formData.append('discountedPrice', shoe.discountedPrice);
         formData.append('color', shoe.color);
@@ -40,6 +42,7 @@ const AddProduct = (props) => {
                     setShoe({
                         name: "",
                         brand: "",
+                        gender: "",
                         price: 0,
                         discountedPrice: 0,
                         image: null,
@@ -79,6 +82,11 @@ const AddProduct = (props) => {
                     <label>Brand</label>
                     {errors?.brand ? <p style={{ color: "red" }}>{errors?.brand.message}</p> : null}
                     <input type="text" name="brand" value={shoe.brand} onChange={handleChange} />
+                </div>
+                <div>
+                    <label>Gender</label>
+                    {errors?.gender ? <p style={{ color: "red" }}>{errors?.gender.message}</p> : null}
+                    <input type="text" name="gender" value={shoe.gender} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Price</label>

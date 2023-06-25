@@ -18,15 +18,15 @@ module.exports = {
     createSneaker: async (req, res) => {
         console.log(req.body)
         try {
-            const { name, brand, price, color, size, description } = req.body;
+            const { name, brand, gender, price, color, size, description } = req.body;
             const image = req.file.filename;
 
-            const sneaker = new SneakerFinder({ name, brand, price, color, size, description, image });
+            const sneaker = new SneakerFinder({ name, brand, gender, price, color, size, description, image });
             await sneaker.save();
 
             res.status(201).json({ message: 'Sneaker uploaded successfully!' });
         } catch (error) {
-            res.status(500).json({ message: 'Something went worng creating a sneaker', error: error });
+            res.status(500).json({ message: 'Something went wrong creating a sneaker', error: error });
         }
     },
     saveSneaker: (req, res) => {

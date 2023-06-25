@@ -42,6 +42,7 @@ const Register = () => {
                 })
             })
     }
+
     return (
         <div style={{marginTop: "100px"}}>
             <form onSubmit={handleFormSubmit}>
@@ -64,7 +65,7 @@ const Register = () => {
                     <div>
                         <label>Phone Number</label>
                         {errors?.phoneNumber ? <p style={{color: "red"}}>{errors?.phoneNumber.message}</p> : null}
-                        <input type="email" name="email" value={userInfo.phoneNumber} onChange={handleFormChange} />
+                        <input type="text" name="phoneNumber" value={userInfo.phoneNumber} onChange={handleFormChange} />
                     </div>
                     <div>
                         <label>Password</label>
