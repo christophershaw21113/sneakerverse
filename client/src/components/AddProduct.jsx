@@ -28,6 +28,7 @@ const AddProduct = (props) => {
         formData.append('name', shoe.name);
         formData.append('brand', shoe.brand);
         formData.append('price', shoe.price);
+        formData.append('discountedPrice', shoe.discountedPrice);
         formData.append('color', shoe.color);
         formData.append('size', shoe.size);
         formData.append('description', shoe.description);
@@ -35,21 +36,24 @@ const AddProduct = (props) => {
 
         try {
             await axios.post('http://localhost:8000/api/shoes', formData, { headers: { 'Content-Type': 'multipart/form-data', }, })
-            .then((res)=>{
-                setShoe({
-                    name: "",
-                    brand: "",
-                    price: 0,
-                    discountedPrice: 0,
-                    image: null,
-                    color: "",
-                    size: 0,
-                    description: ""
+                .then((res) => {
+                    setShoe({
+                        name: "",
+                        brand: "",
+                        price: 0,
+                        discountedPrice: 0,
+                        image: null,
+                        color: "",
+                        size: 0,
+                        description: ""
+                    })
                 })
-            })
         }
         catch (error) {
             console.error('Error uploading sneaker:', error);
+            // setErrors({
+            //     name: error
+            // })
         }
     };
 

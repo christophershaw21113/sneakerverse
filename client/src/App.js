@@ -30,7 +30,7 @@ function App() {
     setCount(count + 1)
     if (Cookies.get('darkMode') === undefined) Cookies.set('darkMode', false.toString(), { expires: 7 })
     if (cookieValue) {
-      setWelcome(jwtdecode(cookieValue).name + " (@" + jwtdecode(cookieValue).displayName + ")")
+      setWelcome(user?.firstName)
       setUser(jwtdecode(cookieValue))
       setLoggedIn(true)
     } else {
@@ -51,7 +51,7 @@ function App() {
         </Route>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} darkMode={darkMode} />} />
-        <Route path="/login" element={<Login setLoggedIn={setLoggedIn} count={count} setCount={setCount} darkMode={darkMode} />} />
+        <Route path="/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} darkMode={darkMode} />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
