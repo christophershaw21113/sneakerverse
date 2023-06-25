@@ -10,9 +10,9 @@ const PORT = process.env.PORT || 8000;
 // Middleware for express to read incoming data from the client's request object
 
 app.use(express.json());
-app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ credentials: true, origin: 'http://localhost:3000'}))
+app.use(express.static("public"))
 
 require('./config/mongoose.config')
 require('./routes/sneakers.routes')(app)

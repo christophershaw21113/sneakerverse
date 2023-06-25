@@ -26,7 +26,7 @@ module.exports = {
 
             res.status(201).json({ message: 'Sneaker uploaded successfully!' });
         } catch (error) {
-            res.status(500).json({ message: 'Something went worng creating a sneaker', error });
+            res.status(500).json({ message: 'Something went worng creating a sneaker', error: error });
         }
     },
     saveSneaker: (req, res) => {

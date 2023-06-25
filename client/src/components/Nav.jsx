@@ -12,7 +12,7 @@ const Nav = (props) => {
     useEffect(() => {
         if (cookieValue) {
             // console.log(jwtdecode(cookieValue))
-            setWelcome(jwtdecode(cookieValue).name + " (@" + jwtdecode(cookieValue).displayName + ")")
+            setWelcome(jwtdecode(cookieValue).firstName)
         }
         // eslint-disable-next-line
     }, [count])
@@ -44,18 +44,25 @@ const Nav = (props) => {
         navigate("/cart")
     }
 
-    // const navToUser = () => {
-    //     navigate(`/users/${user?._id}`)
-    //     setCount(count + 1)
-    // }
+    const navToUser = () => {
+        navigate(`/users/${user?._id}`)
+        setCount(count + 1)
+    }
 
     // console.log(jwtdecode(cookieValue))
 
     return (
         <nav>
-            <h1 onClick={navHome}>SneakerVerse</h1>
             <div>
-                <FontAwesomeIcon icon={faCartShopping} style={{ color: "#424242" }} onClick={navCart}/>
+                <h1 onClick={navHome}>SneakerVerse</h1>
+                {
+                    welcome !== "Guest" ?
+                        <span onClick={() => navToUser()}><h4 style={{ display: 'inline' }}>Welcome, {welcome}</h4></span> :
+                        <h4 style={{ display: 'inline' }}>Welcome, Guest</h4>
+                }
+            </div>
+            <div>
+                <FontAwesomeIcon icon={faCartShopping} style={{ color: "#424242" }} onClick={navCart} />
                 {
                     (loggedIn) ?
                         <><button onClick={logout}>Logout</button>&nbsp;&nbsp;</>

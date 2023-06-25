@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom'
 
 
 const Login = (props) => {
-    const {count, setCount} = props
+    const {count, setCount, loggedIn, setLoggedIn} = props
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const [userInfo, setUserInfo] = useState({
@@ -25,7 +25,9 @@ const Login = (props) => {
             .then(res => {
                 // console.log(res)
                 navigate("/")
+                setLoggedIn(true)
                 setCount(count+1)
+                window.location.reload()
             })
             .catch(err => {
                 console.log(`log errer`, err)
