@@ -10,6 +10,12 @@ const SneakerSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Brand is required']
     },
+    gender: {
+        type: String,
+        required: [true, 'Gender is required'],
+        enum: ['F', 'M'],
+        default: 'M'
+    },
     price: {
         type: Number,
         required: [true, 'Price is required']
