@@ -16,6 +16,7 @@ import Home from './components/Home'
 import AdminDashboard from './components/AdminDashboard'
 import ViewProducts from './components/ViewProducts'
 import Cart from './components/Cart'
+import EditProduct from './EditProduct'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -47,6 +48,7 @@ function App() {
         <Route element={<PrivateRoutes />}>
           <Route path='/adminDashboard' element={<AdminDashboard />} />
           <Route path='/addProducts' element={<AddProduct cookieValue={cookieValue}/>} />
+          <Route path='/editProduct/:id' element={<EditProduct cookieValue={cookieValue}/>} />
           <Route path='/viewProducts' element={<ViewProducts user={user} count={count} setCount={setCount}/>} />
         </Route>
         <Route path="/" element={<Home />} />

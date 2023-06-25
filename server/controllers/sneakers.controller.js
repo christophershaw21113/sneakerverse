@@ -6,44 +6,35 @@ module.exports = {
         res.json({ message: "This works!" })
 
     },
-    // createSneaker: (req, res) => {
-    //     SneakerFinder.create(req.body)
-    //         .then(createdSneaker => res.json(createdSneaker))
-    //         .catch(err => res.json(err));
-    // },
-    getSneakerImage: async (req, res) => {
-        const allPhotos = await upload.find().sort({ createdAt: "descending" })
-        res.status(200).send(allPhotos)
-    },
     createSneaker: async (req, res) => {
         console.log(req.body)
         try {
-            const { name, brand, price, color, size, description } = req.body;
+            const { name, brand, gender, price, discountedPrice, color, size, description } = req.body;
             const image = req.file.filename;
 
-            const sneaker = new SneakerFinder({ name, brand, price, color, size, description, image });
+            const sneaker = new SneakerFinder({ name, brand, gender, price, discountedPrice, color, size, description, image });
             await sneaker.save();
 
             res.status(201).json({ message: 'Sneaker uploaded successfully!' });
         } catch (error) {
-            res.status(500).json({ message: 'Something went worng creating a sneaker', error: error });
+            res.status(500).json({ message: 'Something went wrong creating a sneaker', error: error });
         }
     },
-    saveSneaker: (req, res) => {
-        SneakerFinder.save()
-            .then(savedSneaker => {
-                console.log('Sneaker saved:', savedSneaker);
-            })
-            .catch(err => {
-                console.error('Error saving sneaker:', err);
-            });
-    },
+    // saveSneaker: (req, res) => {
+    //     SneakerFinder.save()
+    //         .then(savedSneaker => {
+    //             console.log('Sneaker saved:', savedSneaker);
+    //         })
+    //         .catch(err => {
+    //             console.error('Error saving sneaker:', err);
+    //         });
+    // },
 
     getAllSneakers: (req, res) => {
         SneakerFinder.find({})
             .then(findSneaker => {
                 res.json(findSneaker)
-                console.log(findSneaker)
+                // console.log(findSneaker)
             })
             .catch(err => {
                 console.log(err)
@@ -65,16 +56,30 @@ module.exports = {
 
     },
 
-    updateSneaker: (req, res) => {
-        SneakerFinder.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+    updateSneaker: async (req, res) => {
+
+        console.log(req.body)
+        try {
+            const { name, brand, gender, price, discountedPrice, color, size, description } = req.body;
+            const image = req.file.filename;
+
+            SneakerFinder.findOneAndUpdate({ _id: req.params.id }, { name, brand, gender, price, discountedPrice, color, size, description, image }, { new: true })
             .then(updatedSneaker => {
                 res.json(updatedSneaker)
                 console.log(updatedSneaker)
             })
             .catch(err => {
-                console.log(err)
+                console.log("something went worng updating a shoe", err)
                 res.json(err)
             })
+
+            res.status(201).json({ message: 'Sneaker uploaded successfully!' });
+        } catch (error) {
+            res.status(500).json({ message: 'Something went wrong updating a sneaker', error: error });
+        }
+
+
+        
 
     },
 
@@ -92,22 +97,22 @@ module.exports = {
     }
 }
 
-module.exports.addPicture = async (req, res) => {
+// module.exports.addPicture = async (req, res) => {
 
-    try {
-        const id = req.params.id
-        const { Picture } = req.body
-        const sneaker = await SneakerFinder.findByIdAndUpdate(id, { Picture }, { new: true })
-        // const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true }) // Same as above 3 lines
+//     try {
+//         const id = req.params.id
+//         const { Picture } = req.body
+//         const sneaker = await SneakerFinder.findByIdAndUpdate(id, { Picture }, { new: true })
+//         // const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true }) // Same as above 3 lines
 
-        if (!sneaker) {
-            return res.status(404).json({ error: 'Shoe not found' })
-        }
+//         if (!sneaker) {
+//             return res.status(404).json({ error: 'Shoe not found' })
+//         }
 
-        res.status(200).json(user)
-    } catch (error) {
-        console.log('Controller: error adding picture:', error)
-        res.status(500).json({ error: 'Controller: failed to add picture' })
-    }
+//         res.status(200).json(user)
+//     } catch (error) {
+//         console.log('Controller: error adding picture:', error)
+//         res.status(500).json({ error: 'Controller: failed to add picture' })
+//     }
 
-}
+// }

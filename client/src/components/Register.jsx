@@ -27,7 +27,7 @@ const Register = () => {
         axios.post('http://localhost:8000/api/users/register', userInfo, { withCredentials: true })
             .then(res => {
                 // console.log(res)
-                navigate("/")
+                navigate("/login")
 
             })
             .catch(err => {
@@ -64,7 +64,7 @@ const Register = () => {
                     <div>
                         <label>Phone Number</label>
                         {errors?.phoneNumber ? <p style={{color: "red"}}>{errors?.phoneNumber.message}</p> : null}
-                        <input type="email" name="email" value={userInfo.phoneNumber} onChange={handleFormChange} />
+                        <input type="text" name="phoneNumber" value={userInfo.phoneNumber} onChange={handleFormChange} />
                     </div>
                     <div>
                         <label>Password</label>

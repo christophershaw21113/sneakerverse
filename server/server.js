@@ -2,12 +2,14 @@ const express = require('express')
 const app = express()
 const port = 8000
 const cors = require('cors')
+const SneaksAPI = require('sneaks-api')
+const sneaks = new SneaksAPI()
 
+// sneaks.getProducts(700, 10, function(err, products){
+//     console.log(products)
+// })
 
 require("dotenv").config()
-
-const PORT = process.env.PORT || 8000;
-// Middleware for express to read incoming data from the client's request object
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
