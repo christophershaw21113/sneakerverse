@@ -1,26 +1,29 @@
-import React, { useEffect } from 'react'
+import React, {useState} from 'react';
+
+
 
 const Home = () => {
+    const [index, setIndex] = useState(0); 
+  const length = 3;
 
-    return (
-        <div style={{marginTop: "100px"}}>
-            <div className="carousel">
-                <img src="" alt="" />
-                <img src="" alt="" />
-                <img src="" alt="" />
-            </div>
-            <div className="featuredShoes">
-                <img src="" alt="" />
-                <img src="" alt="" />
-                <img src="" alt="" />
-            </div>
-            <div className="featuredShoes">
-                <img src="" alt="" />
-                <img src="" alt="" />
-                <img src="" alt="" />
-            </div>
-        </div>
-    )
-}
+  const handlePrevious = () => {
+    const newIndex = index - 1;
+    setIndex(newIndex < 0 ? length - 1 : newIndex);
+  };
 
-export default Home
+  const handleNext = () => {
+    const newIndex = index + 1;
+    setIndex(newIndex >= length ? 0 : newIndex);
+  };
+
+
+  return (
+    <div style={{marginTop: '10%'}} className="carousel">
+      <button onClick={handlePrevious}>Previous</button>
+      <button onClick={handleNext}>Next</button>
+      <p>{index}</p>
+    </div>
+  );
+};
+
+export default Home;

@@ -51,9 +51,31 @@ const Nav = (props) => {
 
     // console.log(jwtdecode(cookieValue))
 
+    // Nav CSS, inline for now but will add to external stylesheet later
+    const navBarStyle = {
+        backgroundColor: '#808080',
+        color: 'white',
+        fontSize: '1.3rem',
+        textDecoration: 'none',
+        marginBottom: '1.5rem',
+        transition: 'all 0.3s',
+        '&:visited': {
+            color: 'white',
+            backgroundColor: '#808080',
+        }
+    }
+
     return (
-        <nav>
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <nav style={navBarStyle}>
             <h1 onClick={navHome}>SneakerVerse</h1>
+            <ul style={{listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: '9999'}}>
+                <li style={{marginRight: '10px'}}>Home</li>
+                <li style={{marginRight: '10px'}}>Nike</li>
+                <li style={{marginRight: '10px'}}>Jordan</li>
+                <li style={{marginRight: '10px'}}>Adidas</li>
+                <li style={{marginRight: '10px'}}>Yeezy</li>
+            </ul>
             <div>
                 <FontAwesomeIcon icon={faCartShopping} style={{ color: "#424242" }} onClick={navCart}/>
                 {
@@ -69,6 +91,7 @@ const Nav = (props) => {
                 }
             </div>
         </nav>
+        </div>
     )
 }
 

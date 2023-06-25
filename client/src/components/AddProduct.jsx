@@ -8,7 +8,7 @@ const AddProduct = (props) => {
     const [shoeList, setShoeList] = useState([])
     const [errors, setErrors] = useState({})
     const [selectedFile, setSelectedFile] = useState(null)
-    const [file, setFile] =useState()
+    const [file, setFile] = useState()
 
     const [shoe, setShoe] = useState({
         name: "",
@@ -17,7 +17,7 @@ const AddProduct = (props) => {
         discountedPrice: 0,
         image: "",
         color: "",
-        sizes: [],
+        size: 0,
         description: ""
     })
 
@@ -51,7 +51,7 @@ const AddProduct = (props) => {
                     price: 0,
                     discountedPrice: 0,
                     color: "",
-                    sizes: [],
+                    size: 0,
                     description: ""
                 })
                 setErrors({
@@ -142,9 +142,9 @@ const AddProduct = (props) => {
                     <input type="text" name="color" value={shoe.color} onChange={changeHandler} />
                 </div>
                 <div>
-                    <label>Sizees</label>
-                    {errors?.sizes ? <p style={{ color: "red" }}>{errors?.color.message}</p> : null}
-                    <input type="text" name="sizes" value={shoe.sizes} onChange={changeHandler} />
+                    <label>Sizes</label>
+                    {errors?.size ? <p style={{ color: "red" }}>{errors?.color.message}</p> : null}
+                    <input type="text" name="sizes" value={shoe.size} onChange={changeHandler} />
                 </div>
                 <div>
                     <button type="submit">Submit</button>
