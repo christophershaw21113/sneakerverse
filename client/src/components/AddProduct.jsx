@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import jwtdecode from 'jwt-decode'
 
 const AddProduct = (props) => {
-    const { cookieValue } = props
-    const [shoeList, setShoeList] = useState([])
+    // const { cookieValue } = props
+    // const [shoeList, setShoeList] = useState([])
     const [errors, setErrors] = useState({})
 
     const [shoe, setShoe] = useState({
