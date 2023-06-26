@@ -4,8 +4,8 @@ module.exports = {
 
     index: (req, res) => {
         res.json({ message: "This works!" })
-
     },
+    
     createSneaker: async (req, res) => {
         console.log(req.body)
         try {
@@ -18,18 +18,9 @@ module.exports = {
 
             res.status(201).json({ message: 'Sneaker uploaded successfully!' });
         } catch (error) {
-            res.status(500).json({ message: 'Something went wrong creating a sneaker', error: error });
+            res.status(500).json({ message: 'Something went wrong creating a sneaker. Please ensure there is an image file', error: error });
         }
     },
-    // saveSneaker: (req, res) => {
-    //     SneakerFinder.save()
-    //         .then(savedSneaker => {
-    //             console.log('Sneaker saved:', savedSneaker);
-    //         })
-    //         .catch(err => {
-    //             console.error('Error saving sneaker:', err);
-    //         });
-    // },
 
     getAllSneakers: (req, res) => {
         SneakerFinder.find({})
@@ -41,7 +32,6 @@ module.exports = {
                 console.log(err)
                 res.json(err)
             })
-
     },
 
     getOneSneaker: (req, res) => {
@@ -54,8 +44,8 @@ module.exports = {
                 console.log(err)
                 res.json(err)
             })
-
     },
+
     updateSneakerBody: async (req, res) => {
         console.log(req.body)
         try {
@@ -65,16 +55,18 @@ module.exports = {
             const updatedSneaker = await SneakerFinder.findOneAndUpdate(
                 { _id: req.params.id },
                 { name, brand, gender, price, discountedPrice, color, size, description },
-                { new: true }
+                { new: true },
+                { runValidators: true },
             )
 
-            res.status(201).json({ message: 'Sneaker body updated successfully!', sneaker: updatedSneaker })
-            console.log("72", updatedSneaker)
+            res.status(201).json({ message: '72 Sneaker body updated successfully!', sneaker: updatedSneaker })
+            console.log("73", updatedSneaker)
         } catch (error) {
-            console.log("74 Something went wrong updating a shoe body", error)
-            res.status(500).json({ message: '75 Error updating sneaker body', error: error })
+            console.log("75 Something went wrong updating a shoe body", error)
+            res.status(500).json({ message: '76 Error updating sneaker body', error: error })
         }
     },
+
     updateSneakerImage: async (req, res) => {
         console.log(req.body)
         try {
@@ -108,23 +100,3 @@ module.exports = {
 
     }
 }
-
-// module.exports.addPicture = async (req, res) => {
-
-//     try {
-//         const id = req.params.id
-//         const { Picture } = req.body
-//         const sneaker = await SneakerFinder.findByIdAndUpdate(id, { Picture }, { new: true })
-//         // const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true }) // Same as above 3 lines
-
-//         if (!sneaker) {
-//             return res.status(404).json({ error: 'Shoe not found' })
-//         }
-
-//         res.status(200).json(user)
-//     } catch (error) {
-//         console.log('Controller: error adding picture:', error)
-//         res.status(500).json({ error: 'Controller: failed to add picture' })
-//     }
-
-// }

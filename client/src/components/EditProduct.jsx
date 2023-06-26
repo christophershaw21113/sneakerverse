@@ -19,46 +19,39 @@ const EditProduct = () => {
 
     const editShoe = (e) => {
         e.preventDefault()
-        const formData = new FormData();
-        formData.append("name", oneShoe.name);
-        formData.append("brand", oneShoe.brand);
-        formData.append("gender", oneShoe.gender);
-        formData.append("price", oneShoe.price);
-        formData.append("discountedPrice", oneShoe.discountedPrice);
-        formData.append("color", oneShoe.color);
-        formData.append("size", oneShoe.size);
-        formData.append("description", oneShoe.description);
-
-        axios.put(`http://localhost:8000/api/shoes/${id}`, formData)
-            .then(res => {
-                console.log(oneShoe)
-                navigate(`/viewProducts`)
-            })
-            .catch(err => {
-                console.log(err)
-                setErrors({
-                    name: err.response.data.error.errors?.name,
-                    brand: err.response.data.error.errors?.brand,
-                    gender: err.response.data.error.errors?.gender,
-                    price: err.response.data.error.errors?.price,
-                    discountedPrice: err.response.data.error.errors?.discountedPrice,
-                    color: err.response.data.error.errors?.color,
-                    size: err.response.data.error.errors?.size,
-                    description: err.response.data.error.errors?.description,
-                    data: err.response.data
+        if (oneShoe.name && oneShoe.brand && oneShoe.price && oneShoe.color && oneShoe.size && oneShoe.description) {
+            axios.put(`http://localhost:8000/api/shoes/${id}`, oneShoe)
+                .then(res => {
+                    console.log(oneShoe)
+                    navigate(`/adminDashboard`)
                 })
-            })
+                .catch(err => {
+                    console.log(err)
+                    setErrors({
+                        name: err.response.data.error.errors?.name,
+                        brand: err.response.data.error.errors?.brand,
+                        gender: err.response.data.error.errors?.gender,
+                        price: err.response.data.error.errors?.price,
+                        discountedPrice: err.response.data.error.errors?.discountedPrice,
+                        color: err.response.data.error.errors?.color,
+                        size: err.response.data.error.errors?.size,
+                        description: err.response.data.error.errors?.description,
+                        data: err.response.data
+                    })
+                })
+        }
+        // else{
+        //     alert("A required field is empty")
+        // }
     }
 
     const editShoeImage = (e) => {
         e.preventDefault()
-        // const formData = new FormData();
-        // formData.append("image", e.target.image.files[0]);
 
-        axios.put(`http://localhost:8000/api/shoes/${id}/image`, {image: e.target.image.files[0]}, { headers: { 'Content-Type': 'multipart/form-data', }, })
+        axios.put(`http://localhost:8000/api/shoes/${id}/image`, { image: e.target.image.files[0] }, { headers: { 'Content-Type': 'multipart/form-data', }, })
             .then(res => {
                 console.log(oneShoe)
-                navigate(`/viewProducts`)
+                navigate(`/adminDashboard`)
             })
             .catch(err => {
                 console.log(err)
@@ -89,17 +82,17 @@ const EditProduct = () => {
                 <div>
                     <label>Brand</label>
                     {/* {errors?.brand ? <p style={{ color: "red" }}>{errors?.brand.message}</p> : null} */}
-                    <input type="text" name="brand" value={oneShoe.brand} onChange={handleChange} />
+                    <input type="text" name="brand" value={oneShoe.brand} onChange={handleChange} required/>
                 </div>
                 <div>
                     <label>Color</label>
                     {/* {errors?.color ? <p style={{ color: "red" }}>{errors?.color.message}</p> : null} */}
-                    <input type="text" name="color" value={oneShoe.color} onChange={handleChange} />
+                    <input type="text" name="color" value={oneShoe.color} onChange={handleChange} required/>
                 </div>
                 <div>
                     <label>Description</label>
                     {/* {errors?.description ? <p style={{ color: "red" }}>{errors?.description.message}</p> : null} */}
-                    <input type="text" name="description" value={oneShoe.description} onChange={handleChange} />
+                    <input type="text" name="description" value={oneShoe.description} onChange={handleChange} required/>
                 </div>
                 <div>
                     <label>Gender</label>
@@ -112,7 +105,7 @@ const EditProduct = () => {
                 <div>
                     <label>Price</label>
                     {/* {errors?.price ? <p style={{ color: "red" }}>{errors?.email.message}</p> : null} */}
-                    <input type="number" name="price" value={oneShoe.price} onChange={handleChange} />
+                    <input type="number" name="price" value={oneShoe.price} onChange={handleChange} required/>
                 </div>
                 <div>
                     <label>Discounted Price</label>
@@ -122,7 +115,7 @@ const EditProduct = () => {
                 <div>
                     <label>Size</label>
                     {/* {errors?.size ? <p style={{ color: "red" }}>{errors?.size.message}</p> : null} */}
-                    <input type="number" name="size" value={oneShoe.size} onChange={handleChange} />
+                    <input type="number" name="size" value={oneShoe.size} onChange={handleChange} required/>
                 </div>
                 <div>
                     <button type="submit">Submit</button>
