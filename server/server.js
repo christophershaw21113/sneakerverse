@@ -29,6 +29,8 @@ require('./routes/userAdmin.routes')(app)
 //     })
 // });
 
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+
 app.listen(port, () => {
-    console.log(`Example app listening at port: ${port}`)
+    console.log(`SNEAKERVERSE listening at port: ${port}`)
 })

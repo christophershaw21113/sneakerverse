@@ -25,6 +25,7 @@ const Nav = (props) => {
                 setWelcome("Guest")
                 setLoggedIn(false)
                 setCount(count + 1)
+                window.location.reload()
             })
             .catch(err => console.log(err))
         console.log("logging out")

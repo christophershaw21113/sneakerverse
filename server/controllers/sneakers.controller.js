@@ -77,6 +77,46 @@ module.exports = {
             res.status(500).json({ message: 'Error updating sneaker', error: error })
         }
     },
+    updateSneakerBody: async (req, res) => {
+        console.log(req.body)
+        try {
+            console.log(req.body, "...", req.file)
+            const { name, brand, gender, price, discountedPrice, color, size, description } = req.body
+            const image = req.file ? req.file.filename : null
+
+            const updatedSneaker = await SneakerFinder.findOneAndUpdate(
+                { _id: req.params.id },
+                { name, brand, gender, price, discountedPrice, color, size, description, image },
+                { new: true }
+            )
+
+            res.status(201).json({ message: 'Sneaker updated successfully!', sneaker: updatedSneaker })
+            console.log(updatedSneaker)
+        } catch (error) {
+            console.log("Something went wrong updating a shoe", error)
+            res.status(500).json({ message: 'Error updating sneaker', error: error })
+        }
+    },
+    updateSneakerImage: async (req, res) => {
+        console.log(req.body)
+        try {
+            console.log(req.body, "...", req.file)
+            const { name, brand, gender, price, discountedPrice, color, size, description } = req.body
+            const image = req.file ? req.file.filename : null
+
+            const updatedSneaker = await SneakerFinder.findOneAndUpdate(
+                { _id: req.params.id },
+                { name, brand, gender, price, discountedPrice, color, size, description, image },
+                { new: true }
+            )
+
+            res.status(201).json({ message: 'Sneaker updated successfully!', sneaker: updatedSneaker })
+            console.log(updatedSneaker)
+        } catch (error) {
+            console.log("Something went wrong updating a shoe", error)
+            res.status(500).json({ message: 'Error updating sneaker', error: error })
+        }
+    },
 
     deleteSneaker: (req, res) => {
         SneakerFinder.deleteOne({ _id: req.params.id })
