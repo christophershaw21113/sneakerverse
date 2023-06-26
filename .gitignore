@@ -20,5 +20,6 @@ sketch
 .env
 
 server/public/uploads
+sneakerverse-group-proposal
 
 # End of https://www.toptal.com/developers/gitignore/api/react
