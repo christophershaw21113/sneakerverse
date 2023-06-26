@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
-const {isEmail} = require('validator')
+const { isEmail } = require('validator')
 
 const UserSchema = new mongoose.Schema({
     firstName: {
@@ -14,13 +14,13 @@ const UserSchema = new mongoose.Schema({
     phoneNumber: {
         type: String,
         validate: {
-          validator: function (value) {
-            // Checking if value is 10 digits "\d" (digit character (0-9)) {10} just means that it'll occur 10 times
-            return /^\d{10}$/.test(value);
-          },
-          message: 'Invalid phone number format',
+            validator: function (value) {
+                // Checking if value is 10 digits "\d" (digit character (0-9)) {10} just means that it'll occur 10 times
+                return /^\d{10}$/.test(value);
+            },
+            message: 'Invalid phone number format',
         },
-      },
+    },
     email: {
         type: String,
         required: [true, "Email is required"],
@@ -40,22 +40,22 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true })
 
 UserSchema.virtual('confirmPassword')
-    .get(()=>this.confirmPassword)
-    .set(value=>this.confirmPassword = value)
+    .get(() => this.confirmPassword)
+    .set(value => this.confirmPassword = value)
 
-UserSchema.pre('validate', function(next) {
-    if(this.password != this.confirmPassword){
+UserSchema.pre('validate', function (next) {
+    if (this.password != this.confirmPassword) {
         this.invalidate('confirmPassword', 'Confirm password must match password')
     }
     next()
 })
 
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
     bcrypt.hash(this.password, 10)
-        .then(hash=>{
+        .then(hash => {
             this.password = hash
             next()
         })
-    })
+})
 
 module.exports = mongoose.model("User", UserSchema)

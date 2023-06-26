@@ -4,6 +4,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import jwtdecode from 'jwt-decode'
+import sneakerverse from '../../src/sneakerverse.png'
 
 const Nav = (props) => {
     const { cookieValue, user, setUser, welcome, setWelcome, loggedIn, setLoggedIn, setCount, count, darkMode, setDarkMode } = props
@@ -55,7 +56,7 @@ const Nav = (props) => {
     return (
         <nav>
             <div>
-                <h1 onClick={navHome}>SneakerVerse</h1>
+                <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{height:"50px"}}/>
                 {
                     welcome !== "Guest" ?
                         <span onClick={() => navToUser()}><h4 style={{ display: 'inline' }}>Welcome, {welcome}</h4></span> :

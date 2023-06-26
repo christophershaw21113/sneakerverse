@@ -30,7 +30,13 @@ const SneakerSchema = new mongoose.Schema({
     },
     color: {
         type: String,
-        required: [true, 'Three colors are required'] // Ex. "Royal/White/Black"
+        validate: {
+            validator: function (value) {
+                return /^[^0-9/]*\/[^0-9/]*\/[^0-9/]*$/.test(value);
+            },
+            message: 'Three colors are required. Expected Color/Color/Color',
+        },
+        required: [true, 'Three colors are required, separated by a /'] // Ex. "Royal/White/Black"
     },
     size: {
         type: Number,

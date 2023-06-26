@@ -8,7 +8,6 @@ module.exports = (app) => {
     app.post('/api/shoes', uploadMiddleware.single('image'), SneakerController.createSneaker);
     app.put('/api/shoes/:id', SneakerController.updateSneakerBody);
     app.put('/api/shoes/:id/image', uploadMiddleware.single('image'), SneakerController.updateSneakerImage);
-    // app.patch('/api/shoes/addPicture', SneakerController.addPicture);
     app.delete('/api/shoes/:id', SneakerController.deleteSneaker);
 }
 
