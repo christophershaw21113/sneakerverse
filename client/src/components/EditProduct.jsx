@@ -28,9 +28,8 @@ const EditProduct = () => {
         formData.append("color", oneShoe.color);
         formData.append("size", oneShoe.size);
         formData.append("description", oneShoe.description);
-        formData.append("image", e.target.image.files[0]);
 
-        axios.put(`http://localhost:8000/api/shoes/${id}`, formData, { headers: { 'Content-Type': 'multipart/form-data', }, })
+        axios.put(`http://localhost:8000/api/shoes/${id}`, formData)
             .then(res => {
                 console.log(oneShoe)
                 navigate(`/viewProducts`)
@@ -46,12 +45,30 @@ const EditProduct = () => {
                     color: err.response.data.error.errors?.color,
                     size: err.response.data.error.errors?.size,
                     description: err.response.data.error.errors?.description,
+                    data: err.response.data
+                })
+            })
+    }
+
+    const editShoeImage = (e) => {
+        e.preventDefault()
+        // const formData = new FormData();
+        // formData.append("image", e.target.image.files[0]);
+
+        axios.put(`http://localhost:8000/api/shoes/${id}/image`, {image: e.target.image.files[0]}, { headers: { 'Content-Type': 'multipart/form-data', }, })
+            .then(res => {
+                console.log(oneShoe)
+                navigate(`/viewProducts`)
+            })
+            .catch(err => {
+                console.log(err)
+                setErrors({
                     image: err.response.data.error.errors?.image,
                     data: err.response.data
                 })
             })
-
     }
+
     const handleChange = (e) => {
         setOneShoe({
             ...oneShoe,
@@ -61,7 +78,7 @@ const EditProduct = () => {
     return (
         <div style={{ marginTop: "100px" }}>
             <h1>Edit Shoe Details</h1>
-            <form action="" className='col-md-6 mx-auto' onSubmit={editShoe}>
+            <form onSubmit={editShoe}>
                 {/* {oneShoe.oneShoe?.length < 2 ? <p className="text-danger">FE: Title must be at least 2 characters</p> : null} */}
                 {/* {errors.oneShoe ? <p className="text-danger">{errors.oneShoe.message}</p> : null} */}
                 <div>
@@ -73,6 +90,16 @@ const EditProduct = () => {
                     <label>Brand</label>
                     {/* {errors?.brand ? <p style={{ color: "red" }}>{errors?.brand.message}</p> : null} */}
                     <input type="text" name="brand" value={oneShoe.brand} onChange={handleChange} />
+                </div>
+                <div>
+                    <label>Color</label>
+                    {/* {errors?.color ? <p style={{ color: "red" }}>{errors?.color.message}</p> : null} */}
+                    <input type="text" name="color" value={oneShoe.color} onChange={handleChange} />
+                </div>
+                <div>
+                    <label>Description</label>
+                    {/* {errors?.description ? <p style={{ color: "red" }}>{errors?.description.message}</p> : null} */}
+                    <input type="text" name="description" value={oneShoe.description} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Gender</label>
@@ -93,20 +120,16 @@ const EditProduct = () => {
                     <input type="number" name="discountedPrice" value={oneShoe.discountedPrice} onChange={handleChange} />
                 </div>
                 <div>
-                    <label>Color</label>
-                    {/* {errors?.color ? <p style={{ color: "red" }}>{errors?.color.message}</p> : null} */}
-                    <input type="text" name="color" value={oneShoe.color} onChange={handleChange} />
-                </div>
-                <div>
                     <label>Size</label>
                     {/* {errors?.size ? <p style={{ color: "red" }}>{errors?.size.message}</p> : null} */}
-                    <input type="text" name="size" value={oneShoe.size} onChange={handleChange} />
+                    <input type="number" name="size" value={oneShoe.size} onChange={handleChange} />
                 </div>
                 <div>
-                    <label>Description</label>
-                    {/* {errors?.description ? <p style={{ color: "red" }}>{errors?.description.message}</p> : null} */}
-                    <input type="text" name="description" value={oneShoe.description} onChange={handleChange} />
+                    <button type="submit">Submit</button>
                 </div>
+            </form>
+            <br />
+            <form onSubmit={editShoeImage}>
                 <div>
                     <label>Image</label>
                     {/* {errors?.image ? <p style={{ color: "red" }}>{errors?.image.message}</p> : null} */}

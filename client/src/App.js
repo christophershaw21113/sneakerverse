@@ -11,15 +11,12 @@ import Register from './components/Register'
 import Login from './components/Login'
 import NotFound from './components/NotFound'
 import PrivateRoutes from './components/PrivateRoutes'
-import AddProduct from './components/AddProduct'
 import Home from './components/Home'
 import AdminDashboard from './components/AdminDashboard'
-import ViewProducts from './components/ViewProducts'
 import Cart from './components/Cart'
 import EditProduct from './components/EditProduct'
 import ProductDetail from './components/ProductDetail'
 import UserDetail from './components/UserDetail'
-// import SneaksAPI from './components/SneaksAPI'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -49,13 +46,10 @@ function App() {
       {/* <ToastContainer transition={Slide} /> */}
       <Routes>
         <Route element={<PrivateRoutes />}>
-          <Route path='/adminDashboard' element={<AdminDashboard />} />
-          <Route path='/addProducts' element={<AddProduct cookieValue={cookieValue} />} />
+          <Route path='/adminDashboard' element={<AdminDashboard user={user} count={count} setCount={setCount} />} />
           <Route path='/editProduct/:id' element={<EditProduct cookieValue={cookieValue} />} />
-          <Route path='/viewProducts' element={<ViewProducts user={user} count={count} setCount={setCount} />} />
           <Route path='/productDetail' element={<ProductDetail />} />
           <Route path='/userDetail' element={<UserDetail user={user} />} />
-          {/* <Route path='/sneaksapi' element={<SneaksAPI user={user} count={count} setCount={setCount}/>} /> */}
         </Route>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} darkMode={darkMode} />} />
