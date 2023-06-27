@@ -17,6 +17,7 @@ import Cart from './components/Cart'
 import EditProduct from './components/EditProduct'
 import ProductDetail from './components/ProductDetail'
 import UserDetail from './components/UserDetail'
+import ImageSlider from './components/ImageSlider'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
