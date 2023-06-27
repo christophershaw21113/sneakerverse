@@ -34,17 +34,19 @@ const ProductDetail = (props) => {
 
     return (
         <div style={{ marginTop: "100px", width:"50%" }}>
+
             <Link to="/">Home</Link>
             <br />
             <img src={`http://localhost:8000/uploads/${product.image}`} alt={product.name} style={{ width: "100px" }} />
             <h2>Shoe: {product.brand} {product.name}</h2>
-            <h4>Price: <span style={{ color: 'red', textDecoration: 'line-through' }}>${product.price}</span> ${product.discountedPrice}</h4>
-            <h4>Color: {product.color}</h4>
-            <h4>Size: {product.size} {product.gender}</h4>
+
+            <h3>Price: <span style={{ color: 'red', textDecoration: 'line-through' }}>${product.price}</span> ${product.discountedPrice}</h3>
+            <h5>Color: {product.color}</h5>
+            <h5>Size: {product.size} {product.gender}</h5>
             <p>Description: {product.description}</p>
             <br />
             <button className={hidden ? "hidden" : null} onClick={addToCart}>Add To Cart</button>
-            <p className={!hidden ? "hidden" : null}>Product added to cart!</p>
+            <p className={!hidden ? "hidden" : null}>You've added this shoe to your cart!</p>
         </div>
     )
 }

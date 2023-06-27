@@ -51,7 +51,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
         <Route path="/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
-        <Route path="/cart" element={<Cart order={order} setOrder={setOrder}/>} />
+        <Route path="/cart" element={<Cart order={order} setOrder={setOrder} />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
