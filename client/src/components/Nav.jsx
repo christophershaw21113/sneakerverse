@@ -56,7 +56,7 @@ const Nav = (props) => {
     return (
         <nav>
             <div>
-                <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{height:"50px"}}/>
+                <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{ height: "50px" }} />
                 {
                     welcome !== "Guest" ?
                         <span onClick={() => navToUser()}><h4 style={{ display: 'inline' }}>Welcome, {welcome}</h4></span> :

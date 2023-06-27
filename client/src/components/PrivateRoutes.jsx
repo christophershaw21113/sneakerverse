@@ -7,13 +7,14 @@ const PrivateRoutes = () => {
 
     let isAuthenticated
 
-    if (jwtdecode(cookieValue).email === "t@w.com" || jwtdecode(cookieValue).email === "c@s.com") {
+    if (jwtdecode(cookieValue).email === "t@w.com" || jwtdecode(cookieValue).email === "c@s.com" || jwtdecode(cookieValue).email === "a@c.com") {
         isAuthenticated = true
         // console.log(isAuthenticated)
     } else {
         isAuthenticated = false
         // console.log(isAuthenticated)
-    }    return (
+    }
+    return (
         isAuthenticated ? <Outlet /> : <Navigate to='/login' />
     )
 }

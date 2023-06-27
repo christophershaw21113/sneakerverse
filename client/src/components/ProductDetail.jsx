@@ -5,7 +5,8 @@ import axios from 'axios';
 const ProductDetail = (props) => {
     const { order, setOrder } = props
     const { id } = useParams();
-    const [classes, setClasses] = useState('')
+    // const [classes, setClasses] = useState('')
+    const [hidden, setHidden] = useState(false)
     // const [sneakerName, setSneakerName] = useState('');
     const [product, setProduct] = useState({});
 
@@ -23,29 +24,25 @@ const ProductDetail = (props) => {
 
     const addToCart = () => {
         const existingItem = order.find((item) => item._id === product._id)
-        setClasses('hidden')
-        if (existingItem) {
-            console.log("This item is already in the cart.")
-            return
-        }
+        // setClasses('hidden')
+        setHidden(!hidden)
         setOrder([...order, product])
         console.log(order)
     }
 
     return (
-        <div style={{ marginTop: "100px" }}>
+        <div style={{ marginTop: "100px", width: "50%" }}>
             <Link to="/">Home</Link>
             <br />
             <img src={`http://localhost:8000/uploads/${product.image}`} alt={product.name} style={{ width: "100px" }} />
-            <h2>Name: {product.name}</h2>
-            <h2>Brand: {product.brand}</h2>
-            <h2>Gender: {product.gender}</h2>
-            <h2>Price: {product.price}</h2>
-            <h2>Discounted Price: {product.discountedPrice}</h2>
-            <h2>Color: {product.color}</h2>
-            <h2>Size: {product.size}</h2>
-            <h2>Description: {product.description}</h2>
-            <button className={classes} onClick={addToCart}>Add To Cart</button>
+            <h2>Shoe: {product.brand} {product.name}</h2>
+            <h3>Price: <span style={{ color: 'red', textDecoration: 'line-through' }}>${product.price}</span> ${product.discountedPrice}</h3>
+            <h5>Color: {product.color}</h5>
+            <h5>Size: {product.size} {product.gender}</h5>
+            <p>Description: {product.description}</p>
+            <br />
+            <button className={hidden ? "hidden" : null} onClick={addToCart}>Add To Cart</button>
+            <p className={!hidden ? "hidden" : null}>You've added this shoe to your cart!</p>
         </div>
     )
 }

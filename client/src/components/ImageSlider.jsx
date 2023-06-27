@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 
-const ImageSlider = ({slides}) => {
+const ImageSlider = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {
-      const isFirstSlide = currentIndex === 0;
-      const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-      setCurrentIndex(newIndex);
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
   }
 
   const goToNext = () => {
-      const isLastSlide = currentIndex === slides.length - 1
-      const newIndex = isLastSlide ? 0 : currentIndex + 1;
-      setCurrentIndex(newIndex);
+    const isLastSlide = currentIndex === slides.length - 1
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
   }
- const goToSlide = (slideIndex) => {
+  const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
- }
+  }
 
   const leftArrowStyles = {
     position: "absolute",
@@ -40,7 +40,7 @@ const ImageSlider = ({slides}) => {
     cursor: "pointer",
 
   }
-   
+
   const sliderStyles = {
     height: '100%',
     position: 'relative'
@@ -74,19 +74,19 @@ const ImageSlider = ({slides}) => {
   }
 
 
-    return (
+  return (
     <div style={sliderStyles}>
-        <div style={leftArrowStyles} onClick={goToPrevious}>&#9664;</div>
-        <div style={rightArrowStyles} onClick={goToNext}>&#9654;</div>
-    <div style={slideStyles}></div>
-    <div style={dotsContainerStyles}>
+      <div style={leftArrowStyles} onClick={goToPrevious}>&#9664;</div>
+      <div style={rightArrowStyles} onClick={goToNext}>&#9654;</div>
+      <div style={slideStyles}></div>
+      <div style={dotsContainerStyles}>
         {slides.map((slide, slideIndex) => (
-            <div style={dotStyles} key={slideIndex} onClick={() => goToSlide(slideIndex)}>&#9679;</div>
+          <div style={dotStyles} key={slideIndex} onClick={() => goToSlide(slideIndex)}>&#9679;</div>
         ))
         }
+      </div>
     </div>
-    </div>
-    )
+  )
 };
 
 export default ImageSlider;
