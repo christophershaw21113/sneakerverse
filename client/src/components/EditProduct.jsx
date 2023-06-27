@@ -82,17 +82,17 @@ const EditProduct = () => {
                 <div>
                     <label>Brand</label>
                     {/* {errors?.brand ? <p style={{ color: "red" }}>{errors?.brand.message}</p> : null} */}
-                    <input type="text" name="brand" value={oneShoe.brand} onChange={handleChange} required/>
+                    <input type="text" name="brand" value={oneShoe.brand} onChange={handleChange} required />
                 </div>
                 <div>
                     <label>Color</label>
                     {/* {errors?.color ? <p style={{ color: "red" }}>{errors?.color.message}</p> : null} */}
-                    <input type="text" name="color" value={oneShoe.color} onChange={handleChange} required/>
+                    <input type="text" name="color" value={oneShoe.color} onChange={handleChange} required />
                 </div>
                 <div>
                     <label>Description</label>
                     {/* {errors?.description ? <p style={{ color: "red" }}>{errors?.description.message}</p> : null} */}
-                    <input type="text" name="description" value={oneShoe.description} onChange={handleChange} required/>
+                    <input type="text" name="description" value={oneShoe.description} onChange={handleChange} required />
                 </div>
                 <div>
                     <label>Gender</label>
@@ -105,7 +105,7 @@ const EditProduct = () => {
                 <div>
                     <label>Price</label>
                     {/* {errors?.price ? <p style={{ color: "red" }}>{errors?.email.message}</p> : null} */}
-                    <input type="number" name="price" value={oneShoe.price} onChange={handleChange} required/>
+                    <input type="number" name="price" value={oneShoe.price} onChange={handleChange} required />
                 </div>
                 <div>
                     <label>Discounted Price</label>
@@ -115,7 +115,7 @@ const EditProduct = () => {
                 <div>
                     <label>Size</label>
                     {/* {errors?.size ? <p style={{ color: "red" }}>{errors?.size.message}</p> : null} */}
-                    <input type="number" name="size" value={oneShoe.size} onChange={handleChange} required/>
+                    <input type="number" name="size" value={oneShoe.size} onChange={handleChange} required />
                 </div>
                 <div>
                     <button type="submit">Submit</button>
