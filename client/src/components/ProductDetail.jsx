@@ -5,7 +5,6 @@ import axios from 'axios';
 const ProductDetail = (props) => {
     const { order, setOrder } = props
     const { id } = useParams();
-    // const [classes, setClasses] = useState('')
     const [hidden, setHidden] = useState(false)
     // const [sneakerName, setSneakerName] = useState('');
     const [product, setProduct] = useState({});
@@ -24,18 +23,23 @@ const ProductDetail = (props) => {
 
     const addToCart = () => {
         const existingItem = order.find((item) => item._id === product._id)
-        // setClasses('hidden')
         setHidden(!hidden)
+        if (existingItem) {
+            console.log("This item is already in the cart.")
+            return
+        }
         setOrder([...order, product])
         console.log(order)
     }
 
     return (
-        <div style={{ marginTop: "100px", width: "50%" }}>
+        <div style={{ marginTop: "100px", width:"50%" }}>
+
             <Link to="/">Home</Link>
             <br />
             <img src={`http://localhost:8000/uploads/${product.image}`} alt={product.name} style={{ width: "100px" }} />
             <h2>Shoe: {product.brand} {product.name}</h2>
+
             <h3>Price: <span style={{ color: 'red', textDecoration: 'line-through' }}>${product.price}</span> ${product.discountedPrice}</h3>
             <h5>Color: {product.color}</h5>
             <h5>Size: {product.size} {product.gender}</h5>

@@ -42,36 +42,43 @@ const Cart = (props) => {
                     )
                 })
             }
-            <br />
-            <p style={{ textAlign: "center" }}>Subtotal: ${subtotal}</p>
-            <br />
-            <div style={{ width: "300px" }}>
-                <PayPalScriptProvider options={{ clientId: "ASko_BfBKO1FH_ii4zyZl2x8rTn4qzVh931bRX6poAGg1M-Uv7yFDOA4EESp1zC1LuQoHHFRKtcH49BG" }}>
-                    <PayPalButtons
-                        createOrder={(data, actions) => {
-                            return actions.order.create({
-                                purchase_units: [
-                                    {
-                                        amount: {
-                                            currency_code: "USD",
-                                            value: subtotal,
-                                        },
-                                    },
-                                ],
-                            })
-                                .then((orderId) => {
-                                    // Your code here after create the order
-                                    return orderId;
-                                });
-                        }}
-                        onApprove={function (data, actions) {
-                            return actions.order.capture().then(function (details) {
-                                // Your code here after capture the order
-                                alert("Transaction completed by " + details.payer.name.given_name)
-                            });
-                        }} />
-                </PayPalScriptProvider>
-            </div>
+            {
+                order.length > 0 ?
+                    <>
+                        <br />
+                        <p style={{ textAlign: "center" }}>Subtotal: ${subtotal}</p>
+                        <br />
+                        <div style={{ width: "300px" }}>
+                            <PayPalScriptProvider options={{ clientId: "ASko_BfBKO1FH_ii4zyZl2x8rTn4qzVh931bRX6poAGg1M-Uv7yFDOA4EESp1zC1LuQoHHFRKtcH49BG" }}>
+                                <PayPalButtons
+                                    createOrder={(data, actions) => {
+                                        return actions.order.create({
+                                            purchase_units: [
+                                                {
+                                                    amount: {
+                                                        currency_code: "USD",
+                                                        value: subtotal,
+                                                    },
+                                                },
+                                            ],
+                                        })
+                                            .then((orderId) => {
+                                                // Your code here after create the order
+                                                return orderId;
+                                            });
+                                    }}
+                                    onApprove={function (data, actions) {
+                                        return actions.order.capture().then(function (details) {
+                                            // Your code here after capture the order
+                                            alert("Transaction completed by " + details.payer.name.given_name)
+                                        });
+                                    }} />
+                            </PayPalScriptProvider>
+                        </div>
+                    </>
+                    :
+                    <p style={{textAlign:"center", marginTop:"150px"}}>Your cart is empty!</p>
+            }
         </div>
     )
 }
