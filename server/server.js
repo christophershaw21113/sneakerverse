@@ -5,9 +5,9 @@ const cors = require('cors')
 const SneaksAPI = require('sneaks-api')
 const sneaks = new SneaksAPI()
 
-// sneaks.getProducts(700, 1, function(err, products){
-//     console.log(products)
-// })
+sneaks.getProducts("pyrite", 1, function(err, products){
+    console.log(products)
+})
 
 require("dotenv").config()
 
