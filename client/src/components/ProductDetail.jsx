@@ -6,7 +6,7 @@ const ProductDetail = (_props) =>{
 
     const {sneakerName} = useParams();
 
-    // const [sneakerName, setSneakerName] = useState('');
+
     const [product, setProduct] = useState({});
 
     useEffect(() =>{
