@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import jwtdecode from 'jwt-decode'
 import sneakerverse from '../../src/sneakerverse.png'
 
@@ -54,26 +54,38 @@ const Nav = (props) => {
     // console.log(jwtdecode(cookieValue))
 
     return (
-        <nav>
+        <nav style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
             <div>
                 <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{ height: "50px" }} />
                 {
                     welcome !== "Guest" ?
-                        <span onClick={() => navToUser()}><h4 style={{ display: 'inline' }}>Welcome, {welcome}</h4></span> :
-                        <h4 style={{ display: 'inline' }}>Welcome, Guest</h4>
+                        <span onClick={() => navToUser()}><h4 style={{paddingTop: '5px'  }}>Welcome, {welcome}</h4></span> :
+                        <h4 style={{ paddingTop: '5px' }}>Welcome, Guest</h4>
                 }
             </div>
             <div>
-                <FontAwesomeIcon icon={faCartShopping} style={{ color: "#424242" }} onClick={navCart} /><span>{order.length}</span>&nbsp;&nbsp;
+                <ul className='home-ul'>
+                    <Link className='link-styles' to={'/'}><li>Home</li></Link>
+                    <Link className='link-styles' to={'/'}><li>About</li></Link>
+                    <Link className='link-styles' to={'/'}><li>All Sneaks</li></Link>
+                    <Link className='link-styles' to={'/'}><li>Nike</li></Link>
+                    <Link className='link-styles' to={'/'}><li>Jordan</li></Link>
+                    <Link className='link-styles' to={'/'}><li>Adidas</li></Link>
+                    <Link className='link-styles' to={'/'}><li>Yeezy</li></Link>
+                    <Link className='link-styles' to={'/'}><li>New Balance</li></Link>
+                </ul>
+            </div>
+            <div className='cart-login-btn'>
+                <FontAwesomeIcon icon={faCartShopping} style={{ color: "#fff" }} onClick={navCart} /><span>{order.length}</span>&nbsp;&nbsp;
                 {
                     (loggedIn) ?
-                        <><button onClick={logout}>Logout</button>&nbsp;&nbsp;</>
+                        <><button className='logout' onClick={logout}>Logout</button>&nbsp;&nbsp;</>
                         :
-                        <><button onClick={navRegister}>Register/Login</button>&nbsp;&nbsp;</>
+                        <><button className='reglog' onClick={navRegister}>Register/Login</button>&nbsp;&nbsp;</>
                 }
                 {
                     (user?.email === "t@w.com" || user?.email === "c@s.com") ?
-                        <button onClick={navAdmin}>Admin</button> :
+                        <button className='admin' onClick={navAdmin}>Admin</button> :
                         null
                 }
             </div>

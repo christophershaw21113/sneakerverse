@@ -64,7 +64,7 @@ const ImageSlider = ({ slides }) => {
 
   const dotStyles = {
     cursor: 'pointer',
-    fontSize: '20px',
+    fontSize: '15px',
     width: '8px',
     height: '8px',
     margin: '10px 10px',
@@ -72,6 +72,7 @@ const ImageSlider = ({ slides }) => {
     backgroundColor: '#fff',
     borderRadius: '50%',
     transition: '0.3s',
+
     
   }
 

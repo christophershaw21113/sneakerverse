@@ -87,7 +87,7 @@ const Home = () => {
         <ImageSlider slides={slides} />
       </div>
       <div style={{ marginTop: '5%' }}>
-        <h2 style={{ textAlign: 'center' }}>Recent Releases</h2>
+        <h2 style={{ textAlign: 'center', paddingTop: '10px' }}>Recent Releases</h2>
       </div>
       <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>
   {shoes
