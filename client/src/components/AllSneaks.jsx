@@ -119,7 +119,6 @@ const AllSneaks = (props) => {
                     ) : (
                       <span>${shoe.price}</span>
                     )}
-
                   </MDBCardTitle>
                 </MDBCardBody>
               </MDBCard>

@@ -75,6 +75,7 @@ const Nav = (props) => {
                     <Link className='link-styles' to={'/sneakerverse/adidas'} onClick={()=>setBrand("adidas")}><li>Adidas</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/yeezy'} onClick={()=>setBrand("yeezy")}><li>Yeezy</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/newbalance'} onClick={()=>setBrand("new balance")}><li>New Balance</li></Link>
+
                 </ul>
             </div>
             <div className='cart-login-btn'>
