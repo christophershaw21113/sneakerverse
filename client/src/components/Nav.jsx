@@ -37,13 +37,13 @@ const Nav = (props) => {
     }
 
     const navRegister = () => {
-        navigate("/register")
+        navigate("/sneakerverse/register")
     }
     const navAdmin = () => {
-        navigate("/adminDashboard")
+        navigate("/sneakerverse/adminDashboard")
     }
     const navCart = () => {
-        navigate("/cart")
+        navigate("/sneakerverse/cart")
     }
 
     const navToUser = () => {
@@ -67,7 +67,7 @@ const Nav = (props) => {
                 <ul className='home-ul'>
                     <Link className='link-styles' to={'/'}><li>Home</li></Link>
                     <Link className='link-styles' to={'/'}><li>About</li></Link>
-                    <Link className='link-styles' to={'/'}><li>All Sneaks</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/allshoes'}><li>All Sneaks</li></Link>
                     <Link className='link-styles' to={'/'}><li>Nike</li></Link>
                     <Link className='link-styles' to={'/'}><li>Jordan</li></Link>
                     <Link className='link-styles' to={'/'}><li>Adidas</li></Link>
