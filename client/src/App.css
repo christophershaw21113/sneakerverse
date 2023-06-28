@@ -9,11 +9,12 @@
 }
 
 nav, footer{
-  background-color: grey;
+  background-color: #1C1C1C;
   padding: 20px;
   position: fixed;
   width: 100%;
   z-index: 100;
+  color: #fff;
 }
 
 nav {
@@ -26,6 +27,102 @@ footer {
   bottom: 0;
   text-align: center;
 }
+
 .hidden {
   display: none;
 }
+
+.link-styles {
+  color: white;
+  text-decoration: none;
+}
+
+.link-styles:hover {
+  background-color: #7b7b7b;
+  border-radius: 15px;
+  color: #e6e6e6;
+  text-decoration: none;
+  padding: 5px 7px;
+}
+
+
+
+
+.home-ul {
+  display: flex; 
+  align-items: 'center';
+  list-style-type: none;
+  
+}
+
+@media (max-width: 965px) {
+  .home-ul {
+    display: block;
+    align-items: center;
+    list-style-type: none;
+  }
+  
+}
+
+@media (max-width: 400px) {
+  .cart-login-btn {
+    display: block;
+  }
+}
+
+
+ul li {
+  margin: 0 10px;
+  font-size: large;
+  justify-content: space-evenly;
+ 
+}
+
+.logout {
+  background-color: red;
+  border: none;
+  font-size: medium;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+.logout:hover {
+  background-color: rgb(244, 106, 106);
+  color: #fff;
+  border: none;
+  font-size: medium;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+.reglog {
+    background-color: green;
+    font-size: medium;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 15px;
+  }
+
+  .reglog:hover {
+    background-color: rgb(27, 203, 27);
+    color: #fff;
+    border: none;
+    font-size: medium;
+    padding: 7px 10px;
+    border-radius: 15px;
+  }
+
+  .admin {
+    background-color: #FFC107;
+    font-size: medium;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 15px;
+  }
+
+  .admin:hover {
+    background-color: #fac936;
+    color: #000;
+    border: none;
+    font-size: medium;
+    padding: 7px 10px;
+    border-radius: 15px;
+  }
