@@ -5,7 +5,7 @@ const cors = require('cors')
 const SneaksAPI = require('sneaks-api')
 const sneaks = new SneaksAPI()
 
-sneaks.getProducts("air jordan 4 lightning", 1, function(err, products){
+sneaks.getProducts("Air Jordan 10 Orlando", 1, function(err, products){
     console.log(products)
 })
 
