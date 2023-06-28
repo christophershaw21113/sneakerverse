@@ -37,7 +37,7 @@ const ProductDetail = (props) => {
 
             {/* <Link to="/">Home</Link> */}
             {/* <br /> */}
-            <img src={`http://localhost:8000/uploads/${shoe.image}`} alt={shoe.name} style={{ width: "100px" }} />
+            <img src={`/uploads/${shoe.image}`} alt={shoe.name} style={{ width: "100px" }} />
             <h2>Shoe: {shoe.brand} {shoe.name}</h2>
             <h3>Price: <span style={{ textDecoration: 'line-through' }}>${shoe.price}</span><span style={{color: 'red'}}> ${shoe.discountedPrice}</span></h3>
             <h5>Color: {shoe.color}</h5>
@@ -45,7 +45,7 @@ const ProductDetail = (props) => {
             <p>Description: {shoe.description}</p>
             <br />
             <button className={hidden ? "hidden" : null} onClick={addToCart}>Add To Cart</button>
-            <Link className={!hidden ? "hidden" : null} to="/cart">You've added this shoe to your cart!</Link>
+            <Link className={!hidden ? "hidden" : null} to="/sneakerverse/cart">You've added this shoe to your cart!</Link>
         </div>
     )
 }
