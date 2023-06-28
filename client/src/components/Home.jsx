@@ -102,7 +102,16 @@ const Home = () => {
           <MDBCardTitle>
             <Link to={`/`}><h3>{shoe.name}</h3></Link>
             <p>{shoe.brand}</p>
-            <p>${shoe.price}</p>
+            <p>
+            {shoe.discountedPrice > 1 ? (
+              <div style={{display: 'inline'}}>
+            <p><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{color: 'red'}}>${shoe.discountedPrice}</span></p>
+            </div>
+             ) : (
+             <span>${shoe.price}</span>
+           )}
+          
+          </p>
             {/* link to ._id when product page is ready */}
           </MDBCardTitle>
         </MDBCardBody>
