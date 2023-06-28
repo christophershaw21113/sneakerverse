@@ -13,7 +13,7 @@ require("dotenv").config()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
+app.use(cors({ credentials: true, origin: ['http://localhost:3000', 'http://18.117.87.36/'] }))
 app.use(express.static("public"))
 
 require('./config/mongoose.config')
