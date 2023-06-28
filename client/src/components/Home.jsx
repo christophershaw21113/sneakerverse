@@ -90,7 +90,7 @@ const Home = () => {
         </div>
         <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>
           {shoes
-            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
             .slice(0, 4)
             .map((shoe, index) => (
               <MDBCard key={index} style={styleCard.card}>

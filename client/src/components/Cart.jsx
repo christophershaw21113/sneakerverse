@@ -20,6 +20,7 @@ const Cart = (props) => {
 
     useEffect(() => {
         calculateSubtotal()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [order])
 
     return (
