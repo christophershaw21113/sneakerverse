@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { Navigate } from 'react-router-dom';
 
 const Cart = (props) => {
     const { order, setOrder } = props
@@ -65,7 +66,9 @@ const Cart = (props) => {
                                             ],
                                         })
                                             .then((orderId) => {
-                                                // Your code here after create the order
+                                                console.log(orderId)
+                                                setOrder({})
+                                                Navigate("/")
                                                 return orderId;
                                             });
                                     }}
