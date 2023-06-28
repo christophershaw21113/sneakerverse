@@ -67,11 +67,15 @@ const ImageSlider = ({ slides }) => {
     fontSize: '20px',
     width: '8px',
     height: '8px',
-    margin: '5px 10px',
+    margin: '10px 10px',
+    color: 'slategrey',
     backgroundColor: '#fff',
     borderRadius: '50%',
-    transition: '0.3s'
+    transition: '0.3s',
+    
   }
+
+ 
 
 
   return (
