@@ -66,6 +66,9 @@ const AllSneaks = () => {
   return (
     <div>
       <div style={pageContainer} className="carousel">
+        <div style={{ marginTop: '5%' }}>
+          <h2 style={{ textAlign: 'center', paddingTop: '50px' }}>All Sneaks</h2>
+        </div>
         <select value={sortOption} onChange={handleSortChange}>
           <option value="">-- Select Sorting Option --</option>
           <option value="lowest">Price: Lowest to Highest</option>
@@ -73,9 +76,7 @@ const AllSneaks = () => {
           <option value="newest">Added: Newest to Oldest</option>
           <option value="oldest">Added: Oldest to Newest</option>
         </select>
-        <div style={{ marginTop: '5%' }}>
-          <h2 style={{ textAlign: 'center', paddingTop: '50px' }}>All Sneaks</h2>
-        </div>
+        <input></input>
         <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>
           {sortedSneaks
             .map((shoe, index) => (
@@ -86,8 +87,7 @@ const AllSneaks = () => {
                 <MDBCardBody style={styleCard.container}>
                   <MDBCardTitle>
                     <Link to={`/shoes/${shoe._id}`}><h3>{shoe.name}</h3></Link>
-                    {/* <p>{shoe.brand}</p> */}
-                    {/* <p> */}
+                    <p>{shoe.brand}</p>
                     {shoe.discountedPrice > 1 ? (
                       <div style={{ display: 'inline' }}>
                         <p><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></p>
@@ -96,8 +96,6 @@ const AllSneaks = () => {
                       <span>${shoe.price}</span>
                     )}
 
-                    {/* </p> */}
-                    {/* link to ._id when product page is ready */}
                   </MDBCardTitle>
                 </MDBCardBody>
               </MDBCard>

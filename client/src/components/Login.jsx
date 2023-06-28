@@ -37,7 +37,7 @@ const Login = (props) => {
             })
     }
     return (
-        <div style={{ marginTop: "100px" }}>
+        <div style={{ marginTop: "150px" }}>
             <form onSubmit={handleFormSubmit}>
                 <h3>Login</h3>
                 {errors?.logErr ? <p style={{ color: "red" }}>{errors.logErr}</p> : null}

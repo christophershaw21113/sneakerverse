@@ -33,7 +33,7 @@ const ProductDetail = (props) => {
     }
 
     return (
-        <div style={{ marginTop: "100px", width: "50%" }}>
+        <div style={{ marginTop: "150px", width: "50%" }}>
 
             <Link to="/">Home</Link>
             <br />

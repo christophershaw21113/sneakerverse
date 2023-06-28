@@ -87,7 +87,7 @@ const AdminDashboard = (props) => {
     }
 
     return (
-        <div style={{ marginTop: "100px" }}>
+        <div style={{ marginTop: "150px" }}>
             <form onSubmit={addShoe}>
                 <h3>Add a shoe</h3>
                 <div>

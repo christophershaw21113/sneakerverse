@@ -69,7 +69,7 @@ const EditProduct = () => {
         })
     }
     return (
-        <div style={{ marginTop: "100px" }}>
+        <div style={{ marginTop: "150px" }}>
             <h1>Edit Shoe Details</h1>
             <form onSubmit={editShoe}>
                 {/* {oneShoe.oneShoe?.length < 2 ? <p className="text-danger">FE: Title must be at least 2 characters</p> : null} */}

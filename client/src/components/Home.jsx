@@ -117,9 +117,7 @@ const Home = () => {
               </MDBCard>
             ))}
         </MDBContainer>
-      </div>
-      <div style={{ marginTop: '5%' }}>
-        <h2 style={{ textAlign: 'center', paddingTop: '10px' }}>Recent Releases</h2>
+        <br/><br/><br/>
       </div>
     </div>
   );
