@@ -40,9 +40,9 @@ const EditProduct = () => {
                     })
                 })
         }
-        // else{
-        //     alert("A required field is empty")
-        // }
+        else{
+            alert("A required field is empty")
+        }
     }
 
     const editShoeImage = (e) => {
@@ -76,7 +76,7 @@ const EditProduct = () => {
                 {/* {errors.oneShoe ? <p className="text-danger">{errors.oneShoe.message}</p> : null} */}
                 <div>
                     <label>Name</label>
-                    {/* {errors?.name ? <p style={{ color: "red" }}>{errors?.name.message}</p> : null} */}
+                    {errors?.name ? <p style={{ color: "red" }}>{errors?.name.message}</p> : null}
                     <input type="text" name="name" value={oneShoe.name} onChange={handleChange} />
                 </div>
                 <div>

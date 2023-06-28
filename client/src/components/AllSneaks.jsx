@@ -86,7 +86,7 @@ const AllSneaks = (props) => {
     <div>
       <div style={pageContainer} className="carousel">
         <div style={{ marginTop: '5%' }}>
-          <h2 style={{ textAlign: 'center', paddingTop: '50px' }}>{brand === "nike" ? "Nike" : brand === "jordan" ? "Air Jordan" : brand==="yeezy" ? "Yeezy" : brand === "adidas" ? "Adidas" : brand==="new balance" ? "New Balance" : "All Sneakers"}</h2>
+          <h2 style={{ textAlign: 'center', paddingTop: '50px' }}>{brand === "nike" ? "Nike" : brand === "jordan" ? "Air Jordan" : brand === "yeezy" ? "Yeezy" : brand === "adidas" ? "Adidas" : brand === "new balance" ? "New Balance" : "All Sneakers"}</h2>
         </div>
         <div style={{ textAlign: "center" }}>
           <select value={sortOption} onChange={handleSortChange}>
@@ -124,6 +124,7 @@ const AllSneaks = (props) => {
               </MDBCard>
             ))}
         </MDBContainer>
+        <br /><br /><br />
       </div>
     </div>
   );
