@@ -33,10 +33,10 @@ const ProductDetail = (props) => {
     }
 
     return (
-        <div style={{ marginTop: "100px", width: "50%" }}>
+        <div style={{ marginTop: "150px", width: "50%" }}>
 
-            <Link to="/">Home</Link>
-            <br />
+            {/* <Link to="/">Home</Link> */}
+            {/* <br /> */}
             <img src={`http://localhost:8000/uploads/${shoe.image}`} alt={shoe.name} style={{ width: "100px" }} />
             <h2>Shoe: {shoe.brand} {shoe.name}</h2>
             <h3>Price: <span style={{ textDecoration: 'line-through' }}>${shoe.price}</span><span style={{color: 'red'}}> ${shoe.discountedPrice}</span></h3>
