@@ -121,7 +121,6 @@ const Home = () => {
       <div style={{ marginTop: '5%' }}>
         <h2 style={{ textAlign: 'center', paddingTop: '10px' }}>Recent Releases</h2>
       </div>
-      
     </div>
   );
 };

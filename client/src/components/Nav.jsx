@@ -60,7 +60,8 @@ const Nav = (props) => {
                 {
                     welcome !== "Guest" ?
 
-                        <span onClick={() => navToUser()}><h4 style={{paddingTop: '5px'  }}>Welcome, {welcome}</h4></span> :
+                        // <span onClick={() => navToUser()}><h4 style={{paddingTop: '5px'  }}>Welcome, {welcome}</h4></span> :
+                        <span ><h4 style={{paddingTop: '5px'  }}>Welcome, {welcome}</h4></span> :
                         <h4 style={{ paddingTop: '5px' }}>Welcome, Guest</h4>
                 }
             </div>
