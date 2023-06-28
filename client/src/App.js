@@ -15,6 +15,7 @@ import Cart from './components/Cart'
 import EditProduct from './components/EditProduct'
 import ProductDetail from './components/ProductDetail'
 import UserDetail from './components/UserDetail'
+import AllSneaks from './components/AllSneaks'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -43,15 +44,16 @@ function App() {
       {/* <ToastContainer transition={Slide} /> */}
       <Routes>
         <Route element={<PrivateRoutes />}>
-          <Route path='/adminDashboard' element={<AdminDashboard user={user} count={count} setCount={setCount} />} />
+          <Route path='/sneakerverse/adminDashboard' element={<AdminDashboard user={user} count={count} setCount={setCount} />} />
           <Route path='/editProduct/:id' element={<EditProduct cookieValue={cookieValue} />} />
           <Route path='/shoes/:id' element={<ProductDetail order={order} setOrder={setOrder} />} />
           <Route path='/userDetail' element={<UserDetail user={user} />} />
         </Route>
         <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
-        <Route path="/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
-        <Route path="/cart" element={<Cart order={order} setOrder={setOrder} />} />
+        <Route path="/sneakerverse/allshoes" element={<AllSneaks />} />
+        <Route path="/sneakerverse/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
+        <Route path="/sneakerverse/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
+        <Route path="/sneakerverse/cart" element={<Cart order={order} setOrder={setOrder} />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
