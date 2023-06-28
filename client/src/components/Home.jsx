@@ -82,9 +82,41 @@ const Home = () => {
 
   return (
     <div>
-    <div style={pageContainer} className="carousel">
-      <div style={containerStyles}>
-        <ImageSlider slides={slides} />
+      <div style={pageContainer} className="carousel">
+        <div style={containerStyles}>
+          <ImageSlider slides={slides} />
+        </div>
+        <div style={{ marginTop: '5%' }}>
+          <h2 style={{ textAlign: 'center' }}>Recent Releases</h2>
+        </div>
+        <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>
+          {shoes
+            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+            .slice(0, 4)
+            .map((shoe, index) => (
+              <MDBCard key={index} style={styleCard.card}>
+                <MDBRipple rippleColor="light" rippleTag="div" className="bg-image hover-overlay">
+                  <MDBCardImage src={`http://localhost:8000/uploads/${shoe.image}`} width="100%" alt={shoe.name} />
+                </MDBRipple>
+                <MDBCardBody style={styleCard.container}>
+                  <MDBCardTitle>
+                    <Link to={`/shoes/${shoe._id}`}><h3>{shoe.name}</h3></Link>
+                    <p>{shoe.brand}</p>
+                    <p>
+                      {shoe.discountedPrice > 1 ? (
+                        <div style={{ display: 'inline' }}>
+                          <p><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></p>
+                        </div>
+                      ) : (
+                        <span>${shoe.price}</span>
+                      )}
+                    </p>
+                    {/* link to ._id when product page is ready */}
+                  </MDBCardTitle>
+                </MDBCardBody>
+              </MDBCard>
+            ))}
+        </MDBContainer>
       </div>
       <div style={{ marginTop: '5%' }}>
         <h2 style={{ textAlign: 'center', paddingTop: '10px' }}>Recent Releases</h2>

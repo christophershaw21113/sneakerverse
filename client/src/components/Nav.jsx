@@ -46,10 +46,10 @@ const Nav = (props) => {
         navigate("/sneakerverse/cart")
     }
 
-    const navToUser = () => {
-        navigate(`/users/${user?._id}`)
-        setCount(count + 1)
-    }
+    // const navToUser = () => {
+    //     navigate(`/users/${user?._id}`)
+    //     setCount(count + 1)
+    // }
 
     // console.log(jwtdecode(cookieValue))
 
@@ -59,6 +59,7 @@ const Nav = (props) => {
                 <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{ height: "50px" }} />
                 {
                     welcome !== "Guest" ?
+
                         <span onClick={() => navToUser()}><h4 style={{paddingTop: '5px'  }}>Welcome, {welcome}</h4></span> :
                         <h4 style={{ paddingTop: '5px' }}>Welcome, Guest</h4>
                 }

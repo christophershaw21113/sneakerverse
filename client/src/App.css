@@ -28,6 +28,10 @@ footer {
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
 .link-styles {
   color: white;
   text-decoration: none;
