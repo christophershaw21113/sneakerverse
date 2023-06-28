@@ -106,7 +106,7 @@ const AllSneaks = (props) => {
             .map((shoe, index) => (
               <MDBCard key={index} style={styleCard.card}>
                 <MDBRipple rippleColor="light" rippleTag="div" className="bg-image hover-overlay">
-                  <MDBCardImage src={`http://localhost:8000/uploads/${shoe.image}`} width="100%" alt={shoe.name} />
+                  <MDBCardImage src={`/uploads/${shoe.image}`} width="100%" alt={shoe.name} />
                 </MDBRipple>
                 <MDBCardBody style={styleCard.container}>
                   <MDBCardTitle>
