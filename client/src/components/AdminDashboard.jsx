@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const AdminDashboard = (props) => {
@@ -27,39 +27,39 @@ const AdminDashboard = (props) => {
             })
     }, [count])
 
-    const addShoe =  (e) => {
+    const addShoe = (e) => {
         e.preventDefault();
         // try {
-            axios.post('http://localhost:8000/api/shoes', shoe, { headers: { 'Content-Type': 'multipart/form-data', }, })
-                .then((res) => {
-                    setCount(count+1)
-                    setShoe({
-                        name: "",
-                        brand: "",
-                        gender: "",
-                        price: 0,
-                        discountedPrice: 0,
-                        image: null,
-                        color: "",
-                        size: 0,
-                        description: ""
-                    })
+        axios.post('http://localhost:8000/api/shoes', shoe, { headers: { 'Content-Type': 'multipart/form-data', }, })
+            .then((res) => {
+                setCount(count + 1)
+                setShoe({
+                    name: "",
+                    brand: "",
+                    gender: "",
+                    price: 0,
+                    discountedPrice: 0,
+                    image: null,
+                    color: "",
+                    size: 0,
+                    description: ""
                 })
-                .catch((err) => {
-                    console.log(err)
-                    setErrors({
-                        name: err.response.data.error.errors?.name,
-                        brand: err.response.data.error.errors?.brand,
-                        gender: err.response.data.error.errors?.gender,
-                        price: err.response.data.error.errors?.price,
-                        discountedPrice: err.response.data.error.errors?.discountedPrice,
-                        color: err.response.data.error.errors?.color,
-                        size: err.response.data.error.errors?.size,
-                        description: err.response.data.error.errors?.description,
-                        image: err.response.data.error.errors?.image,
-                        generic: err.response.data
-                    })
+            })
+            .catch((err) => {
+                console.log(err)
+                setErrors({
+                    name: err.response.data.error.errors?.name,
+                    brand: err.response.data.error.errors?.brand,
+                    gender: err.response.data.error.errors?.gender,
+                    price: err.response.data.error.errors?.price,
+                    discountedPrice: err.response.data.error.errors?.discountedPrice,
+                    color: err.response.data.error.errors?.color,
+                    size: err.response.data.error.errors?.size,
+                    description: err.response.data.error.errors?.description,
+                    image: err.response.data.error.errors?.image,
+                    generic: err.response.data
                 })
+            })
         // }
         // catch (error) {
         //     console.error('Error uploading sneaker:', error);
@@ -170,7 +170,7 @@ const AdminDashboard = (props) => {
                                 <td>{shoe.color}</td>
                                 <td>{shoe.size}</td>
                                 <td>{shoe.description}</td>
-                                <td><img src={`http://localhost:8000/uploads/${shoe.image}`} alt="" style={{width:"50px", height:"50px"}}/></td>
+                                <td><img src={`http://localhost:8000/uploads/${shoe.image}`} alt="" style={{ width: "50px", height: "50px" }} /></td>
                                 <td>
                                     { // delete if logged in user or 'admin' email user
                                         (user?.email === "t@w.com" || user?.email === "c@s.com") ? <><button onClick={() => removeShoe(shoe)}>🚮</button></> : null

@@ -7,7 +7,7 @@ import jwtdecode from 'jwt-decode'
 import sneakerverse from '../../src/sneakerverse.png'
 
 const Nav = (props) => {
-    const { cookieValue, user, setUser, welcome, setWelcome, loggedIn, setLoggedIn, setCount, count, darkMode, setDarkMode } = props
+    const { cookieValue, user, welcome, setWelcome, loggedIn, setLoggedIn, setCount, count, order } = props
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -56,7 +56,7 @@ const Nav = (props) => {
     return (
         <nav>
             <div>
-                <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{height:"50px"}}/>
+                <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{ height: "50px" }} />
                 {
                     welcome !== "Guest" ?
                         <span onClick={() => navToUser()}><h4 style={{ display: 'inline' }}>Welcome, {welcome}</h4></span> :
@@ -64,7 +64,7 @@ const Nav = (props) => {
                 }
             </div>
             <div>
-                <FontAwesomeIcon icon={faCartShopping} style={{ color: "#424242" }} onClick={navCart} />
+                <FontAwesomeIcon icon={faCartShopping} style={{ color: "#424242" }} onClick={navCart} /><span>{order.length}</span>&nbsp;&nbsp;
                 {
                     (loggedIn) ?
                         <><button onClick={logout}>Logout</button>&nbsp;&nbsp;</>
