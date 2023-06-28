@@ -33,8 +33,8 @@ const Cart = (props) => {
                             <div>
                                 <p>Shoe: {shoe.brand} {shoe.name}</p>
                                 <p>Size: {shoe.size}{shoe.gender}</p>
-                                <p>Price: <span style={{ color: 'red', textDecoration: 'line-through' }}>${shoe.price}</span> ${shoe.discountedPrice}</p>
                                 <p>Color: {shoe.color}</p>
+                                <p>Price: <span style={{ textDecoration: 'line-through' }}>${shoe.price}</span><span style={{color: 'red'}}> ${shoe.discountedPrice}</span></p>
                             </div>
                             <button onClick={() => removeFromCart(index)}>Remove</button>
                             <br /><br /><br />
@@ -49,7 +49,7 @@ const Cart = (props) => {
                         <p style={{ textAlign: "center" }}>Subtotal: ${subtotal}</p>
                         <br />
                         <div style={{ width: "300px" }}>
-                            <PayPalScriptProvider options={{ clientId: "ASko_BfBKO1FH_ii4zyZl2x8rTn4qzVh931bRX6poAGg1M-Uv7yFDOA4EESp1zC1LuQoHHFRKtcH49BG" }}>
+                            <PayPalScriptProvider options={{ clientId: "Abzd4jCbn39gBLQLtSb8cBqN-Xb4AIEB53pjtJSjE8-y5kNbdAPbBGE2NZ_i-lVLjUfbTz5hRCLneRuB" }}>
                                 <PayPalButtons
                                     createOrder={(data, actions) => {
                                         return actions.order.create({
