@@ -46,10 +46,10 @@ const Nav = (props) => {
         navigate("/cart")
     }
 
-    const navToUser = () => {
-        navigate(`/users/${user?._id}`)
-        setCount(count + 1)
-    }
+    // const navToUser = () => {
+    //     navigate(`/users/${user?._id}`)
+    //     setCount(count + 1)
+    // }
 
     // console.log(jwtdecode(cookieValue))
 
@@ -59,12 +59,15 @@ const Nav = (props) => {
                 <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{ height: "50px" }} />
                 {
                     welcome !== "Guest" ?
-                        <span onClick={() => navToUser()}><h4 style={{ display: 'inline' }}>Welcome, {welcome}</h4></span> :
+                        <span><h4 style={{ display: 'inline' }}>Welcome, {welcome}</h4></span> :
+                        // <span onClick={() => navToUser()}><h4 style={{ display: 'inline' }}>Welcome, {welcome}</h4></span> :
+
+                        // use this ^^ line once we can pull a user's orders to their own page
                         <h4 style={{ display: 'inline' }}>Welcome, Guest</h4>
                 }
             </div>
             <div>
-                <FontAwesomeIcon icon={faCartShopping} style={{ color: "#424242" }} onClick={navCart} /><span>{order.length}</span>&nbsp;&nbsp;
+                <FontAwesomeIcon icon={faCartShopping} style={{ color: "#424242" }} onClick={navCart} /><strong style={{ color: "white" }}> {order.length}</strong>&nbsp;&nbsp;
                 {
                     (loggedIn) ?
                         <><button onClick={logout}>Logout</button>&nbsp;&nbsp;</>

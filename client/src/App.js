@@ -45,10 +45,10 @@ function App() {
         <Route element={<PrivateRoutes />}>
           <Route path='/adminDashboard' element={<AdminDashboard user={user} count={count} setCount={setCount} />} />
           <Route path='/editProduct/:id' element={<EditProduct cookieValue={cookieValue} />} />
-          <Route path='/shoes/:id' element={<ProductDetail order={order} setOrder={setOrder} />} />
           <Route path='/userDetail' element={<UserDetail user={user} />} />
         </Route>
         <Route path="/" element={<Home />} />
+        <Route path='/shoes/:id' element={<ProductDetail order={order} setOrder={setOrder} />} />
         <Route path="/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
         <Route path="/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
         <Route path="/cart" element={<Cart order={order} setOrder={setOrder} />} />
