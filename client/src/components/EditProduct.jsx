@@ -23,7 +23,7 @@ const EditProduct = () => {
             axios.put(`http://localhost:8000/api/shoes/${id}`, oneShoe)
                 .then(res => {
                     console.log(oneShoe)
-                    navigate(`/adminDashboard`)
+                    navigate(`/sneakerverse/adminDashboard`)
                 })
                 .catch(err => {
                     console.log(err)
@@ -51,7 +51,7 @@ const EditProduct = () => {
         axios.put(`http://localhost:8000/api/shoes/${id}/image`, { image: e.target.image.files[0] }, { headers: { 'Content-Type': 'multipart/form-data', }, })
             .then(res => {
                 console.log(oneShoe)
-                navigate(`/adminDashboard`)
+                navigate(`/sneakerverse/adminDashboard`)
             })
             .catch(err => {
                 console.log(err)

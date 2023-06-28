@@ -16,6 +16,7 @@ import EditProduct from './components/EditProduct'
 import ProductDetail from './components/ProductDetail'
 import UserDetail from './components/UserDetail'
 import AllSneaks from './components/AllSneaks'
+import About from './components/About'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -60,6 +61,7 @@ function App() {
         <Route path="/sneakerverse/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
         <Route path="/sneakerverse/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
         <Route path="/sneakerverse/cart" element={<Cart order={order} setOrder={setOrder} />} />
+        <Route path="/sneakerverse/about" element={<About />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />

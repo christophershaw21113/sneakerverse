@@ -5,7 +5,7 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardImage, MDBContainer, MDBRipp
 import { useMediaQuery } from 'react-responsive';
 
 const AllSneaks = (props) => {
-  const {brand, count} = props
+  const { brand, count } = props
   console.log(brand)
   const [allSneaks, setAllSneaks] = useState([]);
   const [sortOption, setSortOption] = useState('');
@@ -17,7 +17,7 @@ const AllSneaks = (props) => {
       .then(res => {
         console.log(res.data);
         // setAllSneaks(res.data);
-        setAllSneaks(res.data.filter((shoe)=>shoe.brand.toLowerCase().includes(brand.toLowerCase())));
+        setAllSneaks(res.data.filter((shoe) => shoe.brand.toLowerCase().includes(brand.toLowerCase())));
         // console.log(res.data.filter((shoe)=>shoe.brand.toLowerCase().includes("yeezy")));
         console.log(sortedSneaks)
 
@@ -45,12 +45,12 @@ const AllSneaks = (props) => {
 
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value)
-}
+  }
   const handleSearch = (e) => {
     e.preventDefault()
     axios.get('http://localhost:8000/api/shoes', { params: { search: searchQuery } })
       .then((res) => {
-        const searchedResults = res.data.filter((shoe) => shoe.brand.toLowerCase().includes(searchQuery.toLowerCase()) && (shoe.name.toLowerCase().includes(searchQuery.toLowerCase()) || shoe.color.toLowerCase().includes(searchQuery.toLowerCase())))
+        const searchedResults = res.data.filter((shoe) => shoe.brand.toLowerCase().includes(brand.toLowerCase()) && (shoe.name.toLowerCase().includes(searchQuery.toLowerCase()) || shoe.color.toLowerCase().includes(searchQuery.toLowerCase())))
         setAllSneaks(searchedResults)
         // setCurrentPage(1)
       })
@@ -86,7 +86,7 @@ const AllSneaks = (props) => {
     <div>
       <div style={pageContainer} className="carousel">
         <div style={{ marginTop: '5%' }}>
-          <h2 style={{ textAlign: 'center', paddingTop: '50px' }}>All Sneaks</h2>
+          <h2 style={{ textAlign: 'center', paddingTop: '50px' }}>{brand === "nike" ? "Nike" : brand === "jordan" ? "Air Jordan" : brand==="yeezy" ? "Yeezy" : brand === "adidas" ? "Adidas" : brand==="new balance" ? "New Balance" : "All Sneakers"}</h2>
         </div>
         <div style={{ textAlign: "center" }}>
           <select value={sortOption} onChange={handleSortChange}>

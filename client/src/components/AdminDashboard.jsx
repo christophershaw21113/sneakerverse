@@ -36,7 +36,7 @@ const AdminDashboard = (props) => {
                 setShoe({
                     name: "",
                     brand: "",
-                    gender: "",
+                    gender: "M",
                     price: 0,
                     discountedPrice: 0,
                     image: null,
@@ -148,9 +148,7 @@ const AdminDashboard = (props) => {
                     <tr>
                         <th>Name</th>
                         <th>Brand</th>
-                        <th>Gender</th>
                         <th>Price</th>
-                        <th>Discounted Price </th>
                         <th>Color</th>
                         <th>Size</th>
                         <th>Description</th>
@@ -159,16 +157,16 @@ const AdminDashboard = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map((shoe, index) => {
+                    {products
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((shoe, index) => {
                         return (
                             <tr key={shoe._id}>
                                 <td><><Link to={`/shoes/${shoe?._id}`}>{shoe?.name}</Link></></td>
                                 <td>{shoe.brand}</td>
-                                <td>{shoe.gender}</td>
-                                <td>{shoe.price}</td>
-                                <td>{shoe.discountedPrice}</td>
+                                <p><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></p>
                                 <td>{shoe.color}</td>
-                                <td>{shoe.size}</td>
+                                <td>{shoe.size}{shoe.gender}</td>
                                 <td>{shoe.description}</td>
                                 <td><img src={`http://localhost:8000/uploads/${shoe.image}`} alt="" style={{ width: "50px", height: "50px" }} /></td>
                                 <td>
@@ -184,6 +182,7 @@ const AdminDashboard = (props) => {
                     })}
                 </tbody>
             </table>
+            <br/><br/><br/>
         </div>
     )
 }
