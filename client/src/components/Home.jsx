@@ -36,6 +36,16 @@ const Home = () => {
       url: 'http://localhost:3000/mick-haupt-O8_sTTWaJ14-unsplash.jpg',
       title: 'Italy',
       alt: 'Italy on the hill'
+    },
+    {
+      url: 'http://localhost:3000/leon-skibitzki-NMyuo1hoCAA-unsplash.jpg',
+      title: 'Nikes splashing water',
+      alt: 'Nikes splashing water'
+    },
+    {
+      url: 'http://localhost:3000/alexander-rotker-l8p1aWZqHvE-unsplash.jpg',
+      title: 'Nikes splashing water',
+      alt: 'Nikes splashing water'
     }
   ];
 
