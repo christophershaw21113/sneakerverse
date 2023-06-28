@@ -49,6 +49,7 @@ function App() {
           <Route path='/userDetail' element={<UserDetail user={user} />} />
         </Route>
         <Route path="/" element={<Home />} />
+        <Route path="/sneakerverse/allshoes" element={<AllSneaks />} />
         <Route path='/shoes/:id' element={<ProductDetail order={order} setOrder={setOrder} />} />
         <Route path="/sneakerverse/allshoes" element={<AllSneaks />} />
         <Route path="/sneakerverse/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
