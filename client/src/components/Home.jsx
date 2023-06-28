@@ -14,7 +14,6 @@ const Home = () => {
     axios
       .get(`http://localhost:8000/api/shoes/`)
       .then(res => {
-        console.log(res.data);
         setShoes(res.data);
       })
       .catch(err => console.log(err));
@@ -102,7 +101,6 @@ const Home = () => {
                   <MDBCardTitle>
                     <Link to={`/shoes/${shoe._id}`}><h3>{shoe.name}</h3></Link>
                     <p>{shoe.brand}</p>
-                    <p>
                       {shoe.discountedPrice > 1 ? (
                         <div style={{ display: 'inline' }}>
                           <p><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></p>
@@ -110,16 +108,12 @@ const Home = () => {
                       ) : (
                         <span>${shoe.price}</span>
                       )}
-                    </p>
-                    {/* link to ._id when product page is ready */}
                   </MDBCardTitle>
                 </MDBCardBody>
               </MDBCard>
             ))}
         </MDBContainer>
-      </div>
-      <div style={{ marginTop: '5%' }}>
-        <h2 style={{ textAlign: 'center', paddingTop: '10px' }}>Recent Releases</h2>
+        <br/><br/><br/>
       </div>
     </div>
   );

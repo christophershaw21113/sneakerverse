@@ -18,7 +18,7 @@ const SneaksAPI = () => {
     };
 
     return (
-        <div style={{ marginTop: "100px" }}>
+        <div style={{ marginTop: "150px" }}>
             <input type="text" value={sneakerName} onChange={(e) => setSneakerName(e.target.value)} />
             <button onClick={handleSearch}>Search</button>
 

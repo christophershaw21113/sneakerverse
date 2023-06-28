@@ -22,7 +22,9 @@ const Cart = (props) => {
     }, [order])
 
     return (
-        <div style={{ marginTop: "100px" }}>
+        <div style={{ marginTop: "150px" }}>
+            <h3 style={{textAlign:"center"}}>Cart</h3>
+            <br/>
             {
                 order.map((shoe, index) => {
                     return (
