@@ -4,25 +4,31 @@ import { useNavigate, Link, useParams } from 'react-router-dom';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardImage, MDBContainer, MDBRipple, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import { useMediaQuery } from 'react-responsive';
 
-const AllSneaks = () => {
+const AllSneaks = (props) => {
+  const {brand, count} = props
+  console.log(brand)
   const [allSneaks, setAllSneaks] = useState([]);
   const [sortOption, setSortOption] = useState('');
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/shoes/`)
       .then(res => {
         console.log(res.data);
-        setAllSneaks(res.data);
+        // setAllSneaks(res.data);
+        setAllSneaks(res.data.filter((shoe)=>shoe.brand.toLowerCase().includes(brand.toLowerCase())));
+        // console.log(res.data.filter((shoe)=>shoe.brand.toLowerCase().includes("yeezy")));
+        console.log(sortedSneaks)
+
       })
       .catch(err => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [brand]);
 
   const handleSortChange = (e) => {
-    setSortOption(e.target.value);
-    // Handle the sorting logic here
-  };
+    setSortOption(e.target.value)
+  }
 
   const sortedSneaks = [...allSneaks].sort((a, b) => {
     if (sortOption === 'lowest') {
@@ -33,10 +39,23 @@ const AllSneaks = () => {
       return new Date(b.createdAt) - new Date(a.createdAt)
     } else if (sortOption === 'oldest') {
       return new Date(a.createdAt) - new Date(b.createdAt)
-
     }
     return 0
   })
+
+  const handleSearchInputChange = (e) => {
+    setSearchQuery(e.target.value)
+}
+  const handleSearch = (e) => {
+    e.preventDefault()
+    axios.get('http://localhost:8000/api/shoes', { params: { search: searchQuery } })
+      .then((res) => {
+        const searchedResults = res.data.filter((shoe) => shoe.brand.toLowerCase().includes(searchQuery.toLowerCase()) && (shoe.name.toLowerCase().includes(searchQuery.toLowerCase()) || shoe.color.toLowerCase().includes(searchQuery.toLowerCase())))
+        setAllSneaks(searchedResults)
+        // setCurrentPage(1)
+      })
+      .catch((err) => console.log(err))
+  }
 
   const isSmallScreen = useMediaQuery({ maxWidth: 890 });
   const pageContainer = {
@@ -69,14 +88,19 @@ const AllSneaks = () => {
         <div style={{ marginTop: '5%' }}>
           <h2 style={{ textAlign: 'center', paddingTop: '50px' }}>All Sneaks</h2>
         </div>
-        <select value={sortOption} onChange={handleSortChange}>
-          <option value="">-- Select Sorting Option --</option>
-          <option value="lowest">Price: Lowest to Highest</option>
-          <option value="highest">Price: Highest to Lowest</option>
-          <option value="newest">Added: Newest to Oldest</option>
-          <option value="oldest">Added: Oldest to Newest</option>
-        </select>
-        <input></input>
+        <div style={{ textAlign: "center" }}>
+          <select value={sortOption} onChange={handleSortChange}>
+            <option value="">-- Select Sorting Option --</option>
+            <option value="lowest">Price: Lowest to Highest</option>
+            <option value="highest">Price: Highest to Lowest</option>
+            <option value="newest">Added: Newest to Oldest</option>
+            <option value="oldest">Added: Oldest to Newest</option>
+          </select>
+          <form onSubmit={handleSearch}>
+            <input type="text" value={searchQuery} onChange={handleSearchInputChange} placeholder='Sneaker Searcher' />
+            <button onClick={handleSearch}>Search</button>
+          </form>
+        </div>
         <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>
           {sortedSneaks
             .map((shoe, index) => (

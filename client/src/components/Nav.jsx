@@ -7,7 +7,7 @@ import jwtdecode from 'jwt-decode'
 import sneakerverse from '../../src/sneakerverse.png'
 
 const Nav = (props) => {
-    const { cookieValue, user, welcome, setWelcome, loggedIn, setLoggedIn, setCount, count, order } = props
+    const { cookieValue, user, welcome, setWelcome, loggedIn, setLoggedIn, setCount, count, order, setBrand } = props
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -69,12 +69,12 @@ const Nav = (props) => {
                 <ul className='home-ul'>
                     <Link className='link-styles' to={'/'}><li>Home</li></Link>
                     <Link className='link-styles' to={'/'}><li>About</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/allshoes'}><li>All Sneaks</li></Link>
-                    <Link className='link-styles' to={'/'}><li>Nike</li></Link>
-                    <Link className='link-styles' to={'/'}><li>Jordan</li></Link>
-                    <Link className='link-styles' to={'/'}><li>Adidas</li></Link>
-                    <Link className='link-styles' to={'/'}><li>Yeezy</li></Link>
-                    <Link className='link-styles' to={'/'}><li>New Balance</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/allshoes'} onClick={()=>setBrand("")}><li>All Sneaks</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/nike'} onClick={()=>setBrand("nike")}><li>Nike</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/jordan'} onClick={()=>setBrand("jordan")}><li>Jordan</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/adidas'} onClick={()=>setBrand("adidas")}><li>Adidas</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/yeezy'} onClick={()=>setBrand("yeezy")}><li>Yeezy</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/newbalance'} onClick={()=>setBrand("new balance")}><li>New Balance</li></Link>
                 </ul>
             </div>
             <div className='cart-login-btn'>

@@ -24,6 +24,7 @@ function App() {
   const [user, setUser] = useState()
   const [cookieValue, setCookieValue] = useState(Cookies.get('userToken'))
   const [order, setOrder] = useState([])
+  const [brand, setBrand] = useState("")
 
   useEffect(() => {
     setCookieValue(Cookies.get('userToken'))
@@ -40,7 +41,7 @@ function App() {
 
   return (
     <div>
-      <Nav cookieValue={cookieValue} user={user} setUser={setUser} welcome={welcome} setWelcome={setWelcome} loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} order={order} />
+      <Nav cookieValue={cookieValue} user={user} setUser={setUser} welcome={welcome} setWelcome={setWelcome} loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} order={order} setBrand={setBrand} brand={brand} />
       {/* <ToastContainer transition={Slide} /> */}
       <Routes>
         <Route element={<PrivateRoutes />}>
@@ -49,9 +50,13 @@ function App() {
           <Route path='/userDetail' element={<UserDetail user={user} />} />
         </Route>
         <Route path="/" element={<Home />} />
-        <Route path="/sneakerverse/allshoes" element={<AllSneaks />} />
+        <Route path="/sneakerverse/allshoes" element={<AllSneaks brand={brand} count={count} />} />
+        <Route path="/sneakerverse/nike" element={<AllSneaks brand={brand} />} />
+        <Route path="/sneakerverse/jordan" element={<AllSneaks brand={brand} />} />
+        <Route path="/sneakerverse/adidas" element={<AllSneaks brand={brand} />} />
+        <Route path="/sneakerverse/yeezy" element={<AllSneaks brand={brand} />} />
+        <Route path="/sneakerverse/newbalance" element={<AllSneaks brand={brand} />} />
         <Route path='/shoes/:id' element={<ProductDetail order={order} setOrder={setOrder} />} />
-        <Route path="/sneakerverse/allshoes" element={<AllSneaks />} />
         <Route path="/sneakerverse/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
         <Route path="/sneakerverse/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
         <Route path="/sneakerverse/cart" element={<Cart order={order} setOrder={setOrder} />} />
