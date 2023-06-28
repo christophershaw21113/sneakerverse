@@ -15,6 +15,7 @@ import Cart from './components/Cart'
 import EditProduct from './components/EditProduct'
 import ProductDetail from './components/ProductDetail'
 import UserDetail from './components/UserDetail'
+import AllSneaks from './components/AllSneaks'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -49,6 +50,7 @@ function App() {
           <Route path='/userDetail' element={<UserDetail user={user} />} />
         </Route>
         <Route path="/" element={<Home />} />
+        <Route path="/allshoes" element={<AllSneaks />} />
         <Route path="/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
         <Route path="/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
         <Route path="/cart" element={<Cart order={order} setOrder={setOrder} />} />
