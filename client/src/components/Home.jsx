@@ -22,27 +22,27 @@ const Home = () => {
 
   const slides = [
     {
-      url: 'http://localhost:3000/braxton-apana-vBfXwv4CVfw-unsplash.jpg',
+      url: 'http://18.117.87.36/braxton-apana-vBfXwv4CVfw-unsplash.jpg',
       title: 'Forest',
       alt: 'Foggy forest with tall trees'
     },
     {
-      url: 'http://localhost:3000/lefteris-kallergis-MaFE4MYbQgc-unsplash.jpg',
+      url: 'http://18.117.87.36/lefteris-kallergis-MaFE4MYbQgc-unsplash.jpg',
       title: 'City',
       alt: 'Nightlife in big city'
     },
     {
-      url: 'http://localhost:3000/mick-haupt-O8_sTTWaJ14-unsplash.jpg',
+      url: 'http://18.117.87.36/mick-haupt-O8_sTTWaJ14-unsplash.jpg',
       title: 'Italy',
       alt: 'Italy on the hill'
     },
     {
-      url: 'http://localhost:3000/leon-skibitzki-NMyuo1hoCAA-unsplash.jpg',
+      url: 'http://18.117.87.36/leon-skibitzki-NMyuo1hoCAA-unsplash.jpg',
       title: 'Nikes splashing water',
       alt: 'Nikes splashing water'
     },
     {
-      url: 'http://localhost:3000/alexander-rotker-l8p1aWZqHvE-unsplash.jpg',
+      url: 'http://18.117.87.36/alexander-rotker-l8p1aWZqHvE-unsplash.jpg',
       title: 'Nikes splashing water',
       alt: 'Nikes splashing water'
     }
@@ -95,7 +95,7 @@ const Home = () => {
             .map((shoe, index) => (
               <MDBCard key={index} style={styleCard.card}>
                 <MDBRipple rippleColor="light" rippleTag="div" className="bg-image hover-overlay">
-                  <MDBCardImage src={`http://localhost:8000/uploads/${shoe.image}`} width="100%" alt={shoe.name} />
+                  <MDBCardImage src={`${shoe.image}`} width="100%" alt={shoe.name} />
                 </MDBRipple>
                 <MDBCardBody style={styleCard.container}>
                   <MDBCardTitle>
