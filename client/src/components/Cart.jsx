@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Navigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 const Cart = (props) => {
     const { order, setOrder } = props
@@ -23,16 +24,24 @@ const Cart = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [order])
 
+    const isSmallScreen = useMediaQuery({ maxWidth: '965px' });
+const pageContainer = {
+  marginTop: isSmallScreen ? '40%' : '15%',
+  width: '70%',
+};
+
     return (
-        <div style={{ marginTop: "150px" }}>
-            <h3 style={{textAlign:"center"}}>Cart</h3>
-            <br/>
+        <div style={pageContainer}>
+            <h2 style={{textAlign:"center", marginBottom: '20px'}}>Checkout</h2>
+            <div className='cart-container'>
+          
+            <div>
             {
                 order.map((shoe, index) => {
                     return (
-                        <div key={shoe._id} style={{ display: "flex", width: "300px" }}>
+                        <div className='left-col' key={shoe._id} style={{ display: "flex", width: "100%" }}>
                             <div>
-                                <img src={`http://localhost:8000/uploads/${shoe.image}`} alt={shoe.name} style={{ width: "50px" }} />
+                                <img src={`http://localhost:8000/uploads/${shoe.image}`} alt={shoe.name} style={{ width: "200px" }} />
                             </div>
                             <div>
                                 <p>Shoe: {shoe.brand} {shoe.name}</p>
@@ -40,19 +49,22 @@ const Cart = (props) => {
                                 <p>Color: {shoe.color}</p>
                                 <p>Price: <span style={{ textDecoration: 'line-through' }}>${shoe.price}</span><span style={{color: 'red'}}> ${shoe.discountedPrice}</span></p>
                             </div>
-                            <button onClick={() => removeFromCart(index)}>Remove</button>
-                            <br /><br /><br />
+                            <div style={{display: 'flex', alignItems: 'center', marginLeft: '20px'}}>
+                            <button id='remove-cart-btn' onClick={() => removeFromCart(index)}>Remove</button>
+                            </div>
+                           
                         </div>
                     )
                 })
             }
+            </div>
+            <div>
             {
                 order.length > 0 ?
                     <>
-                        <br />
-                        <p style={{ textAlign: "center" }}>Subtotal: ${subtotal}</p>
-                        <br />
-                        <div style={{ width: "300px" }}>
+                        <p style={{ textAlign: "center", margin: '10px', fontWeight: 'bold' }}>Subtotal: ${subtotal}</p>
+                      
+                        <div className='paypal-container' style={{ width: "300px" }}>
                             <PayPalScriptProvider options={{ clientId: "Abzd4jCbn39gBLQLtSb8cBqN-Xb4AIEB53pjtJSjE8-y5kNbdAPbBGE2NZ_i-lVLjUfbTz5hRCLneRuB" }}>
                                 <PayPalButtons
                                     createOrder={(data, actions) => {
@@ -83,8 +95,12 @@ const Cart = (props) => {
                         </div>
                     </>
                     :
-                    <p style={{textAlign:"center", marginTop:"150px"}}>Your cart is empty!</p>
+                    <div style={{ position: 'absolute', top: '40%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                    <p style={{ textAlign: 'center', marginTop: '50px' }}>Your cart is empty!</p>
+                  </div>
             }
+            </div>
+            </div>
         </div>
     )
 }

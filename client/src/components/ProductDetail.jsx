@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
+import { useMediaQuery } from 'react-responsive';
 
 const ProductDetail = (props) => {
     const { order, setOrder } = props
@@ -32,21 +33,34 @@ const ProductDetail = (props) => {
         console.log(order)
     }
 
-    return (
-        <div style={{ marginTop: "150px", width: "50%" }}>
+const isSmallScreen = useMediaQuery({ maxWidth: '965px' });
+const pageContainer = {
+  marginTop: isSmallScreen ? '40%' : '15%',
+  width: '70%',
+};
 
-            {/* <Link to="/">Home</Link> */}
-            {/* <br /> */}
-            <img src={`http://localhost:8000/uploads/${shoe.image}`} alt={shoe.name} style={{ width: "100px" }} />
-            <h2>Shoe: {shoe.brand} {shoe.name}</h2>
+    return (
+        <div style={pageContainer}>
+          <h1 style={{textAlign: 'center', marginBottom: '40px'}}>Product Detail</h1>
+        <div style={{  display: 'flex', marginTop: '20px'}}>
+     
+            <div>
+            <img src={`http://localhost:8000/uploads/${shoe.image}`} alt={shoe.name} style={{ width: "300px" }} />
+            </div>
+            <div>
+            <h2>{shoe.brand} {shoe.name}</h2>
             <h3>Price: <span style={{ textDecoration: 'line-through' }}>${shoe.price}</span><span style={{color: 'red'}}> ${shoe.discountedPrice}</span></h3>
             <h5>Color: {shoe.color}</h5>
             <h5>Size: {shoe.size} {shoe.gender}</h5>
             <p>Description: {shoe.description}</p>
             <br />
-            <button className={hidden ? "hidden" : null} onClick={addToCart}>Add To Cart</button>
+            <button id='add-cart-btn' className={hidden ? "hidden" : null} onClick={addToCart}>Add To Cart</button>
             <Link className={!hidden ? "hidden" : null} to="/cart">You've added this shoe to your cart!</Link>
+            </div>
         </div>
+        </div>
+
+
     )
 }
 

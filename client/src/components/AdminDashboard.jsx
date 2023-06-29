@@ -13,7 +13,7 @@ const AdminDashboard = (props) => {
         price: 0,
         discountedPrice: 0,
         gender: "M",
-        image: null,
+        image: 0,
         color: "",
         size: 0,
         description: "",
@@ -38,8 +38,8 @@ const AdminDashboard = (props) => {
                     brand: "",
                     gender: "M",
                     price: 0,
-                    discountedPrice: 0,
-                    image: null,
+                    discountedPrice: null,
+                    image: 0,
                     color: "",
                     size: 0,
                     description: ""
@@ -87,63 +87,73 @@ const AdminDashboard = (props) => {
     }
 
     return (
-        <div style={{ marginTop: "150px" }}>
-            <form onSubmit={addShoe}>
-                <h3>Add a shoe</h3>
+        <div className='admin-container'>
+              <h2 style={{textAlign: 'center'}}>Admin Dashboard</h2>
+              <p style={{textAlign: 'center'}}>Shoe Creator</p>
+            <form className='admin-dash' onSubmit={addShoe}>
                 <div>
+                    
+                <div className='form-divs'>
                     {errors?.generic ? <p style={{ color: "red" }}>{errors?.generic?.message}</p> : null}
                     <label>Name</label>
                     {errors?.name ? <p style={{ color: "red" }}>{errors?.name?.message}</p> : null}
-                    <input type="text" name="name" value={shoe.name} onChange={handleChange} />
+                    <input type="text" name="name" placeholder='Name' value={shoe.name} onChange={handleChange} />
                 </div>
-                <div>
-                    <label>Brand</label>
+                <div className='form-divs'>
+                <label>Brand</label>
                     {errors?.brand ? <p style={{ color: "red" }}>{errors?.brand?.message}</p> : null}
-                    <input type="text" name="brand" value={shoe.brand} onChange={handleChange} />
+                    <input type="text" name="brand" placeholder='Brand' value={shoe.brand} onChange={handleChange} />
                 </div>
-                <div>
-                    <label>Color</label>
+                <div className='form-divs'>
+                <label>Color</label>
                     {errors?.color ? <p style={{ color: "red" }}>{errors?.color?.message}</p> : null}
-                    <input type="text" name="color" value={shoe.color} onChange={handleChange} />
+                    <input type="text" name="color" placeholder='Color' value={shoe.color} onChange={handleChange} />
+                </div>
                 </div>
                 <div>
-                    <label>Description</label>
+                <div className='form-divs'>
+                <label>Description</label>
                     {errors?.description ? <p style={{ color: "red" }}>{errors?.description?.message}</p> : null}
-                    <input type="text" name="description" value={shoe.description} onChange={handleChange} />
+                    <input type="text" name="description" placeholder='Description' value={shoe.description} onChange={handleChange} />
                 </div>
-                <div>
-                    <label>Gender</label>
+                <div className='form-divs'>
+                <label>Gender</label>
                     {errors?.gender ? <p style={{ color: "red" }}>{errors?.gender?.message}</p> : null}
-                    <select name="gender" id="gender" onChange={handleChange}>
+                    <select style={{width: '100%', marginTop: '10px'}} name="gender" id="gender" onChange={handleChange}>
+                        <option value="" disabled selected>Select a Gender</option>
                         <option value="M">M</option>
                         <option value="F">F</option>
                     </select>
                 </div>
+
+                <div className='form-divs'>
+                <label>Size</label>
+            {errors?.size ? <p style={{ color: "red" }}>{errors?.size?.message}</p> : null}
+            <input type="number" name="size" value={shoe.size} placeholder='Shoe Size' onChange={handleChange} />
+        </div>
+                </div>
                 <div>
-                    <label>Price</label>
+                <div className='form-divs'>
+                <label>Price</label>
                     {errors?.price ? <p style={{ color: "red" }}>{errors?.email?.message}</p> : null}
-                    <input type="number" name="price" value={shoe.price} onChange={handleChange} />
+                    <input type="number" name="price" value={shoe.price} placeholder='Price' onChange={handleChange} />
                 </div>
-                <div>
-                    <label>Discounted Price</label>
+                <div className='form-divs'>
+                <label>Discounted Price</label>
                     {errors?.discountedPrice ? <p style={{ color: "red" }}>{errors?.discountedPrice?.message}</p> : null}
-                    <input type="number" name="discountedPrice" value={shoe.discountedPrice} onChange={handleChange} />
+                    <input type="number" placeholder='Discounted Price' name="discountedPrice" value={shoe.discountedPrice} onChange={handleChange} />
                 </div>
-                <div>
-                    <label>Size</label>
-                    {errors?.size ? <p style={{ color: "red" }}>{errors?.size?.message}</p> : null}
-                    <input type="number" name="size" value={shoe.size} onChange={handleChange} />
-                </div>
-                <div>
-                    <label>Image</label>
+                <div className='form-divs'>
+                   
                     {errors?.image ? <p style={{ color: "red" }}>{errors?.image?.message}</p> : null}
-                    <input type="file" name="image" onChange={handleChange} />
+                  <input id="file-input" class="file-input-label" type="file" name="image" onChange={handleChange} />
+                
+
                 </div>
-                <div>
-                    <button type="submit">Submit</button>
+                <button className='admin-btn' type="submit">Submit</button>
                 </div>
             </form>
-            <table>
+            <table className='admin-table'>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -162,19 +172,19 @@ const AdminDashboard = (props) => {
                     .map((shoe, index) => {
                         return (
                             <tr key={shoe._id}>
-                                <td><><Link to={`/shoes/${shoe?._id}`}>{shoe?.name}</Link></></td>
-                                <td>{shoe.brand}</td>
-                                <p><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></p>
-                                <td>{shoe.color}</td>
-                                <td>{shoe.size}{shoe.gender}</td>
-                                <td>{shoe.description}</td>
-                                <td><img src={`http://localhost:8000/uploads/${shoe.image}`} alt="" style={{ width: "50px", height: "50px" }} /></td>
+                                <td><><Link className='product-name' to={`/shoes/${shoe?._id}`}>{shoe?.name}</Link></></td>
+                                <td className='product-brand'>{shoe.brand}</td>
+                                <td className='product-price'><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></td>
+                                <td className='product-color'>{shoe.color}</td>
+                                <td className='product-size'>{shoe.size}{shoe.gender}</td>
+                                <td className='product-description'>{shoe.description}</td>
+                                <td className='product-image'><img src={`http://localhost:8000/uploads/${shoe.image}`} alt="" style={{ width: "100px" }} /></td>
                                 <td>
                                     { // delete if logged in user or 'admin' email user
-                                        (user?.email === "t@w.com" || user?.email === "c@s.com") ? <><button onClick={() => removeShoe(shoe)}>🚮</button></> : null
+                                        (user?.email === "t@w.com" || user?.email === "c@s.com") ? <><button style={{width: '50px', border: 'none'}} onClick={() => removeShoe(shoe)}>🚮</button></> : null
                                     }
                                     { // delete if logged in user or 'admin' email user
-                                        (user?.email === "t@w.com" || user?.email === "c@s.com") ? <><button onClick={() => editShoe(shoe._id)}>✏️</button></> : null
+                                        (user?.email === "t@w.com" || user?.email === "c@s.com") ? <><button style={{width: '50px', border: 'none'}} onClick={() => editShoe(shoe._id)}>✏️</button></> : null
                                     }
                                 </td>
                             </tr>
@@ -182,7 +192,7 @@ const AdminDashboard = (props) => {
                     })}
                 </tbody>
             </table>
-            <br/><br/><br/>
+          
         </div>
     )
 }

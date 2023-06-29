@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
+import sneakerverse from '../../src/sneakerverse.png'
 
 
 const Register = () => {
@@ -44,43 +45,42 @@ const Register = () => {
     }
 
     return (
-        <div style={{ marginTop: "150px" }}>
-            <form onSubmit={handleFormSubmit}>
-                <h3>Register</h3>
+        <div style={{ marginTop: "170px", display: 'flex', justifyContent: 'center', width: '900px', }}>
+             <div style={{display: 'flex'}}>
+            <img src='http://localhost:3000/maria-fernanda-pissioli-DTZV8WDM1Ho-unsplash.jpg' width='100%' style={{marginTop: 0}}/>
+          </div>
+          <form className='login-form' onSubmit={handleFormSubmit} style={{ padding: '10px 100px' }}>
+          <img src={sneakerverse} alt="SneakerVerse" style={{ height: "70px", display: 'flex', marginTop: '10px' }} />
+          <h2 style={{ width: '100%', textAlign: 'center', marginTop: '20px', whiteSpace: 'nowrap' }}>Register</h2>
+          <p style={{fontVariant: 'small-caps', textAlign: 'center', color: 'grey'}}>join the sneakerverse</p>
                 <div>
-                    <label>First Name</label>
                     {errors?.firstName ? <p style={{ color: "red" }}>{errors?.firstName.message}</p> : null}
-                    <input type="text" name="firstName" value={userInfo.firstName} onChange={handleFormChange} />
+                    <input type="text" name="firstName" value={userInfo.firstName} placeholder='First Name' onChange={handleFormChange} style={{ width: '100%' }} />
                 </div>
                 <div>
-                    <label>Last Name</label>
                     {errors?.lastName ? <p style={{ color: "red" }}>{errors?.lastName.message}</p> : null}
-                    <input type="text" name="lastName" value={userInfo.lastName} onChange={handleFormChange} />
+                    <input type="text" name="lastName" placeholder='Last Name' value={userInfo.lastName} onChange={handleFormChange} style={{ width: '100%' }}  />
                 </div>
                 <div>
-                    <label>Email</label>
                     {errors?.email ? <p style={{ color: "red" }}>{errors?.email.message}</p> : null}
-                    <input type="email" name="email" value={userInfo.email} onChange={handleFormChange} />
+                    <input type="email" name="email" placeholder='Email Address' value={userInfo.email} onChange={handleFormChange} style={{ width: '100%' }}  />
                 </div>
                 <div>
-                    <label>Phone Number</label>
                     {errors?.phoneNumber ? <p style={{ color: "red" }}>{errors?.phoneNumber.message}</p> : null}
-                    <input type="text" name="phoneNumber" value={userInfo.phoneNumber} onChange={handleFormChange} />
+                    <input type="text" name="phoneNumber" placeholder='Phone Number' value={userInfo.phoneNumber} onChange={handleFormChange} style={{ width: '100%' }}  />
                 </div>
                 <div>
-                    <label>Password</label>
                     {errors?.password ? <p style={{ color: "red" }}>{errors?.password.message}</p> : null}
-                    <input type="password" name="password" value={userInfo.password} onChange={handleFormChange} />
+                    <input type="password" name="password" placeholder='Password' value={userInfo.password} onChange={handleFormChange} style={{ width: '100%' }}  />
                 </div>
                 <div>
-                    <label>Confirm Password</label>
                     {errors?.confirmPassword ? <p style={{ color: "red" }}>{errors?.confirmPassword.message}</p> : null}
-                    <input type="password" name="confirmPassword" value={userInfo.confirmPassword} onChange={handleFormChange} />
+                    <input type="password" name="confirmPassword" placeholder='Confirm Password' value={userInfo.confirmPassword} onChange={handleFormChange} style={{ width: '100%' }}  />
                 </div>
-                <div>
-                    <button type="submit">Register</button>
-                </div>
-                <p>Already have an account? <Link to={"/sneakerverse/login"}>Login!</Link></p>
+                <div style={{display: 'flex', justifyContent: 'center', margin: '10px'}}>
+              <button className='sign-in-btn' type="submit">Register</button>
+            </div>
+            <p style={{textAlign: 'center', color: 'grey', whiteSpace: 'nowrap', marginBottom: '10px'}}>Already have an account? <Link style={{color: '#198754'}} to={"/sneakerverse/login"}>Login!</Link></p>
             </form>
         </div>
     )
