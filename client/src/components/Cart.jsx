@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Cart = (props) => {
     const { order, setOrder } = props
     const [subtotal, setSubtotal] = useState(0)
-
+    const navigate = useNavigate()
     const removeFromCart = (index) => {
         setOrder(order.filter((shoe, i) => { return order[i] !== order[index] }))
     }
@@ -25,8 +25,8 @@ const Cart = (props) => {
 
     return (
         <div style={{ marginTop: "150px" }}>
-            <h3 style={{textAlign:"center"}}>Cart</h3>
-            <br/>
+            <h3 style={{ textAlign: "center" }}>Cart</h3>
+            <br />
             {
                 order?.map((shoe, index) => {
                     return (
@@ -38,7 +38,7 @@ const Cart = (props) => {
                                 <p>Shoe: {shoe.brand} {shoe.name}</p>
                                 <p>Size: {shoe.size}{shoe.gender}</p>
                                 <p>Color: {shoe.color}</p>
-                                <p>Price: <span style={{ textDecoration: 'line-through' }}>${shoe.price}</span><span style={{color: 'red'}}> ${shoe.discountedPrice}</span></p>
+                                <p>Price: <span style={{ textDecoration: 'line-through' }}>${shoe.price}</span><span style={{ color: 'red' }}> ${shoe.discountedPrice}</span></p>
                             </div>
                             <button onClick={() => removeFromCart(index)}>Remove</button>
                             <br /><br /><br />
@@ -69,15 +69,17 @@ const Cart = (props) => {
                                         })
                                             .then((orderId) => {
                                                 console.log(orderId)
-                                                // setOrder({})
-                                                // Navigate("/")
                                                 return orderId;
                                             });
                                     }}
                                     onApprove={function (data, actions) {
                                         return actions.order.capture().then(function (details) {
                                             // Your code here after capture the order
-                                            console.log(data, details)
+                                            console.log("data", data, "details", details.purchase_units, "details", details.payer)
+                                            console.log(order)
+                                            setOrder({})
+                                            navigate("/")
+
                                             alert("Transaction completed by " + details.payer.name.given_name)
                                         });
                                     }} />
@@ -85,7 +87,7 @@ const Cart = (props) => {
                         </div>
                     </>
                     :
-                    <p style={{textAlign:"center", marginTop:"150px"}}>Your cart is empty!</p>
+                    <p style={{ textAlign: "center", marginTop: "150px" }}>Your cart is empty!</p>
             }
         </div>
     )
