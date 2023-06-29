@@ -67,6 +67,7 @@ const Nav = (props) => {
             </div>
             <div>
                 <ul className='home-ul'>
+                    
                     <Link className='link-styles' to={'/'}><li>Home</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/allshoes'} onClick={() => setBrand("")}><li>All Sneaks</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/nike'} onClick={() => setBrand("nike")}><li>Nike</li></Link>
@@ -77,6 +78,8 @@ const Nav = (props) => {
                     <Link className='link-styles' to={'/sneakerverse/about'}><li>About</li></Link>
 
                 </ul>
+
+
             </div>
             <div className='cart-login-btn'>
                 <FontAwesomeIcon icon={faCartShopping} style={{ color: "#fff" }} onClick={navCart} /><span>{order.length}</span>&nbsp;&nbsp;

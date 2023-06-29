@@ -1,7 +1,7 @@
 const User = require("../models/userAdmin.model")
 const jwt = require("jsonwebtoken")
 const secret = process.env.FIRST_SECRET_KEY
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 
 module.exports = {
