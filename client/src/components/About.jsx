@@ -30,7 +30,6 @@ const About = () => {
                 </div>
             </div>
 
-=======
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
                 <div style={{ marginRight: '30px' }}>
                     <img style={{ padding: '10px' }} alt='' src='http://localhost:8000/uploads/default.png' width='75px' />
@@ -41,9 +40,8 @@ const About = () => {
                 <p>Hi! I'm Cesar, a full-stack Javascript developer. I enjoy spending time with my wife and three toddlers. 
                     I also enjoy my spare time by playing soccer with friends or watching sports. 
                     My favorite shoe is the popular Jordan 11 "Bred". 
-                    Born and raised in Chicago, the Jordan 11 "Bred" represents the comeback of Michael Jordan winning 
-                    the 1996 Finals MVP and leading the Chicago Bulls to a fourth championship title. 
-                    Check out my <a target='_blank' href='https://github.com/cas3rvin'>Github</a> profile! </p>
+                    Born and raised in Chicago, this shoe is worn with pride since it represents Michael Jordan's comeback when leading the Chicago Bulls to a fourth championship title and winning 
+                    the 1996 Finals MVP. Check out my <a target='_blank' href='https://github.com/cas3rvin'>Github</a> profile! </p>
 
                 </div>
             </div>
