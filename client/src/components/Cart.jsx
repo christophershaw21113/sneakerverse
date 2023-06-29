@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 const Cart = (props) => {
     const { order, setOrder } = props
     const [subtotal, setSubtotal] = useState(0)
-
+    const navigate = useNavigate()
     const removeFromCart = (index) => {
         setOrder(order.filter((shoe, i) => { return order[i] !== order[index] }))
     }

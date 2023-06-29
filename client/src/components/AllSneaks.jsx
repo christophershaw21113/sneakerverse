@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardImage, MDBContainer, MDBRipple, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import { useMediaQuery } from 'react-responsive';
 
 const AllSneaks = (props) => {
-  const { brand, count } = props
+  const { brand } = props
   console.log(brand)
   const [allSneaks, setAllSneaks] = useState([]);
   const [sortOption, setSortOption] = useState('');
@@ -39,6 +39,10 @@ const AllSneaks = (props) => {
       return new Date(b.createdAt) - new Date(a.createdAt)
     } else if (sortOption === 'oldest') {
       return new Date(a.createdAt) - new Date(b.createdAt)
+    } else if(sortOption === 'a') {
+      return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+    } else if (sortOption === 'z') {
+      return b.name.toLowerCase().localeCompare(a.name.toLowerCase())
     }
     return 0
   })
@@ -86,7 +90,7 @@ const AllSneaks = (props) => {
     <div>
       <div style={pageContainer} className="carousel">
         <div style={{ marginTop: '5%' }}>
-          <h2 style={{ textAlign: 'center', paddingTop: '50px' }}>{brand === "nike" ? "Nike" : brand === "jordan" ? "Air Jordan" : brand === "yeezy" ? "Yeezy" : brand === "adidas" ? "Adidas" : brand === "new balance" ? "New Balance" : "All Sneakers"}</h2>
+          <h2 style={{ textAlign: 'center' }}>{brand === "nike" ? `Nike (${sortedSneaks.length})` : brand === "jordan" ? "Air Jordan" : brand === "yeezy" ? "Yeezy" : brand === "adidas" ? "Adidas" : brand === "new balance" ? "New Balance" : "All Sneakers"}</h2>
         </div>
         <div style={{ textAlign: "center" }}>
           <select value={sortOption} onChange={handleSortChange}>
@@ -95,6 +99,8 @@ const AllSneaks = (props) => {
             <option value="highest">Price: Highest to Lowest</option>
             <option value="newest">Added: Newest to Oldest</option>
             <option value="oldest">Added: Oldest to Newest</option>
+            <option value="a">A-Z</option>
+            <option value="z">Z-A</option>
           </select>
           <form onSubmit={handleSearch}>
             <input type="text" value={searchQuery} onChange={handleSearchInputChange} placeholder='Sneaker Searcher' />

@@ -55,13 +55,11 @@ const pageContainer = {
             <p>Description: {shoe.description}</p>
             <br />
             <button id='add-cart-btn' className={hidden ? "hidden" : null} onClick={addToCart}>Add To Cart</button>
-            <Link className={!hidden ? "hidden" : null} to="/cart">You've added this shoe to your cart!</Link>
-            </div>
-        </div>
+            <Link className={!hidden ? "hidden" : null} to="/sneakerverse/cart">You've added this shoe to your cart!</Link>
         </div>
 
 
     )
 }
 
-export default ProductDetail;
+export default ProductDetail
