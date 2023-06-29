@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 const Cart = (props) => {
@@ -86,8 +86,8 @@ const Cart = (props) => {
                                             onApprove={function (data, actions) {
                                                 return actions.order.capture().then(function (details) {
                                                     // Your code here after capture the order
-                                                    setOrder({})
-                                                    navigate("/")
+                                                    // setOrder({})
+                                                    // navigate("/")
                                                     alert("Transaction completed by " + details.payer.name.given_name)
                                                 });
                                             }} />
