@@ -30,7 +30,13 @@ const About = () => {
                 </div>
             </div>
 
-            <div>
+=======
+            <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
+                <div style={{ marginRight: '30px' }}>
+                    <img style={{ padding: '10px' }} alt='' src='http://localhost:8000/uploads/default.png' width='75px' />
+                </div>
+
+                <div>
                 <h3>Cesar - Front End</h3>
                 <p>Hi! I'm Cesar, a full-stack Javascript developer. I enjoy spending time with my wife and three toddlers. 
                     I also enjoy my spare time by playing soccer with friends or watching sports. 
@@ -38,12 +44,7 @@ const About = () => {
                     Born and raised in Chicago, the Jordan 11 "Bred" represents the comeback of Michael Jordan winning 
                     the 1996 Finals MVP and leading the Chicago Bulls to a fourth championship title. 
                     Check out my <a target='_blank' href='https://github.com/cas3rvin'>Github</a> profile! </p>
-=======
-            <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
-                <div style={{ marginRight: '30px' }}>
-                    <img style={{ padding: '10px' }} alt='' src='http://localhost:8000/uploads/default.png' width='75px' />
-                </div>
-               
+
                 </div>
             </div>
         </div>
