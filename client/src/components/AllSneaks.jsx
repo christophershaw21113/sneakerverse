@@ -84,6 +84,7 @@ const AllSneaks = (props) => {
   const pageContainer = {
     marginTop: isSmallScreen ? '30%' : '10%',
     height: isSmallScreen ? '240vh' : '150vh',
+    marginBottom: '100px'
   };
 
   const styleCard = {
