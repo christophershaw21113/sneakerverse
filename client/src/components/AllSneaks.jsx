@@ -90,7 +90,7 @@ const AllSneaks = (props) => {
     <div>
       <div style={pageContainer} className="carousel">
         <div style={{ marginTop: '5%' }}>
-          <h2 style={{ textAlign: 'center', paddingTop: '50px' }}>{brand === "nike" ? "Nike" : brand === "jordan" ? "Air Jordan" : brand === "yeezy" ? "Yeezy" : brand === "adidas" ? "Adidas" : brand === "new balance" ? "New Balance" : "All Sneakers"}</h2>
+          <h2 style={{ textAlign: 'center' }}>{brand === "nike" ? `Nike (${sortedSneaks.length})` : brand === "jordan" ? "Air Jordan" : brand === "yeezy" ? "Yeezy" : brand === "adidas" ? "Adidas" : brand === "new balance" ? "New Balance" : "All Sneakers"}</h2>
         </div>
         <div style={{ textAlign: "center" }}>
           <select value={sortOption} onChange={handleSortChange}>
@@ -112,7 +112,7 @@ const AllSneaks = (props) => {
             .map((shoe, index) => (
               <MDBCard key={index} style={styleCard.card}>
                 <MDBRipple rippleColor="light" rippleTag="div" className="bg-image hover-overlay">
-                  <MDBCardImage src={`/uploads/${shoe.image}`} width="100%" alt={shoe.name} />
+                  <MDBCardImage src={`http://localhost:8000/uploads/${shoe.image}`} width="100%" alt={shoe.name} />
                 </MDBRipple>
                 <MDBCardBody style={styleCard.container}>
                   <MDBCardTitle>

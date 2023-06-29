@@ -5,9 +5,9 @@ const cors = require('cors')
 const SneaksAPI = require('sneaks-api')
 const sneaks = new SneaksAPI()
 
-sneaks.getProducts("Air Jordan 10 Orlando", 1, function(err, products){
-    console.log(products)
-})
+// sneaks.getProducts("9060", 5, function(err, products){
+//     console.log(products)
+// })
 
 require("dotenv").config()
 
@@ -31,7 +31,7 @@ app.use(express.static("public"))
 //     })
 // });
 
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+// const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 app.listen(port, () => {
     console.log(`SNEAKERVERSE listening at port: ${port}`)
