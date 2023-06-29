@@ -40,7 +40,7 @@ const EditProduct = () => {
                     })
                 })
         }
-        else{
+        else {
             alert("A required field is empty")
         }
     }
@@ -68,6 +68,7 @@ const EditProduct = () => {
             [e.target.name]: e.target.value
         })
     }
+
     return (
         <div style={{ marginTop: "150px" }}>
             <h1>Edit Shoe Details</h1>

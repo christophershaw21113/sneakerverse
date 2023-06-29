@@ -5,6 +5,7 @@ import axios from 'axios'
 const AdminDashboard = (props) => {
     const { user, count, setCount } = props
     const [products, setProducts] = useState([])
+    const [searchQuery, setSearchQuery] = useState('')
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const [shoe, setShoe] = useState({
@@ -38,12 +39,13 @@ const AdminDashboard = (props) => {
                     brand: "",
                     gender: "M",
                     price: 0,
-                    discountedPrice: null,
+                    discountedPrice: 0,
                     image: 0,
                     color: "",
                     size: 0,
                     description: ""
                 })
+                setErrors({})
             })
             .catch((err) => {
                 console.log(err)
@@ -86,72 +88,84 @@ const AdminDashboard = (props) => {
         navigate(`/editproduct/${id}`)
     }
 
+    const handleSearchInputChange = (e) => {
+        setSearchQuery(e.target.value)
+    }
+    const handleSearch = (e) => {
+        e.preventDefault()
+        axios.get('http://localhost:8000/api/shoes', { params: { search: searchQuery } })
+            .then((res) => {
+                const searchedResults = res.data.filter((shoe) => shoe.brand.toLowerCase().includes(searchQuery.toLowerCase()) || shoe.name.toLowerCase().includes(searchQuery.toLowerCase()) || shoe.color.toLowerCase().includes(searchQuery.toLowerCase()))
+                setProducts(searchedResults)
+                // setCurrentPage(1)
+            })
+            .catch((err) => console.log(err))
+    }
     return (
         <div className='admin-container'>
-              <h2 style={{textAlign: 'center'}}>Admin Dashboard</h2>
-              <p style={{textAlign: 'center'}}>Shoe Creator</p>
+            <h2 style={{ textAlign: 'center' }}>Admin Dashboard</h2>
+            <p style={{ textAlign: 'center' }}>Shoe Creator</p>
             <form className='admin-dash' onSubmit={addShoe}>
                 <div>
-                    
-                <div className='form-divs'>
-                    {errors?.generic ? <p style={{ color: "red" }}>{errors?.generic?.message}</p> : null}
-                    <label>Name</label>
-                    {errors?.name ? <p style={{ color: "red" }}>{errors?.name?.message}</p> : null}
-                    <input type="text" name="name" placeholder='Name' value={shoe.name} onChange={handleChange} />
-                </div>
-                <div className='form-divs'>
-                <label>Brand</label>
-                    {errors?.brand ? <p style={{ color: "red" }}>{errors?.brand?.message}</p> : null}
-                    <input type="text" name="brand" placeholder='Brand' value={shoe.brand} onChange={handleChange} />
-                </div>
-                <div className='form-divs'>
-                <label>Color</label>
-                    {errors?.color ? <p style={{ color: "red" }}>{errors?.color?.message}</p> : null}
-                    <input type="text" name="color" placeholder='Color' value={shoe.color} onChange={handleChange} />
-                </div>
-                </div>
-                <div>
-                <div className='form-divs'>
-                <label>Description</label>
-                    {errors?.description ? <p style={{ color: "red" }}>{errors?.description?.message}</p> : null}
-                    <input type="text" name="description" placeholder='Description' value={shoe.description} onChange={handleChange} />
-                </div>
-                <div className='form-divs'>
-                <label>Gender</label>
-                    {errors?.gender ? <p style={{ color: "red" }}>{errors?.gender?.message}</p> : null}
-                    <select style={{width: '100%', marginTop: '10px'}} name="gender" id="gender" onChange={handleChange}>
-                        <option value="" disabled selected>Select a Gender</option>
-                        <option value="M">M</option>
-                        <option value="F">F</option>
-                    </select>
-                </div>
-
-                <div className='form-divs'>
-                <label>Size</label>
-            {errors?.size ? <p style={{ color: "red" }}>{errors?.size?.message}</p> : null}
-            <input type="number" name="size" value={shoe.size} placeholder='Shoe Size' onChange={handleChange} />
-        </div>
+                    <div className='form-divs'>
+                        {errors?.generic ? <p style={{ color: "red" }}>{errors?.generic?.message}</p> : null}
+                        <label>Name</label>
+                        {errors?.name ? <p style={{ color: "red" }}>{errors?.name?.message}</p> : null}
+                        <input type="text" name="name" placeholder='Name' value={shoe.name} onChange={handleChange} />
+                    </div>
+                    <div className='form-divs'>
+                        <label>Brand</label>
+                        {errors?.brand ? <p style={{ color: "red" }}>{errors?.brand?.message}</p> : null}
+                        <input type="text" name="brand" placeholder='Brand' value={shoe.brand} onChange={handleChange} />
+                    </div>
+                    <div className='form-divs'>
+                        <label>Color</label>
+                        {errors?.color ? <p style={{ color: "red" }}>{errors?.color?.message}</p> : null}
+                        <input type="text" name="color" placeholder='Color' value={shoe.color} onChange={handleChange} />
+                    </div>
                 </div>
                 <div>
-                <div className='form-divs'>
-                <label>Price</label>
-                    {errors?.price ? <p style={{ color: "red" }}>{errors?.email?.message}</p> : null}
-                    <input type="number" name="price" value={shoe.price} placeholder='Price' onChange={handleChange} />
+                    <div className='form-divs'>
+                        <label>Description</label>
+                        {errors?.description ? <p style={{ color: "red" }}>{errors?.description?.message}</p> : null}
+                        <input type="text" name="description" placeholder='Description' value={shoe.description} onChange={handleChange} />
+                    </div>
+                    <div className='form-divs'>
+                        <label>Gender</label>
+                        {errors?.gender ? <p style={{ color: "red" }}>{errors?.gender?.message}</p> : null}
+                        <select style={{ width: '100%', marginTop: '10px' }} name="gender" id="gender" onChange={handleChange}>
+                            <option value="" disabled selected>Select a Gender</option>
+                            <option value="M">M</option>
+                            <option value="F">F</option>
+                        </select>
+                    </div>
+                    <div className='form-divs'>
+                        <label>Size</label>
+                        {errors?.size ? <p style={{ color: "red" }}>{errors?.size?.message}</p> : null}
+                        <input type="number" name="size" value={shoe.size} placeholder='Shoe Size' onChange={handleChange} />
+                    </div>
                 </div>
-                <div className='form-divs'>
-                <label>Discounted Price</label>
-                    {errors?.discountedPrice ? <p style={{ color: "red" }}>{errors?.discountedPrice?.message}</p> : null}
-                    <input type="number" placeholder='Discounted Price' name="discountedPrice" value={shoe.discountedPrice} onChange={handleChange} />
+                <div>
+                    <div className='form-divs'>
+                        <label>Price</label>
+                        {errors?.price ? <p style={{ color: "red" }}>{errors?.email?.message}</p> : null}
+                        <input type="number" name="price" value={shoe.price} placeholder='Price' onChange={handleChange} />
+                    </div>
+                    <div className='form-divs'>
+                        <label>Discounted Price</label>
+                        {errors?.discountedPrice ? <p style={{ color: "red" }}>{errors?.discountedPrice?.message}</p> : null}
+                        <input type="number" placeholder='Discounted Price' name="discountedPrice" value={shoe.discountedPrice} onChange={handleChange} />
+                    </div>
+                    <div className='form-divs'>
+                        {errors?.image ? <p style={{ color: "red" }}>{errors?.image?.message}</p> : null}
+                        <input id="file-input" class="file-input-label" type="file" name="image" onChange={handleChange} />
+                    </div>
+                    <button className='admin-btn' type="submit">Submit</button>
                 </div>
-                <div className='form-divs'>
-                   
-                    {errors?.image ? <p style={{ color: "red" }}>{errors?.image?.message}</p> : null}
-                  <input id="file-input" class="file-input-label" type="file" name="image" onChange={handleChange} />
-                
-
-                </div>
-                <button className='admin-btn' type="submit">Submit</button>
-                </div>
+            </form>
+            <form onSubmit={handleSearch} style={{textAlign:"center"}}>
+                <input type="text" value={searchQuery} onChange={handleSearchInputChange} placeholder='Sneaker Searcher' />
+                <button onClick={handleSearch}>Search</button>
             </form>
             <table className='admin-table'>
                 <thead>
@@ -168,31 +182,30 @@ const AdminDashboard = (props) => {
                 </thead>
                 <tbody>
                     {products
-                    .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((shoe, index) => {
-                        return (
-                            <tr key={shoe._id}>
-                                <td><><Link className='product-name' to={`/shoes/${shoe?._id}`}>{shoe?.name}</Link></></td>
-                                <td className='product-brand'>{shoe.brand}</td>
-                                <td className='product-price'><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></td>
-                                <td className='product-color'>{shoe.color}</td>
-                                <td className='product-size'>{shoe.size}{shoe.gender}</td>
-                                <td className='product-description'>{shoe.description}</td>
-                                <td className='product-image'><img src={`http://localhost:8000/uploads/${shoe.image}`} alt="" style={{ width: "100px" }} /></td>
-                                <td>
-                                    { // delete if logged in user or 'admin' email user
-                                        (user?.email === "t@w.com" || user?.email === "c@s.com" || user?.email === "a@c.com") ? <><button style={{width: '50px', border: 'none'}} onClick={() => removeShoe(shoe)}>🚮</button></> : null
-                                    }
-                                    { // delete if logged in user or 'admin' email user
-                                        (user?.email === "t@w.com" || user?.email === "c@s.com" || user?.email === "a@c.com") ? <><button style={{width: '50px', border: 'none'}} onClick={() => editShoe(shoe._id)}>✏️</button></> : null
-                                    }
-                                </td>
-                            </tr>
-                        )
-                    })}
+                        .sort((a, b) => a.name.localeCompare(b.name))
+                        .map((shoe, index) => {
+                            return (
+                                <tr key={shoe._id}>
+                                    <td><><Link className='product-name' to={`/shoes/${shoe?._id}`}>{shoe?.name}</Link></></td>
+                                    <td className='product-brand'>{shoe.brand}</td>
+                                    <td className='product-price'><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></td>
+                                    <td className='product-color'>{shoe.color}</td>
+                                    <td className='product-size'>{shoe.size}{shoe.gender}</td>
+                                    <td className='product-description'>{shoe.description}</td>
+                                    <td className='product-image'><img src={`http://localhost:8000/uploads/${shoe.image}`} alt="" style={{ width: "100px" }} /></td>
+                                    <td>
+                                        { // delete if logged in user or 'admin' email user
+                                            (user?.email === "t@w.com" || user?.email === "c@s.com" || user?.email === "a@c.com") ? <><button style={{ width: '50px', border: 'none' }} onClick={() => removeShoe(shoe)}>🚮</button></> : null
+                                        }
+                                        { // delete if logged in user or 'admin' email user
+                                            (user?.email === "t@w.com" || user?.email === "c@s.com" || user?.email === "a@c.com") ? <><button style={{ width: '50px', border: 'none' }} onClick={() => editShoe(shoe._id)}>✏️</button></> : null
+                                        }
+                                    </td>
+                                </tr>
+                            )
+                        })}
                 </tbody>
             </table>
-          
         </div>
     )
 }

@@ -6,10 +6,10 @@ import { useMediaQuery } from 'react-responsive';
 
 const AllSneaks = (props) => {
   const { brand } = props
-  console.log(brand)
   const [allSneaks, setAllSneaks] = useState([]);
   const [sortOption, setSortOption] = useState('');
   const [searchQuery, setSearchQuery] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     axios
@@ -20,6 +20,7 @@ const AllSneaks = (props) => {
         setAllSneaks(res.data.filter((shoe) => shoe.brand.toLowerCase().includes(brand.toLowerCase())));
         // console.log(res.data.filter((shoe)=>shoe.brand.toLowerCase().includes("yeezy")));
         console.log(sortedSneaks)
+        setCurrentPage(1)
 
       })
       .catch(err => console.log(err));
@@ -28,6 +29,7 @@ const AllSneaks = (props) => {
 
   const handleSortChange = (e) => {
     setSortOption(e.target.value)
+    setCurrentPage(1)
   }
 
   const sortedSneaks = [...allSneaks].sort((a, b) => {
@@ -39,7 +41,7 @@ const AllSneaks = (props) => {
       return new Date(b.createdAt) - new Date(a.createdAt)
     } else if (sortOption === 'oldest') {
       return new Date(a.createdAt) - new Date(b.createdAt)
-    } else if(sortOption === 'a') {
+    } else if (sortOption === 'a') {
       return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
     } else if (sortOption === 'z') {
       return b.name.toLowerCase().localeCompare(a.name.toLowerCase())
@@ -56,15 +58,33 @@ const AllSneaks = (props) => {
       .then((res) => {
         const searchedResults = res.data.filter((shoe) => shoe.brand.toLowerCase().includes(brand.toLowerCase()) && (shoe.name.toLowerCase().includes(searchQuery.toLowerCase()) || shoe.color.toLowerCase().includes(searchQuery.toLowerCase())))
         setAllSneaks(searchedResults)
-        // setCurrentPage(1)
+        setCurrentPage(1)
       })
       .catch((err) => console.log(err))
+  }
+
+  // Pagination
+  const itemsPerPage = 9
+  const totalPages = Math.ceil(sortedSneaks.length / itemsPerPage)
+  const pageNumbers = []
+
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i)
+  }
+
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = sortedSneaks.slice(indexOfFirstItem, indexOfLastItem)
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber)
   }
 
   const isSmallScreen = useMediaQuery({ maxWidth: 890 });
   const pageContainer = {
     marginTop: isSmallScreen ? '30%' : '10%',
     height: isSmallScreen ? '240vh' : '150vh',
+    marginBottom: '100px'
   };
 
   const styleCard = {
@@ -90,7 +110,7 @@ const AllSneaks = (props) => {
     <div>
       <div style={pageContainer} className="carousel">
         <div style={{ marginTop: '5%' }}>
-          <h2 style={{ textAlign: 'center' }}>{brand === "nike" ? `Nike (${sortedSneaks.length})` : brand === "jordan" ? "Air Jordan" : brand === "yeezy" ? "Yeezy" : brand === "adidas" ? "Adidas" : brand === "new balance" ? "New Balance" : "All Sneakers"}</h2>
+          <h2 style={{ textAlign: 'center' }}>{brand === "nike" ? `Nike (${sortedSneaks.length})` : brand === "jordan" ? `Air Jordan (${sortedSneaks.length})` : brand === "yeezy" ? `Yeezy (${sortedSneaks.length})` : brand === "adidas" ? `Adidas (${sortedSneaks.length})` : brand === "new balance" ? `New Balance (${sortedSneaks.length})` : `All Sneakers (${sortedSneaks.length})`}</h2>
         </div>
         <div style={{ textAlign: "center" }}>
           <select value={sortOption} onChange={handleSortChange}>
@@ -108,7 +128,7 @@ const AllSneaks = (props) => {
           </form>
         </div>
         <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>
-          {sortedSneaks
+          {currentItems
             .map((shoe, index) => (
               <MDBCard key={index} style={styleCard.card}>
                 <MDBRipple rippleColor="light" rippleTag="div" className="bg-image hover-overlay">
@@ -130,7 +150,17 @@ const AllSneaks = (props) => {
               </MDBCard>
             ))}
         </MDBContainer>
-        <br /><br /><br />
+        <div className="custom-pagination">
+          <div className="pagination">
+            {pageNumbers.map((number) => (
+              <div style={{textAlign:"ccenter"}} key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+                <button className="page-link" onClick={() => paginate(number)}>
+                  {number}
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
