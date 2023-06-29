@@ -406,4 +406,37 @@ height: 200vh;
     text-align: center;
   }
   
-  
+  /* Custom pagination colors */
+  .pagination {
+    display: flex;
+    justify-content: center;
+  }
+.custom-pagination .page-link {
+  color: seagreen;
+  /* background-color: #00ff11; */
+  /* border-color: #04ff00; */
+}
+
+.custom-pagination .page-link:hover {
+  color: #fff;
+  background-color: #00904f7c;
+  border-color: #000;
+}
+
+.custom-pagination .page-link:focus {
+  color: #fff;
+  background-color: seagreen;
+  border-color: #000;
+  box-shadow: 0 0 0 0.2rem rgba(38, 255, 49, 0.5);
+}
+
+.custom-pagination .page-item.active .page-link {
+  color: #fff;
+  background-color: seagreen;
+  border-color: #000;
+}
+
+.custom-input:focus {
+  border-color: #80ff8d;
+  box-shadow: 0 0 0 0.2rem rgba(0, 255, 13, 0.25);
+}
