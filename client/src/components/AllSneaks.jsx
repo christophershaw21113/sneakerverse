@@ -160,7 +160,6 @@ const AllSneaks = (props) => {
             ))}
           </div>
         </div>
-        <br /><br /><br />
       </div>
     </div>
   );

@@ -29,7 +29,6 @@ const About = () => {
                     <p>Hi, I'm Tyler, a full-stack JavaScript developer. In my spare time, I enjoy sports, hiking and electrical projects. You can check out my <a target='_blank' rel='noreferrer' href="https://tylerw.xyz">portfolio website</a>, <a target='_blank' rel='noreferrer' href="https://github.com/tylerwertman">code on Github</a>, and professional experience on <a target='_blank' rel='noreferrer' href="https://www.linkedin.com/in/tyler-wertman/">LinkedIn</a>. My favorite sneaker is the Yeezy 750 due to the uniquity of the strap paired with a boot-like silhouette.</p>
                 </div>
             </div>
-
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
                 <div style={{ marginRight: '30px' }}>
                     <img style={{ padding: '10px' }} alt='' src='http://localhost:8000/uploads/default.png' width='75px' />
@@ -39,7 +38,6 @@ const About = () => {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
             </div>
-
         </div>
     )
 }

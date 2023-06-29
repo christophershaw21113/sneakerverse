@@ -34,7 +34,6 @@ const Cart = (props) => {
         <div style={pageContainer}>
             <h2 style={{ textAlign: "center", marginBottom: '20px' }}>Checkout</h2>
             <div className='cart-container'>
-
                 <div>
                     {
                         order.map((shoe, index) => {
@@ -52,7 +51,6 @@ const Cart = (props) => {
                                     <div style={{ display: 'flex', alignItems: 'center', marginLeft: '20px' }}>
                                         <button id='remove-cart-btn' onClick={() => removeFromCart(index)}>Remove</button>
                                     </div>
-
                                 </div>
                             )
                         })
@@ -63,7 +61,6 @@ const Cart = (props) => {
                         order.length > 0 ?
                             <>
                                 <p style={{ textAlign: "center", margin: '10px', fontWeight: 'bold' }}>Subtotal: ${subtotal}</p>
-
                                 <div className='paypal-container' style={{ width: "300px" }}>
                                     <PayPalScriptProvider options={{ clientId: "Abzd4jCbn39gBLQLtSb8cBqN-Xb4AIEB53pjtJSjE8-y5kNbdAPbBGE2NZ_i-lVLjUfbTz5hRCLneRuB" }}>
                                         <PayPalButtons
