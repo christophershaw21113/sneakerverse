@@ -37,7 +37,7 @@ const ProductDetail = (props) => {
 
             {/* <Link to="/">Home</Link> */}
             {/* <br /> */}
-            <img src={`/uploads/${shoe.image}`} alt={shoe.name} style={{ width: "100px" }} />
+            <img src={`http://localhost:8000/uploads/${shoe.image}`} alt={shoe.name} style={{ width: "100px" }} />
             <h2>Shoe: {shoe.brand} {shoe.name}</h2>
             <h3>Price: <span style={{ textDecoration: 'line-through' }}>${shoe.price}</span><span style={{color: 'red'}}> ${shoe.discountedPrice}</span></h3>
             <h5>Color: {shoe.color}</h5>

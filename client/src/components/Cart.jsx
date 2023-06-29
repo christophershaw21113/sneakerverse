@@ -28,7 +28,7 @@ const Cart = (props) => {
             <h3 style={{textAlign:"center"}}>Cart</h3>
             <br/>
             {
-                order.map((shoe, index) => {
+                order?.map((shoe, index) => {
                     return (
                         <div key={shoe._id} style={{ display: "flex", width: "300px" }}>
                             <div>
@@ -56,6 +56,7 @@ const Cart = (props) => {
                             <PayPalScriptProvider options={{ clientId: "Abzd4jCbn39gBLQLtSb8cBqN-Xb4AIEB53pjtJSjE8-y5kNbdAPbBGE2NZ_i-lVLjUfbTz5hRCLneRuB" }}>
                                 <PayPalButtons
                                     createOrder={(data, actions) => {
+                                        console.log(data, actions)
                                         return actions.order.create({
                                             purchase_units: [
                                                 {
@@ -68,14 +69,15 @@ const Cart = (props) => {
                                         })
                                             .then((orderId) => {
                                                 console.log(orderId)
-                                                setOrder({})
-                                                Navigate("/")
+                                                // setOrder({})
+                                                // Navigate("/")
                                                 return orderId;
                                             });
                                     }}
                                     onApprove={function (data, actions) {
                                         return actions.order.capture().then(function (details) {
                                             // Your code here after capture the order
+                                            console.log(data, details)
                                             alert("Transaction completed by " + details.payer.name.given_name)
                                         });
                                     }} />

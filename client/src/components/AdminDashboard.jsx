@@ -168,7 +168,7 @@ const AdminDashboard = (props) => {
                                 <td>{shoe.color}</td>
                                 <td>{shoe.size}{shoe.gender}</td>
                                 <td>{shoe.description}</td>
-                                <td><img src={`/uploads/${shoe.image}`} alt="" style={{ width: "50px", height: "50px" }} /></td>
+                                <td><img src={`http://localhost:8000/uploads/${shoe.image}`} alt="" style={{ width: "50px", height: "50px" }} /></td>
                                 <td>
                                     { // delete if logged in user or 'admin' email user
                                         (user?.email === "t@w.com" || user?.email === "c@s.com" || user?.email === "a@c.com") ? <><button onClick={() => removeShoe(shoe)}>🚮</button></> : null
