@@ -90,7 +90,7 @@ const AllSneaks = (props) => {
     <div>
       <div style={pageContainer} className="carousel">
         <div style={{ marginTop: '5%' }}>
-          <h2 style={{ textAlign: 'center' }}>{brand === "nike" ? `Nike (${sortedSneaks.length})` : brand === "jordan" ? "Air Jordan" : brand === "yeezy" ? "Yeezy" : brand === "adidas" ? "Adidas" : brand === "new balance" ? "New Balance" : "All Sneakers"}</h2>
+          <h2 style={{ textAlign: 'center' }}>{brand === "nike" ? `Nike (${sortedSneaks.length})` : brand === "jordan" ? `Air Jordan (${sortedSneaks.length})` : brand === "yeezy" ? `Yeezy (${sortedSneaks.length})` : brand === "adidas" ? `Adidas (${sortedSneaks.length})` : brand === "new balance" ? `New Balance (${sortedSneaks.length})` : `All Sneakers (${sortedSneaks.length})`}</h2>
         </div>
         <div style={{ textAlign: "center" }}>
           <select value={sortOption} onChange={handleSortChange}>
