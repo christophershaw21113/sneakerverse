@@ -29,13 +29,21 @@ const About = () => {
                     <p>Hi, I'm Tyler, a full-stack JavaScript developer. In my spare time, I enjoy sports, hiking and electrical projects. You can check out my <a target='_blank' rel='noreferrer' href="https://tylerw.xyz">portfolio website</a>, <a target='_blank' rel='noreferrer' href="https://github.com/tylerwertman">code on Github</a>, and professional experience on <a target='_blank' rel='noreferrer' href="https://www.linkedin.com/in/tyler-wertman/">LinkedIn</a>. My favorite sneaker is the Yeezy 750 due to the uniquity of the strap paired with a boot-like silhouette.</p>
                 </div>
             </div>
+
+            <div>
+                <h3>Cesar - Front End</h3>
+                <p>Hi! I'm Cesar, a full-stack Javascript developer. I enjoy spending time with my wife and three toddlers. 
+                    I also enjoy my spare time by playing soccer with friends or watching sports. 
+                    My favorite shoe is the popular Jordan 11 "Bred". 
+                    Born and raised in Chicago, the Jordan 11 "Bred" represents the comeback of Michael Jordan winning 
+                    the 1996 Finals MVP and leading the Chicago Bulls to a fourth championship title. 
+                    Check out my <a target='_blank' href='https://github.com/cas3rvin'>Github</a> profile! </p>
+=======
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
                 <div style={{ marginRight: '30px' }}>
                     <img style={{ padding: '10px' }} alt='' src='http://localhost:8000/uploads/default.png' width='75px' />
                 </div>
-                <div>
-                    <h3>Cesar - Front End</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+               
                 </div>
             </div>
         </div>
