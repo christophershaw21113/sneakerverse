@@ -39,12 +39,13 @@ const AdminDashboard = (props) => {
                     brand: "",
                     gender: "M",
                     price: 0,
-                    discountedPrice: null,
+                    discountedPrice: 0,
                     image: 0,
                     color: "",
                     size: 0,
                     description: ""
                 })
+                setErrors({})
             })
             .catch((err) => {
                 console.log(err)
