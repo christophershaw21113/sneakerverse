@@ -55,6 +55,7 @@ footer {
   
 }
 
+
 @media (max-width: 965px) {
   .home-ul {
     display: block;
@@ -69,6 +70,7 @@ footer {
     display: block;
   }
 }
+
 
 
 ul li {

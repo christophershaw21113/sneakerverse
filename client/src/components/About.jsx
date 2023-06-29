@@ -36,7 +36,12 @@ const pageContainer = {
             </div>
             <div>
                 <h3>Cesar - Front End</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Hi! I'm Cesar, a full-stack Javascript developer. I enjoy spending time with my wife and three toddlers. 
+                    I also enjoy my spare time by playing soccer with friends or watching sports. 
+                    My favorite shoe is the popular Jordan 11 "Bred". 
+                    Born and raised in Chicago, the Jordan 11 "Bred" represents the comeback of Michael Jordan winning 
+                    the 1996 Finals MVP and leading the Chicago Bulls to a fourth championship title. 
+                    Check out my <a target='_blank' href='https://github.com/cas3rvin'>Github</a> profile! </p>
                 </div>
             </div>
            
