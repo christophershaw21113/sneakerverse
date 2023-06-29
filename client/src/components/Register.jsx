@@ -45,42 +45,42 @@ const Register = () => {
     }
 
     return (
-        <div style={{ marginTop: "170px", display: 'flex', justifyContent: 'center', width: '900px', }}>
-             <div style={{display: 'flex'}}>
-            <img src='http://localhost:3000/maria-fernanda-pissioli-DTZV8WDM1Ho-unsplash.jpg' width='100%' style={{marginTop: 0}}/>
-          </div>
-          <form className='login-form' onSubmit={handleFormSubmit} style={{ padding: '10px 100px' }}>
-          <img src={sneakerverse} alt="SneakerVerse" style={{ height: "70px", display: 'flex', marginTop: '10px' }} />
-          <h2 style={{ width: '100%', textAlign: 'center', marginTop: '20px', whiteSpace: 'nowrap' }}>Register</h2>
-          <p style={{fontVariant: 'small-caps', textAlign: 'center', color: 'grey'}}>join the sneakerverse</p>
+        <div style={{ marginTop: "170px", marginBottom: "120px", display: 'flex', justifyContent: 'center', width: '900px', }}>
+            <div style={{ display: 'flex' }}>
+                <img src='http://localhost:3000/maria-fernanda-pissioli-DTZV8WDM1Ho-unsplash.jpg' alt='' width='100%' style={{ marginTop: 0 }} />
+            </div>
+            <form className='login-form' onSubmit={handleFormSubmit} style={{ padding: '10px 100px' }}>
+                <img src={sneakerverse} alt="SneakerVerse" style={{ height: "70px", display: 'flex', marginTop: '10px' }} />
+                <h2 style={{ width: '100%', textAlign: 'center', marginTop: '20px', whiteSpace: 'nowrap' }}>Register</h2>
+                <p style={{ fontVariant: 'small-caps', textAlign: 'center', color: 'grey' }}>join the sneakerverse</p>
                 <div>
                     {errors?.firstName ? <p style={{ color: "red" }}>{errors?.firstName.message}</p> : null}
                     <input type="text" name="firstName" value={userInfo.firstName} placeholder='First Name' onChange={handleFormChange} style={{ width: '100%' }} />
                 </div>
                 <div>
                     {errors?.lastName ? <p style={{ color: "red" }}>{errors?.lastName.message}</p> : null}
-                    <input type="text" name="lastName" placeholder='Last Name' value={userInfo.lastName} onChange={handleFormChange} style={{ width: '100%' }}  />
+                    <input type="text" name="lastName" placeholder='Last Name' value={userInfo.lastName} onChange={handleFormChange} style={{ width: '100%' }} />
                 </div>
                 <div>
                     {errors?.email ? <p style={{ color: "red" }}>{errors?.email.message}</p> : null}
-                    <input type="email" name="email" placeholder='Email Address' value={userInfo.email} onChange={handleFormChange} style={{ width: '100%' }}  />
+                    <input type="email" name="email" placeholder='Email Address' value={userInfo.email} onChange={handleFormChange} style={{ width: '100%' }} />
                 </div>
                 <div>
                     {errors?.phoneNumber ? <p style={{ color: "red" }}>{errors?.phoneNumber.message}</p> : null}
-                    <input type="text" name="phoneNumber" placeholder='Phone Number' value={userInfo.phoneNumber} onChange={handleFormChange} style={{ width: '100%' }}  />
+                    <input type="text" name="phoneNumber" placeholder='Phone Number' value={userInfo.phoneNumber} onChange={handleFormChange} style={{ width: '100%' }} />
                 </div>
                 <div>
                     {errors?.password ? <p style={{ color: "red" }}>{errors?.password.message}</p> : null}
-                    <input type="password" name="password" placeholder='Password' value={userInfo.password} onChange={handleFormChange} style={{ width: '100%' }}  />
+                    <input type="password" name="password" placeholder='Password' value={userInfo.password} onChange={handleFormChange} style={{ width: '100%' }} />
                 </div>
                 <div>
                     {errors?.confirmPassword ? <p style={{ color: "red" }}>{errors?.confirmPassword.message}</p> : null}
-                    <input type="password" name="confirmPassword" placeholder='Confirm Password' value={userInfo.confirmPassword} onChange={handleFormChange} style={{ width: '100%' }}  />
+                    <input type="password" name="confirmPassword" placeholder='Confirm Password' value={userInfo.confirmPassword} onChange={handleFormChange} style={{ width: '100%' }} />
                 </div>
-                <div style={{display: 'flex', justifyContent: 'center', margin: '10px'}}>
-              <button className='sign-in-btn' type="submit">Register</button>
-            </div>
-            <p style={{textAlign: 'center', color: 'grey', whiteSpace: 'nowrap', marginBottom: '10px'}}>Already have an account? <Link style={{color: '#198754'}} to={"/sneakerverse/login"}>Login!</Link></p>
+                <div style={{ display: 'flex', justifyContent: 'center', margin: '10px' }}>
+                    <button className='sign-in-btn' type="submit">Register</button>
+                </div>
+                <p style={{ textAlign: 'center', color: 'grey', whiteSpace: 'nowrap', marginBottom: '10px' }}>Already have an account? <Link style={{ color: '#198754' }} to={"/sneakerverse/login"}>Login!</Link></p>
             </form>
         </div>
     )

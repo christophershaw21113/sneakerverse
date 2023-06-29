@@ -205,7 +205,6 @@ const AdminDashboard = (props) => {
                         })}
                 </tbody>
             </table>
-
         </div>
     )
 }

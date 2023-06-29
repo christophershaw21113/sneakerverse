@@ -91,7 +91,7 @@ const Home = () => {
         <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>
           {shoes
             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-            .slice(0, 4)
+            .slice(0, 3)
             .map((shoe, index) => (
               <MDBCard key={index} style={styleCard.card}>
                 <MDBRipple rippleColor="light" rippleTag="div" className="bg-image hover-overlay">
@@ -101,19 +101,18 @@ const Home = () => {
                   <MDBCardTitle>
                     <Link to={`/shoes/${shoe._id}`}><h3>{shoe.name}</h3></Link>
                     <p>{shoe.brand}</p>
-                      {shoe.discountedPrice > 1 ? (
-                        <div style={{ display: 'inline' }}>
-                          <p><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></p>
-                        </div>
-                      ) : (
-                        <span>${shoe.price}</span>
-                      )}
+                    {shoe.discountedPrice > 1 ? (
+                      <div style={{ display: 'inline' }}>
+                        <p><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></p>
+                      </div>
+                    ) : (
+                      <span>${shoe.price}</span>
+                    )}
                   </MDBCardTitle>
                 </MDBCardBody>
               </MDBCard>
             ))}
         </MDBContainer>
-        <br/><br/><br/>
       </div>
     </div>
   );

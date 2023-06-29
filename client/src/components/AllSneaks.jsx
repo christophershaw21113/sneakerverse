@@ -29,6 +29,7 @@ const AllSneaks = (props) => {
 
   const handleSortChange = (e) => {
     setSortOption(e.target.value)
+    setCurrentPage(1)
   }
 
   const sortedSneaks = [...allSneaks].sort((a, b) => {
@@ -57,7 +58,7 @@ const AllSneaks = (props) => {
       .then((res) => {
         const searchedResults = res.data.filter((shoe) => shoe.brand.toLowerCase().includes(brand.toLowerCase()) && (shoe.name.toLowerCase().includes(searchQuery.toLowerCase()) || shoe.color.toLowerCase().includes(searchQuery.toLowerCase())))
         setAllSneaks(searchedResults)
-        // setCurrentPage(1)
+        setCurrentPage(1)
       })
       .catch((err) => console.log(err))
   }
@@ -159,7 +160,6 @@ const AllSneaks = (props) => {
             ))}
           </div>
         </div>
-        <br /><br /><br />
       </div>
     </div>
   );

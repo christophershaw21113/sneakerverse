@@ -54,26 +54,26 @@ const Nav = (props) => {
     // console.log(jwtdecode(cookieValue))
 
     return (
-        <nav style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+        <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
                 <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{ height: "50px" }} />
                 {
                     welcome !== "Guest" ?
 
                         // <span onClick={() => navToUser()}><h4 style={{paddingTop: '5px'  }}>Welcome, {welcome}</h4></span> :
-                        <span ><h4 style={{paddingTop: '5px'  }}>Welcome, {welcome}</h4></span> :
+                        <span ><h4 style={{ paddingTop: '5px' }}>Welcome, {welcome}</h4></span> :
                         <h4 style={{ paddingTop: '5px' }}>Welcome, Guest</h4>
                 }
             </div>
             <div>
                 <ul className='home-ul'>
                     <Link className='link-styles' to={'/'}><li>Home</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/allshoes'} onClick={()=>setBrand("")}><li>All Sneaks</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/nike'} onClick={()=>setBrand("nike")}><li>Nike</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/jordan'} onClick={()=>setBrand("jordan")}><li>Jordan</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/adidas'} onClick={()=>setBrand("adidas")}><li>Adidas</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/yeezy'} onClick={()=>setBrand("yeezy")}><li>Yeezy</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/newbalance'} onClick={()=>setBrand("new balance")}><li>New Balance</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/allshoes'} onClick={() => setBrand("")}><li>All Sneaks</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/nike'} onClick={() => setBrand("nike")}><li>Nike</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/jordan'} onClick={() => setBrand("jordan")}><li>Jordan</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/adidas'} onClick={() => setBrand("adidas")}><li>Adidas</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/yeezy'} onClick={() => setBrand("yeezy")}><li>Yeezy</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/newbalance'} onClick={() => setBrand("new balance")}><li>New Balance</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/about'}><li>About</li></Link>
 
                 </ul>
