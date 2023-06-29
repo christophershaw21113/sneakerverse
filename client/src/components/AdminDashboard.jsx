@@ -171,10 +171,10 @@ const AdminDashboard = (props) => {
                                 <td><img src={`/uploads/${shoe.image}`} alt="" style={{ width: "50px", height: "50px" }} /></td>
                                 <td>
                                     { // delete if logged in user or 'admin' email user
-                                        (user?.email === "t@w.com" || user?.email === "c@s.com") ? <><button onClick={() => removeShoe(shoe)}>🚮</button></> : null
+                                        (user?.email === "t@w.com" || user?.email === "c@s.com" || user?.email === "a@c.com") ? <><button onClick={() => removeShoe(shoe)}>🚮</button></> : null
                                     }
                                     { // delete if logged in user or 'admin' email user
-                                        (user?.email === "t@w.com" || user?.email === "c@s.com") ? <><button onClick={() => editShoe(shoe._id)}>✏️</button></> : null
+                                        (user?.email === "t@w.com" || user?.email === "c@s.com" || user?.email === "a@c.com") ? <><button onClick={() => editShoe(shoe._id)}>✏️</button></> : null
                                     }
                                 </td>
                             </tr>
@@ -182,6 +182,10 @@ const AdminDashboard = (props) => {
                     })}
                 </tbody>
             </table>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
     )
 }

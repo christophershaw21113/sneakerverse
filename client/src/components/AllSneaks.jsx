@@ -39,6 +39,10 @@ const AllSneaks = (props) => {
       return new Date(b.createdAt) - new Date(a.createdAt)
     } else if (sortOption === 'oldest') {
       return new Date(a.createdAt) - new Date(b.createdAt)
+    } else if(sortOption === 'a') {
+      return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+    } else if (sortOption === 'z') {
+      return b.name.toLowerCase().localeCompare(a.name.toLowerCase())
     }
     return 0
   })
@@ -95,6 +99,8 @@ const AllSneaks = (props) => {
             <option value="highest">Price: Highest to Lowest</option>
             <option value="newest">Added: Newest to Oldest</option>
             <option value="oldest">Added: Oldest to Newest</option>
+            <option value="a">A-Z</option>
+            <option value="z">Z-A</option>
           </select>
           <form onSubmit={handleSearch}>
             <input type="text" value={searchQuery} onChange={handleSearchInputChange} placeholder='Sneaker Searcher' />
