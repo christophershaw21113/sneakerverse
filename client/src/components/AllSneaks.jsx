@@ -112,7 +112,7 @@ const AllSneaks = (props) => {
           <h2 style={{ textAlign: 'center' }}>{brand === "nike" ? `Nike (${sortedSneaks.length})` : brand === "jordan" ? `Air Jordan (${sortedSneaks.length})` : brand === "yeezy" ? `Yeezy (${sortedSneaks.length})` : brand === "adidas" ? `Adidas (${sortedSneaks.length})` : brand === "new balance" ? `New Balance (${sortedSneaks.length})` : `All Sneakers (${sortedSneaks.length})`}</h2>
         </div>
         <div style={{ textAlign: "center" }}>
-          <select value={sortOption} onChange={handleSortChange}>
+          <select className='select-all' value={sortOption} onChange={handleSortChange}>
             <option value="">-- Select Sorting Option --</option>
             <option value="lowest">Price: Lowest to Highest</option>
             <option value="highest">Price: Highest to Lowest</option>
@@ -122,8 +122,8 @@ const AllSneaks = (props) => {
             <option value="z">Z-A</option>
           </select>
           <form onSubmit={handleSearch}>
-            <input type="text" value={searchQuery} onChange={handleSearchInputChange} placeholder='Sneaker Searcher' />
-            <button onClick={handleSearch}>Search</button>
+            <input className='search-sneaks' type="text" value={searchQuery} onChange={handleSearchInputChange} placeholder='Sneaker Searcher' />
+            <button className='search-btn' onClick={handleSearch}>Search</button>
           </form>
         </div>
         <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>
@@ -150,15 +150,15 @@ const AllSneaks = (props) => {
             ))}
         </MDBContainer>
         <div className="custom-pagination">
-          <div className="pagination">
+          <ul className="pagination">
             {pageNumbers.map((number) => (
-              <div style={{textAlign:"ccenter"}} key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+              <li style={{textAlign:"center"}} key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
                 <button className="page-link" onClick={() => paginate(number)}>
                   {number}
                 </button>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </div>

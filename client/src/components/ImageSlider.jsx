@@ -72,9 +72,13 @@ const ImageSlider = ({ slides }) => {
     backgroundColor: '#fff',
     borderRadius: '50%',
     transition: '0.3s',
-
-    
   }
+
+  const activeDotStyles = {
+    ...dotStyles,
+    color: "#d4aab5",
+    // Add any additional styles for the active dot here
+  };
 
   return (
     <div style={sliderStyles}>
@@ -83,7 +87,10 @@ const ImageSlider = ({ slides }) => {
       <div style={slideStyles}></div>
       <div style={dotsContainerStyles}>
         {slides.map((slide, slideIndex) => (
-          <div style={dotStyles} key={slideIndex} onClick={() => goToSlide(slideIndex)}>&#9679;</div>
+          <div 
+          style={slideIndex === currentIndex ? activeDotStyles : dotStyles}
+          key={slideIndex} 
+          onClick={() => goToSlide(slideIndex)}>&#9679;</div>
         ))
         }
       </div>

@@ -163,8 +163,8 @@ const AdminDashboard = (props) => {
                 </div>
             </form>
             <form onSubmit={handleSearch} style={{textAlign:"center"}}>
-                <input type="text" value={searchQuery} onChange={handleSearchInputChange} placeholder='Sneaker Searcher' />
-                <button onClick={handleSearch}>Search</button>
+                <input className='search-sneaks' type="text" value={searchQuery} onChange={handleSearchInputChange} placeholder='Sneaker Searcher' />
+                <button className='search-btn' onClick={handleSearch}>Search</button>
             </form>
             <table className='admin-table'>
                 <thead>

@@ -12,9 +12,9 @@ const About = () => {
         <div style={pageContainer}>
             <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Meet the team!</h1>
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
-                <div style={{ marginRight: '30px' }}>
-                    <img style={{ padding: '10px' }} alt='' src='http://localhost:8000/uploads/default.png' width='75px' />
-                </div>
+                    <div style={{ marginRight: '30px' }}>
+                    <img style={{padding: '10px',  borderRadius: '50%', width: '80px', height: '80px' }} alt='Chris Shaw Headshot' src='http://18.117.87.36/chris_s.png' />
+                    </div>
                 <div>
                     <h3>Chris - Front End, Styling, Back End</h3>
                     <p>Hi, I'm Chris, a full-stack software engineer with a focus in MERN. I enjoy spending time with my wife, family, and friends. Some of my hobbies include cooking, weightlifitng, and running. My favorite sneaker at the moment would have to be Ultraboost DNA due to the design and comfortability all while being a lightweight running shoe. Check out my <a target='_blank' href='https://www.linkedin.com/in/chris-shaw-18370a107/'>LinkedIn</a> and <a target='_blank' href='https://github.com/christophershaw21113'>Github</a> profiles. Portfolio page coming soon... </p>
@@ -22,7 +22,7 @@ const About = () => {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
                 <div style={{ marginRight: '30px' }}>
-                    <img style={{ padding: '10px' }} alt='' src='http://localhost:8000/uploads/default.png' width='75px' />
+                    <img style={{padding: '10px',  borderRadius: '50%', width: '80px', height: '80px' }} alt='' src='http://18.117.87.36/tyler_w.png' />
                 </div>
                 <div>
                     <h3>Tyler - Front End & Back End</h3>
@@ -31,7 +31,7 @@ const About = () => {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
                 <div style={{ marginRight: '30px' }}>
-                    <img style={{ padding: '10px' }} alt='' src='http://localhost:8000/uploads/default.png' width='75px' />
+                    <img style={{ padding: '10px' }} alt='' src='http://18.117.87.36/uploads/default.png' width='75px' />
                 </div>
                 <div>
                     <h3>Cesar - Front End</h3>

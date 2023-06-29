@@ -22,29 +22,29 @@ const Home = () => {
 
   const slides = [
     {
-      url: 'http://18.117.87.36/braxton-apana-vBfXwv4CVfw-unsplash.jpg',
-      title: 'Forest',
-      alt: 'Foggy forest with tall trees'
+      url: 'http://18.117.87.36/taylor-smith-aDZ5YIuedQg-unsplash.jpg',
+      title: 'Jordan 1',
+      alt: 'Chicago Air Jordan 1s on Basketball Court'
     },
     {
-      url: 'http://18.117.87.36/lefteris-kallergis-MaFE4MYbQgc-unsplash.jpg',
-      title: 'City',
-      alt: 'Nightlife in big city'
+      url: 'http://18.117.87.36/lefteris-kallergis-j1GiPlvSGWI-unsplash.jpg',
+      title: 'Air Max 90',
+      alt: 'Multicolored Air Max 90 on curb during the day'
     },
     {
-      url: 'http://18.117.87.36/mick-haupt-O8_sTTWaJ14-unsplash.jpg',
-      title: 'Italy',
-      alt: 'Italy on the hill'
+      url: 'http://18.117.87.36/diego-jaramillo-bJlZg69x5lg-unsplash.jpg',
+      title: 'Yeezy 350',
+      alt: 'Person holding up Yeezy 350 Glow'
     },
     {
-      url: 'http://18.117.87.36/leon-skibitzki-NMyuo1hoCAA-unsplash.jpg',
-      title: 'Nikes splashing water',
-      alt: 'Nikes splashing water'
+      url: 'http://18.117.87.36/raul-de-los-santos-6tpdFZtbj0E-unsplash.jpg',
+      title: 'New Balance',
+      alt: 'New Balance shoes in fall leaves'
     },
     {
       url: 'http://18.117.87.36/alexander-rotker-l8p1aWZqHvE-unsplash.jpg',
-      title: 'Nikes splashing water',
-      alt: 'Nikes splashing water'
+      title: 'Nike Air Max 90',
+      alt: 'Royal blue nike floating'
     }
   ];
 
