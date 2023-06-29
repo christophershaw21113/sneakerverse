@@ -421,7 +421,7 @@ ul li {
 
 /* Custom pagination colors */
 .custom-pagination {
-  /* display: flex; */
+  display: flex;
   justify-content: center;
 }
 .pagination {
