@@ -14,4 +14,10 @@
 
 #### Bonuses that will be included: Deploying Application, Protected Routes, Responsive Application, File Upload on database
 
-#### Product Backlog: Pagination and Sorting, Filtering sneakers by brand, size, gender, featuring a third party API
+### Product Backlog 
+#### Pagination (admin table)
+#### Updating card styles on (home, allsneaks)
+#### Creating Hamburger menu (home)
+#### Cleaning up css and making every page mobile responsive
+#### add feature list to about page
+#### Store cart in cookie
