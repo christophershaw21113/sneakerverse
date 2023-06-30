@@ -19,5 +19,6 @@
 #### Updating card styles on (home, allsneaks)
 #### Creating Hamburger menu (home)
 #### Cleaning up css and making every page mobile responsive
-#### add feature list to about page
+#### Add feature list to about page
 #### Store cart in cookie
+#### User detail and user edit
