@@ -1,6 +1,4 @@
-# sneakerverse
-
-## ‘SneakerVerse’ Group Project Proposal
+# SneakerVerse
 
 ## Tech Stack: MERN
 
