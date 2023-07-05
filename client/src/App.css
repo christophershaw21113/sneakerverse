@@ -66,9 +66,10 @@ footer {
 
 }
 
-@media (max-width: 400px) {
+@media (max-width: 550px) {
   .cart-login-btn {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 }
 

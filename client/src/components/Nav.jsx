@@ -59,7 +59,6 @@ const Nav = (props) => {
                 <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{ height: "50px" }} />
                 {
                     welcome !== "Guest" ?
-
                         // <span onClick={() => navToUser()}><h4 style={{paddingTop: '5px'  }}>Welcome, {welcome}</h4></span> :
                         <span ><h4 style={{ paddingTop: '5px' }}>Welcome, {welcome}</h4></span> :
                         <h4 style={{ paddingTop: '5px' }}>Welcome, Guest</h4>
@@ -76,10 +75,7 @@ const Nav = (props) => {
                     <Link className='link-styles' to={'/sneakerverse/yeezy'} onClick={() => setBrand("yeezy")}><li>Yeezy</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/newbalance'} onClick={() => setBrand("new balance")}><li>New Balance</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/about'}><li>About</li></Link>
-
                 </ul>
-
-
             </div>
             <div className='cart-login-btn'>
                 <FontAwesomeIcon icon={faCartShopping} style={{ color: "#fff" }} onClick={navCart} /><span>{order.length}</span>&nbsp;&nbsp;
