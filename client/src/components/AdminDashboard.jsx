@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useMediaQuery } from 'react-responsive';
 
 const AdminDashboard = (props) => {
     const { user, count, setCount } = props
@@ -8,6 +9,8 @@ const AdminDashboard = (props) => {
     const [searchQuery, setSearchQuery] = useState('')
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
+    const isSmallScreen = useMediaQuery({ maxWidth: '500px' });
+    console.log("isSmallScreen", isSmallScreen)
     const [shoe, setShoe] = useState({
         name: "",
         brand: "",
@@ -163,7 +166,7 @@ const AdminDashboard = (props) => {
                     <button className='admin-btn' type="submit">Submit</button>
                 </div>
             </form>
-            <form onSubmit={handleSearch} style={{textAlign:"center"}}>
+            <form onSubmit={handleSearch} style={{ textAlign: "center" }}>
                 <input className='search-sneaks' type="text" value={searchQuery} onChange={handleSearchInputChange} placeholder='Sneaker Searcher' />
                 <button className='search-btn' onClick={handleSearch}>Search</button>
             </form>
@@ -175,7 +178,10 @@ const AdminDashboard = (props) => {
                         <th>Price</th>
                         <th>Color</th>
                         <th>Size</th>
-                        <th>Description</th>
+                        {isSmallScreen ?
+                            null :
+                            <th>Description</th>
+                        }
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
@@ -191,7 +197,10 @@ const AdminDashboard = (props) => {
                                     <td className='product-price'><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></td>
                                     <td className='product-color'>{shoe.color}</td>
                                     <td className='product-size'>{shoe.size}{shoe.gender}</td>
-                                    <td className='product-description'>{shoe.description}</td>
+                                    {isSmallScreen ?
+                                        null :
+                                        <td className='product-description'>{shoe.description}</td>
+                                    }
                                     <td className='product-image'><img src={`http://localhost:8000/uploads/${shoe.image}`} alt="" style={{ width: "100px" }} /></td>
                                     <td>
                                         { // delete if logged in user or 'admin' email user
