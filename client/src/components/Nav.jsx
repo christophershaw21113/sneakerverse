@@ -94,14 +94,14 @@ const Nav = (props) => {
                 }
             </div>
             <div className={isMobileMenuOpen ? 'mobile-ul' : 'mobile-ul hidden'}>
-                <ul style={{ border: "1px solid black" }}>
+                <ul className='home-ul'>
                     <Link className='link-styles' to={'/'} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}><li>Home</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/allshoes'} onClick={() => mobileBrand("")}><li>All Sneaks</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/allshoes'} onClick={() => mobileBrand("")}><li>All</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/nike'} onClick={() => mobileBrand("nike")}><li>Nike</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/jordan'} onClick={() => mobileBrand("jordan")}><li>Jordan</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/adidas'} onClick={() => mobileBrand("adidas")}><li>Adidas</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/yeezy'} onClick={() => mobileBrand("yeezy")}><li>Yeezy</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/newbalance'} onClick={() => mobileBrand("new balance")}><li>New Balance</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/newbalance'} onClick={() => mobileBrand("new balance")}><li>NB</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/about'} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}><li>About</li></Link>
                 </ul>
             </div>
@@ -109,9 +109,9 @@ const Nav = (props) => {
                 <FontAwesomeIcon icon={faCartShopping} style={{ color: "#fff" }} onClick={navCart} /><span>{order.length}</span>&nbsp;&nbsp;
                 {
                     (loggedIn) ?
-                        <><button className='logout' onClick={logout}>Logout</button>&nbsp;&nbsp;</>
+                        <><button className='logout' onClick={logout}>Logout</button>&nbsp;</>
                         :
-                        <><button className='reglog' onClick={navRegister}>Register/Login</button>&nbsp;&nbsp;</>
+                        <><button className='reglog' onClick={navRegister}>Register/Login</button>&nbsp;</>
                 }
                 {
                     (user?.email === "t@w.com" || user?.email === "c@s.com") ?
