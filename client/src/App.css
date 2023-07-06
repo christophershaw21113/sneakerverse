@@ -275,7 +275,8 @@ ul li {
       margin-top: 250px;
       padding-top: 30px;
       background-color: grey;
-      height: 100vh;
+      height: 170vh;
+      width: 120vw;
     }
     .admin-dash {
       display: flex;
@@ -477,9 +478,9 @@ ul li {
 }
 
 .search-btn {
-   border: none;
-   padding: 10px 15px;
-   font-size: 14px;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
 }
 
 .search-btn:hover {
