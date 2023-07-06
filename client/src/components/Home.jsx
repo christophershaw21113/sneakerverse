@@ -85,7 +85,7 @@ const Home = () => {
         <div style={containerStyles}>
           <ImageSlider slides={slides} />
         </div>
-        <div style={{ marginTop: '5%' }}>
+        <div style={{ marginTop: isSmallScreen ? '10%' : '5%' }}>
           <h2 style={{ textAlign: 'center' }}>Recent Releases</h2>
         </div>
         <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>

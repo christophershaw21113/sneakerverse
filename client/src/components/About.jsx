@@ -6,7 +6,8 @@ const About = () => {
     const isSmallScreen = useMediaQuery({ maxWidth: '965px' });
     const pageContainer = {
         marginTop: isSmallScreen ? '40%' : '10%',
-        width: '80%'
+        width: '80%',
+        marginBottom: isSmallScreen ? '30%' : null
     };
     return (
         <div style={pageContainer}>
@@ -29,7 +30,7 @@ const About = () => {
                     <p>Hi, I'm Tyler, a full-stack JavaScript developer. In my spare time, I enjoy sports, hiking and electrical projects. You can check out my <a target='_blank' rel='noreferrer' href="https://tylerw.xyz">portfolio website</a>, code on <a target='_blank' rel='noreferrer' href="https://github.com/tylerwertman">Github</a>, and professional experience on <a target='_blank' rel='noreferrer' href="https://www.linkedin.com/in/tyler-wertman/">LinkedIn</a>. My favorite sneaker is the Yeezy 750 due to the uniquity of the strap paired with a boot-like silhouette.</p>
                 </div>
             </div>
-            <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>About the project!</h1>
+            <h1 style={{ textAlign: 'center', marginTop: '20px' }}>About the project!</h1>
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
                 
                 <div>
