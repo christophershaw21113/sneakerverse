@@ -11,7 +11,7 @@ const About = () => {
     };
     return (
         <div style={pageContainer}>
-            <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Meet the team!</h1>
+            <h1 style={{ textAlign: 'center', marginBottom: '20px', paddingTop: '20px' }}>Meet the team!</h1>
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
                 <div style={{ marginRight: '30px' }}>
                     <img style={{ padding: '10px', borderRadius: '50%', width: '80px', height: '80px' }} alt='Chris Shaw Headshot' src='http://18.117.87.36/chris_s.png' />

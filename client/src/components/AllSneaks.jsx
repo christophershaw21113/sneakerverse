@@ -15,11 +15,11 @@ const AllSneaks = (props) => {
     axios
       .get(`http://localhost:8000/api/shoes/`)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         // setAllSneaks(res.data);
         setAllSneaks(res.data.filter((shoe) => shoe.brand.toLowerCase().includes(brand.toLowerCase())));
         // console.log(res.data.filter((shoe)=>shoe.brand.toLowerCase().includes("yeezy")));
-        console.log(sortedSneaks)
+        // console.log(sortedSneaks)
         setCurrentPage(1)
 
       })
@@ -109,7 +109,7 @@ const AllSneaks = (props) => {
   return (
     <div>
       <div style={pageContainer} className="carousel">
-        <div style={{ marginTop: '5%' }}>
+        <div style={{ marginTop: '5%', paddingTop: '75px' }}>
           <h2 style={{ textAlign: 'center' }}>{brand === "nike" ? `Nike (${sortedSneaks.length})` : brand === "jordan" ? `Air Jordan (${sortedSneaks.length})` : brand === "yeezy" ? `Yeezy (${sortedSneaks.length})` : brand === "adidas" ? `Adidas (${sortedSneaks.length})` : brand === "new balance" ? `New Balance (${sortedSneaks.length})` : `All Sneakers (${sortedSneaks.length})`}</h2>
         </div>
         <div style={{ textAlign: "center" }}>

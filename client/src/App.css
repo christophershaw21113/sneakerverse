@@ -241,6 +241,7 @@ ul li {
   background-size: cover;
   background-repeat: no-repeat;
   height: 200vh;
+  width: 115vw
 
 }
 
@@ -493,4 +494,14 @@ ul li {
   background-color: rgb(12, 12, 12);
   color: #fff;
   font-size: 14px;
+}
+
+.mobile-ul {
+  position: fixed;
+  left: 0;
+  top: 25%
+}
+.mobile-ul ul, mobile-ul a {
+  list-style: none;
+  color: red;
 }
