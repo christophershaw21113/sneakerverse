@@ -55,9 +55,12 @@ const Home = () => {
   };
 
   const isSmallScreen = useMediaQuery({ maxWidth: 890 });
+  const isGalS8Pl = useMediaQuery({maxWidth: 360})
+  const isiPhoneSE = useMediaQuery({maxWidth: 375})
+  const isiPhoneXR = useMediaQuery({maxWidth: 414})
   const pageContainer = {
     marginTop: '85px',
-    height: isSmallScreen ? '240vh' : '150vh',
+    height: isGalS8Pl ? '220vh' : isiPhoneSE ? '250vh' : isiPhoneXR ? '200vh' : '180vh'
   };
 
   const styleCard = {
