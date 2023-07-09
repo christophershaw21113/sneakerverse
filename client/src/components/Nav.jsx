@@ -11,6 +11,7 @@ const Nav = (props) => {
     const { cookieValue, user, welcome, setWelcome, loggedIn, setLoggedIn, setCount, count, order, setBrand } = props
     const navigate = useNavigate()
     const isSmallScreen = useMediaQuery({ maxWidth: 965 })
+    const isMobileScreen = useMediaQuery({ maxWidth: 450 })
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
     useEffect(() => {
@@ -66,7 +67,7 @@ const Nav = (props) => {
 
     return (
         <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div>
+            <div className='logo'>
                 <img src={sneakerverse} onClick={navHome} alt="SneakerVerse" style={{ height: "50px" }} />
                 {
                     welcome !== "Guest" ?
@@ -96,17 +97,20 @@ const Nav = (props) => {
             <div className={isMobileMenuOpen ? 'mobile-ul' : 'mobile-ul hidden'}>
                 <ul className='home-ul'>
                     <Link className='link-styles' to={'/'} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}><li>Home</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/allshoes'} onClick={() => mobileBrand("")}><li>All</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/nike'} onClick={() => mobileBrand("nike")}><li>Nike</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/jordan'} onClick={() => mobileBrand("jordan")}><li>Jordan</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/adidas'} onClick={() => mobileBrand("adidas")}><li>Adidas</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/yeezy'} onClick={() => mobileBrand("yeezy")}><li>Yeezy</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/newbalance'} onClick={() => mobileBrand("new balance")}><li>NB</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/allshoes'} onClick={() => mobileBrand("")}><li>All Sneaks</li></Link>
+                    {/* <Link className='link-styles' to={'/sneakerverse/nike'} onClick={() => mobileBrand("nike")}><li>Nike</li></Link> */}
+                    {/* <Link className='link-styles' to={'/sneakerverse/jordan'} onClick={() => mobileBrand("jordan")}><li>Jordan</li></Link> */}
+                    {/* <Link className='link-styles' to={'/sneakerverse/adidas'} onClick={() => mobileBrand("adidas")}><li>Adidas</li></Link> */}
+                    {/* <Link className='link-styles' to={'/sneakerverse/yeezy'} onClick={() => mobileBrand("yeezy")}><li>Yeezy</li></Link> */}
+                    {/* <Link className='link-styles' to={'/sneakerverse/newbalance'} onClick={() => mobileBrand("new balance")}><li>NB</li></Link> */}
                     <Link className='link-styles' to={'/sneakerverse/about'} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}><li>About</li></Link>
                 </ul>
             </div>
             <div className='cart-login-btn'>
-                <FontAwesomeIcon icon={faCartShopping} style={{ color: "#fff" }} onClick={navCart} /><span>{order.length}</span>&nbsp;&nbsp;
+                <span style={{ display: "inline" }}>
+                    <FontAwesomeIcon icon={faCartShopping} style={{ color: "#fff" }} onClick={navCart} /><span>{order.length}</span>&nbsp;&nbsp;
+                </span>
+                <br />
                 {
                     (loggedIn) ?
                         <><button className='logout' onClick={logout}>Logout</button>&nbsp;</>

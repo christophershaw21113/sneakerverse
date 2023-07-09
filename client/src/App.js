@@ -51,7 +51,7 @@ function App() {
           <Route path='/userDetail' element={<UserDetail user={user} />} />
         </Route>
         <Route path="/" element={<Home />} />
-        <Route path="/sneakerverse/allshoes" element={<AllSneaks brand={brand} />} />
+        <Route path="/sneakerverse/allshoes" element={<AllSneaks brand={brand} setBrand={setBrand}/>} />
         <Route path="/sneakerverse/nike" element={<AllSneaks brand={brand} />} />
         <Route path="/sneakerverse/jordan" element={<AllSneaks brand={brand} />} />
         <Route path="/sneakerverse/adidas" element={<AllSneaks brand={brand} />} />
