@@ -14,7 +14,7 @@ footer {
   padding: 20px;
   position: fixed;
   width: 100%;
-  z-index: 100;
+  z-index: 1;;
   color: #fff;
 }
 
@@ -231,21 +231,31 @@ ul li {
 }
 
 /* Admin DashBoard */
-.admin-container {
+.admin-container { 
+  display: flex;
+  flex-direction: column;
+  min-height: 170vh;
   margin-top: 100px;
   padding-top: 30px;
+  overflow-y: auto;
   background-color: #000000;
   background-color: #eec0c6;
   background-color: #d9e4f5;
   background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 200vh;
-  width: 115vw
+
+
 
 }
 
 @media (max-width: 1290px) {
+  
+  .admin-container {
+    background-color: grey;
+    height: 200vh;
+  }
+
 
   .admin-dash {
     display: flex;
@@ -258,7 +268,7 @@ ul li {
 
 @media (max-width: 965px) {
   .admin-container {
-    margin-top: 200px;
+    margin-top: 100px;
     padding-top: 30px;
     background-color: grey;
     height: 300vh;
@@ -273,12 +283,12 @@ ul li {
 
 }
 
-@media (max-width: 395px) {
+@media (max-width: 596px) {
   .admin-container {
-    margin-top: 250px;
+    margin-top: 150px;
     padding-top: 30px;
     background-color: grey;
-    height: 170vh;
+    height: 200vh;
     width: 175vw;
     /* width: 585vw; */
   }
@@ -292,9 +302,33 @@ ul li {
 
 }
 
+@media (max-width: 375px) {
+  .admin-container {
+    margin-top: 150px;
+    padding-top: 30px;
+    background-color: grey;
+    height: 200vh;
+    width: 175vw;
+    /* width: 585vw; */
+  }
+
+  .admin-dash {
+    display: flex;
+    flex-wrap: wrap;
+
+
+  }
+
+  footer {
+    z-index: -1;
+  }
+
+ 
+
+}
+
 .admin-dash {
   display: flex;
-  width: 80%;
 
 }
 
@@ -332,6 +366,7 @@ ul li {
   width: 60%;
   padding: 10px 15px;
   margin-top: -10px;
+  margin-bottom: 100px; 
   font-size: medium;
   border: none;
   display: flex;
