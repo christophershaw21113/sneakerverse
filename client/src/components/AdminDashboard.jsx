@@ -9,6 +9,9 @@ const AdminDashboard = (props) => {
     const [searchQuery, setSearchQuery] = useState('')
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
+    const [currentPage, setCurrentPage] = useState(1)
+
+
     const isSmallScreen = useMediaQuery({ maxWidth: '500px' });
     console.log("isSmallScreen", isSmallScreen)
     const [shoe, setShoe] = useState({
@@ -100,10 +103,34 @@ const AdminDashboard = (props) => {
             .then((res) => {
                 const searchedResults = res.data.filter((shoe) => shoe.brand.toLowerCase().includes(searchQuery.toLowerCase()) || shoe.name.toLowerCase().includes(searchQuery.toLowerCase()) || shoe.color.toLowerCase().includes(searchQuery.toLowerCase()))
                 setProducts(searchedResults)
-                // setCurrentPage(1)
+                setCurrentPage(1)
             })
             .catch((err) => console.log(err))
     }
+
+    // Pagination
+  const itemsPerPage = 5
+  const totalPages = Math.ceil(products.length / itemsPerPage)
+  const pageNumbers = []
+
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i)
+  }
+
+  const indexOfLastProduct= currentPage * itemsPerPage
+  const indexOfFirstProduct = indexOfLastProduct- itemsPerPage
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+
+
     return (
         <div className='admin-container'>
             <h2 style={{ textAlign: 'center' }}>Admin Dashboard</h2>
@@ -187,7 +214,7 @@ const AdminDashboard = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products
+                    {currentProducts
                         .sort((a, b) => a.name.localeCompare(b.name))
                         .map((shoe, index) => {
                             return (
@@ -213,9 +240,20 @@ const AdminDashboard = (props) => {
                                 </tr>
                             )
                         })}
-                </tbody>
-            </table>
-        </div>
+                        <div className="custom-pagination">
+                        <ul className="pagination">
+                            {pageNumbers.map((pageNumber) => (
+                            <li style={{textAlign: 'center'}} key={pageNumber} className={`page-item ${pageNumber === currentPage ? 'active' : ''}`}>
+                                <button onClick={() => handlePageChange(pageNumber)} className="page-link">
+                                {pageNumber}
+                                </button>
+                            </li>
+                            ))}
+                        </ul>
+                        </div>
+                         </tbody>
+                        </table>
+                         </div>
     )
 }
 
