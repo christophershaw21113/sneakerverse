@@ -240,6 +240,9 @@ const AdminDashboard = (props) => {
                                 </tr>
                             )
                         })}
+                     
+                         </tbody>
+                        </table>
                         <div className="custom-pagination">
                         <ul className="pagination">
                             {pageNumbers.map((pageNumber) => (
@@ -251,8 +254,6 @@ const AdminDashboard = (props) => {
                             ))}
                         </ul>
                         </div>
-                         </tbody>
-                        </table>
                          </div>
     )
 }
