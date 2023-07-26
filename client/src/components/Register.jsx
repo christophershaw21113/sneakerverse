@@ -5,7 +5,7 @@ import sneakerverse from '../../src/sneakerverseBK.png'
 
 
 const Register = () => {
-    const {url} = 'https://sneakerverse.net'
+    const url = 'https://www.sneakerverse.net'
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const [userInfo, setUserInfo] = useState({

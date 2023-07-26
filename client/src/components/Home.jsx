@@ -10,7 +10,7 @@ import { useMediaQuery } from 'react-responsive';
 const Home = () => {
   const { id } = useParams();
   const [shoes, setShoes] = useState([]);
-  const {url} = 'https://sneakerverse.net'
+  const url = 'https://www.sneakerverse.net'
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/shoes/`)
