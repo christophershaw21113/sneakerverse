@@ -6,10 +6,11 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardImage, MDBContainer, MDBRipp
 import { useMediaQuery } from 'react-responsive';
 
 
+
 const Home = () => {
   const { id } = useParams();
   const [shoes, setShoes] = useState([]);
-
+  const {url} = 'https://sneakerverse.net'
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/shoes/`)
@@ -22,27 +23,27 @@ const Home = () => {
 
   const slides = [
     {
-      url: 'http://18.117.87.36/taylor-smith-aDZ5YIuedQg-unsplash.jpg',
+      url: `${url}/taylor-smith-aDZ5YIuedQg-unsplash.jpg`,
       title: 'Jordan 1',
       alt: 'Chicago Air Jordan 1s on Basketball Court'
     },
     {
-      url: 'http://18.117.87.36/lefteris-kallergis-j1GiPlvSGWI-unsplash.jpg',
+      url: `${url}/lefteris-kallergis-j1GiPlvSGWI-unsplash.jpg`,
       title: 'Air Max 90',
       alt: 'Multicolored Air Max 90 on curb during the day'
     },
     {
-      url: 'http://18.117.87.36/diego-jaramillo-bJlZg69x5lg-unsplash.jpg',
+      url: `${url}/diego-jaramillo-bJlZg69x5lg-unsplash.jpg`,
       title: 'Yeezy 350',
       alt: 'Person holding up Yeezy 350 Glow'
     },
     {
-      url: 'http://18.117.87.36/raul-de-los-santos-6tpdFZtbj0E-unsplash.jpg',
+      url: `${url}/raul-de-los-santos-6tpdFZtbj0E-unsplash.jpg`,
       title: 'New Balance',
       alt: 'New Balance shoes in fall leaves'
     },
     {
-      url: 'http://18.117.87.36/alexander-rotker-l8p1aWZqHvE-unsplash.jpg',
+      url: `${url}/alexander-rotker-l8p1aWZqHvE-unsplash.jpg`,
       title: 'Nike Air Max 90',
       alt: 'Royal blue nike floating'
     }

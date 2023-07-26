@@ -5,6 +5,7 @@ import sneakerverse from '../../src/sneakerverseBK.png'
 
 
 const Register = () => {
+    const {url} = 'https://sneakerverse.net'
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const [userInfo, setUserInfo] = useState({
@@ -47,7 +48,7 @@ const Register = () => {
     return (
         <div style={{ marginTop: "170px", marginBottom: "120px", display: 'flex', justifyContent: 'center', width: '900px', }}>
             <div style={{ display: 'flex' }}>
-                <img src='http://18.117.87.36/maria-fernanda-pissioli-DTZV8WDM1Ho-unsplash.jpg' alt='' width='100%' style={{ marginTop: 0 }} />
+                <img src={`${url}/maria-fernanda-pissioli-DTZV8WDM1Ho-unsplash.jpg`} alt='Air force ones pointing towards the blue sky' width='100%' style={{ marginTop: 0 }} />
             </div>
             <form className='login-form' onSubmit={handleFormSubmit} style={{ padding: '10px 100px' }}>
                 <img src={sneakerverse} alt="SneakerVerse" style={{ height: "70px", display: 'flex', marginTop: '10px' }} />

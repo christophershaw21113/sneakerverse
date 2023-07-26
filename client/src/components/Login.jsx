@@ -6,6 +6,7 @@ import sneakerverseBK from '../../src/sneakerverseBK.png'
 
 const Login = (props) => {
   const { count, setCount, loggedIn, setLoggedIn } = props
+  const {url} = 'https://www.sneakerverse.net'
   const navigate = useNavigate()
   const [errors, setErrors] = useState({})
   const [userInfo, setUserInfo] = useState({
@@ -40,7 +41,7 @@ const Login = (props) => {
   return (
     <div style={{ marginTop: "170px", marginBottom: "120px", display: 'flex', justifyContent: 'center', width: '800px', }}>
       <div style={{ display: 'flex' }}>
-        <img src='http://18.117.87.36/leon-skibitzki-NMyuo1hoCAA-unsplash.jpg' alt='' width='100%' style={{ marginTop: 0 }} />
+        <img src={`${url}/leon-skibitzki-NMyuo1hoCAA-unsplash.jpg`} alt='' width='100%' style={{ marginTop: 0 }} />
       </div>
       <form className='login-form' onSubmit={handleFormSubmit} style={{ padding: '10px 100px' }}>
         <img src={sneakerverseBK} alt="SneakerVerse" style={{ height: "70px", display: 'flex', marginTop: '10px' }} />

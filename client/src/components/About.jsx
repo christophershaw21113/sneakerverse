@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 
 const About = () => {
     const isSmallScreen = useMediaQuery({ maxWidth: '965px' });
+    const {url} = 'https://www.sneakerverse.net'
     const pageContainer = {
         marginTop: isSmallScreen ? '40%' : '10%',
         width: '80%',
@@ -14,7 +15,7 @@ const About = () => {
             <h1 style={{ textAlign: 'center', marginBottom: '20px', paddingTop: '20px' }}>Meet the team!</h1>
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
                 <div style={{ marginRight: '30px' }}>
-                    <img style={{ padding: '10px', borderRadius: '50%', width: '80px', height: '80px' }} alt='Chris Shaw Headshot' src='http://18.117.87.36/chris_s.png' />
+                    <img style={{ padding: '10px', borderRadius: '50%', width: '80px', height: '80px' }} alt='Chris Shaw Headshot' src={`${url}/chris_s.png`} />
                 </div>
                 <div>
                     <h3>Chris - Front End, Styling, Back End</h3>
@@ -23,7 +24,7 @@ const About = () => {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '15px' }}>
                 <div style={{ marginRight: '30px' }}>
-                    <img style={{ padding: '10px', borderRadius: '50%', width: '80px', height: '80px' }} alt='' src='http://18.117.87.36/tyler_w.png' />
+                    <img style={{ padding: '10px', borderRadius: '50%', width: '80px', height: '80px' }} alt='Tyler W. headshot' src={`${url}/tyler_w.png`} />
                 </div>
                 <div>
                     <h3>Tyler - Front End & Back End</h3>
