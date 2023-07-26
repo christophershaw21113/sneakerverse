@@ -10,7 +10,7 @@ import { useMediaQuery } from 'react-responsive';
 const Home = () => {
   const { id } = useParams();
   const [shoes, setShoes] = useState([]);
-  const url = 'https://www.sneakerverse.net'
+  const url = 'www.sneakerverse.net';
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/shoes/`)
@@ -23,27 +23,27 @@ const Home = () => {
 
   const slides = [
     {
-      url: `${url}/taylor-smith-aDZ5YIuedQg-unsplash.jpg`,
+      url: `https://${url}/taylor-smith-aDZ5YIuedQg-unsplash.jpg`,
       title: 'Jordan 1',
       alt: 'Chicago Air Jordan 1s on Basketball Court'
     },
     {
-      url: `${url}/lefteris-kallergis-j1GiPlvSGWI-unsplash.jpg`,
+      url: `https://${url}/lefteris-kallergis-j1GiPlvSGWI-unsplash.jpg`,
       title: 'Air Max 90',
       alt: 'Multicolored Air Max 90 on curb during the day'
     },
     {
-      url: `${url}/diego-jaramillo-bJlZg69x5lg-unsplash.jpg`,
+      url: `https://${url}/diego-jaramillo-bJlZg69x5lg-unsplash.jpg`,
       title: 'Yeezy 350',
       alt: 'Person holding up Yeezy 350 Glow'
     },
     {
-      url: `${url}/raul-de-los-santos-6tpdFZtbj0E-unsplash.jpg`,
+      url: `https://${url}/raul-de-los-santos-6tpdFZtbj0E-unsplash.jpg`,
       title: 'New Balance',
       alt: 'New Balance shoes in fall leaves'
     },
     {
-      url: `${url}/alexander-rotker-l8p1aWZqHvE-unsplash.jpg`,
+      url: `https://${url}/alexander-rotker-l8p1aWZqHvE-unsplash.jpg`,
       title: 'Nike Air Max 90',
       alt: 'Royal blue nike floating'
     }
