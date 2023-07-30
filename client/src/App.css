@@ -73,6 +73,11 @@ footer {
 }
 
 .mobile-ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  margin: 0;
   position: fixed;
   left: 0;
   top: 117px;
@@ -161,6 +166,12 @@ ul li {
   font-size: medium;
   padding: 5px 10px;
   border-radius: 15px;
+}
+
+@media (max-width: 290px) {
+  .reglog {
+    padding: 5px;
+  }
 }
 
 .admin {
@@ -571,15 +582,3 @@ ul li {
   color: #fff;
   font-size: 14px;
 }
-.mobile-ul {
-  /* position: fixed; */
-  /* left: 0; */
-  /* top: 25% */
-  padding: 0;
-  margin: 0;
-}
-/* 
-.mobile-ul ul, mobile-ul a {
-  list-style: none;
-  color: red;
-} */
