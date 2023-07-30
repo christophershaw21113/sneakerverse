@@ -110,18 +110,6 @@ const AllSneaks = (props) => {
   return (
     <div>
       <div style={pageContainer} className="carousel">
-        <div style={{ marginTop: isMobileScreen ? "100px" : null }}>
-          {isSmallScreen || isMobileScreen ?
-            <ul style={{ marginTop: "170px", display: "flex", listStyle: "none" }} >
-              <Link className='link-styles2' to={'/sneakerverse/allshoes'} onClick={() => setBrand("")}><li>{isMobileScreen ? "All" : "All Sneaks"}</li></Link>
-              <Link className='link-styles2' to={'/sneakerverse/nike'} onClick={() => setBrand("nike")}><li>Nike</li></Link>
-              <Link className='link-styles2' to={'/sneakerverse/jordan'} onClick={() => setBrand("jordan")}><li>{isMobileScreen ? "AJ" : "Jordan"}</li></Link>
-              <Link className='link-styles2' to={'/sneakerverse/adidas'} onClick={() => setBrand("adidas")}><li>Adidas</li></Link>
-              <Link className='link-styles2' to={'/sneakerverse/yeezy'} onClick={() => setBrand("yeezy")}><li>{isMobileScreen ? "YZY" : "Yeezy"}</li></Link>
-              <Link className='link-styles2' to={'/sneakerverse/newbalance'} onClick={() => setBrand("new balance")}><li>{isMobileScreen ? "NB" : "New Balance"}</li></Link>
-            </ul>
-            : null}
-        </div>
         <div style={{ marginTop: '25px', paddingTop: isMobileScreen ? '75px' : '20px' }}>
           <h2 style={{ textAlign: 'center' }}>{brand === "nike" ? `Nike (${sortedSneaks.length})` : brand === "jordan" ? `Air Jordan (${sortedSneaks.length})` : brand === "yeezy" ? `Yeezy (${sortedSneaks.length})` : brand === "adidas" ? `Adidas (${sortedSneaks.length})` : brand === "new balance" ? `New Balance (${sortedSneaks.length})` : `All Sneakers (${sortedSneaks.length})`}</h2>
         </div>
