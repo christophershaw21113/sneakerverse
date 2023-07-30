@@ -62,7 +62,7 @@ const Nav = (props) => {
 
     const mobileBrand = (brand) => {
         setBrand(brand)
-        setIsMobileMenuOpen(!isMobileMenuOpen)
+        setIsMobileMenuOpen(false)
     }
     // const navToUser = () => {
     //     navigate(`/users/${user?._id}`)
@@ -84,14 +84,14 @@ const Nav = (props) => {
             </div>
             <div id="links" style={isSmallScreen & !isMobileMenuOpen? { display: "none" } : { display: "block" }}>
                 <ul className={isSmallScreen & isMobileMenuOpen ? 'mobile-ul' : 'home-ul'} >
-                    <Link className='link-styles' to={'/'}><li>Home</li></Link>
+                    <Link className='link-styles' to={'/'} onClick={()=>setIsMobileMenuOpen(false)}><li>Home</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/allshoes'} onClick={() => mobileBrand("")}><li>All</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/nike'} onClick={() => mobileBrand("nike")}><li>{!isMedScreen ? "Nike" : <img src={nike} alt='nike logo' style={{width: '25px'}}/>}</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/jordan'} onClick={() => mobileBrand("jordan")}><li>{!isMedScreen ? "Jordan" : <img src={aj} alt='jordan logo' style={{width: '25px'}}/>}</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/adidas'} onClick={() => mobileBrand("adidas")}><li>{!isMedScreen ? "Adidas" : <img src={adidas} alt='adidas logo' style={{width: '25px'}}/>}</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/yeezy'} onClick={() => mobileBrand("yeezy")}><li>{!isMedScreen ? "Yeezy" : <img src={yzy} alt='yzy logo' style={{width: '25px'}}/>}</li></Link>
                     <Link className='link-styles' to={'/sneakerverse/newbalance'} onClick={() => mobileBrand("new balance")}><li>{!isMedScreen ? "New Balance" : <img src={nb} alt='nb logo' style={{width: '25px'}}/>}</li></Link>
-                    <Link className='link-styles' to={'/sneakerverse/about'}><li>About</li></Link>
+                    <Link className='link-styles' to={'/sneakerverse/about'} onClick={()=>setIsMobileMenuOpen(false)}><li>About</li></Link>
                 </ul>
             </div>
             <div id="hamburger" className={isSmallScreen ? 'home-ul' : 'hidden'}>
