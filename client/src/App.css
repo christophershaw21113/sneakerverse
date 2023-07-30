@@ -111,9 +111,15 @@ footer {
     align-items: center;
     gap: 10px;
     flex-direction: column;
+    /* margin: 0 */
+  }
+  .logo {
+    margin: 0;
   }
 }
-
+.cart-login-btn {
+  display: flex;
+}
 
 
 ul li {
@@ -470,7 +476,7 @@ ul li {
   width: 150px;
 }
 
-.admin-table .product-price {}
+/* .admin-table .product-price {} */
 
 .admin-table .product-color {
   width: 100px;
@@ -565,3 +571,15 @@ ul li {
   color: #fff;
   font-size: 14px;
 }
+.mobile-ul {
+  /* position: fixed; */
+  /* left: 0; */
+  /* top: 25% */
+  padding: 0;
+  margin: 0;
+}
+/* 
+.mobile-ul ul, mobile-ul a {
+  list-style: none;
+  color: red;
+} */

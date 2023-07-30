@@ -18,6 +18,7 @@ const Nav = (props) => {
     const navigate = useNavigate()
     const isSmallScreen = useMediaQuery({ maxWidth: 775 })
     const isMedScreen = useMediaQuery({ maxWidth: 975 })
+    const isMobileScreen = useMediaQuery({ maxWidth: 450 })
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
     useEffect(() => {
