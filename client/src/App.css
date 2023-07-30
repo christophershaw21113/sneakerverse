@@ -28,7 +28,7 @@ nav {
   display: inline;
 }
 
-@media (max-width: 776px) {
+@media (max-width: 775px) {
   #hamburger {
     order: 3;
   }
@@ -91,7 +91,7 @@ footer {
   }
 }
 
-@media (max-width: 776px) {
+@media (max-width: 775px) {
   #links {
     position: fixed;
   }
