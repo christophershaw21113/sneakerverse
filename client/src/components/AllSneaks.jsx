@@ -5,7 +5,7 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardImage, MDBContainer, MDBRipp
 import { useMediaQuery } from 'react-responsive';
 
 const AllSneaks = (props) => {
-  const { brand } = props
+  const { brand, setBrand } = props
   const [allSneaks, setAllSneaks] = useState([]);
   const [sortOption, setSortOption] = useState('');
   const [searchQuery, setSearchQuery] = useState('')
@@ -80,7 +80,8 @@ const AllSneaks = (props) => {
     setCurrentPage(pageNumber)
   }
 
-  const isSmallScreen = useMediaQuery({ maxWidth: 890 });
+  const isSmallScreen = useMediaQuery({ maxWidth: 965 });
+  const isMobileScreen = useMediaQuery({ maxWidth: 550 });
   const pageContainer = {
     marginTop: isSmallScreen ? '30%' : '10%',
     height: isSmallScreen ? '240vh' : '150vh',
@@ -109,7 +110,7 @@ const AllSneaks = (props) => {
   return (
     <div>
       <div style={pageContainer} className="carousel">
-        <div style={{ marginTop: '5%', paddingTop: '75px' }}>
+        <div style={{ marginTop: '25px', paddingTop: isMobileScreen ? '75px' : '20px' }}>
           <h2 style={{ textAlign: 'center' }}>{brand === "nike" ? `Nike (${sortedSneaks.length})` : brand === "jordan" ? `Air Jordan (${sortedSneaks.length})` : brand === "yeezy" ? `Yeezy (${sortedSneaks.length})` : brand === "adidas" ? `Adidas (${sortedSneaks.length})` : brand === "new balance" ? `New Balance (${sortedSneaks.length})` : `All Sneakers (${sortedSneaks.length})`}</h2>
         </div>
         <div style={{ textAlign: "center" }}>
@@ -153,7 +154,7 @@ const AllSneaks = (props) => {
         <div className="custom-pagination">
           <ul className="pagination">
             {pageNumbers.map((number) => (
-              <li style={{textAlign:"center"}} key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+              <li style={{ textAlign: "center" }} key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
                 <button className="page-link" onClick={() => paginate(number)}>
                   {number}
                 </button>

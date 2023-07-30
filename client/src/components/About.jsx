@@ -28,7 +28,7 @@ const About = () => {
                 </div>
                 <div>
                     <h3>Tyler - Front End & Back End</h3>
-                    <p>Hi, I'm Tyler, a full-stack JavaScript developer. In my spare time, I enjoy sports, hiking and electrical projects. You can check out my <a target='_blank' rel='noreferrer' href="https://tylerw.xyz">portfolio website</a>, code on <a target='_blank' rel='noreferrer' href="https://github.com/tylerwertman">Github</a>, and professional experience on <a target='_blank' rel='noreferrer' href="https://www.linkedin.com/in/tyler-wertman/">LinkedIn</a>. My favorite sneaker is the Yeezy 750 due to the uniquity of the strap paired with a boot-like silhouette.</p>
+                    <p>Hi, I'm Tyler, a full-stack JavaScript developer. I enjoy sports, hiking, electrical projects and reading. You can check out my <a target='_blank' rel='noreferrer' href="https://tylerw.xyz">portfolio website</a>, code on <a target='_blank' rel='noreferrer' href="https://github.com/tylerwertman">Github</a>, and professional experience on <a target='_blank' rel='noreferrer' href="https://www.linkedin.com/in/tyler-wertman/">LinkedIn</a>. My favorite sneaker is the Yeezy 750 due to the uniquity of the strap paired with a boot-like silhouette.</p>
                 </div>
             </div>
             <h1 style={{ textAlign: 'center', marginTop: '20px' }}>About the project!</h1>
@@ -36,7 +36,7 @@ const About = () => {
                 
                 <div>
                     {/* <h3>Chris - Front End, Styling, Back End</h3> */}
-                    <p>This project was built with <strong>MongoDB</strong>, <strong>ExpressJS</strong>, <strong>ReactJS</strong> and <strong>NodeJS</strong> to comprise the Javascript full-stack called MERN. We also utilized the <strong>PayPal API</strong> for checkout and the npm library called <strong>multer</strong> for handling our image upload file system. <strong>We were inspired</strong> to create a storefront app because there may be small-business owners who need websites that include checkout, and smaller projects like this can provide invaluable experience when it comes to getting hired.</p>
+                    <p>This project was built with <strong>MongoDB</strong>, <strong>ExpressJS</strong>, <strong>ReactJS</strong> and <strong>NodeJS</strong> to comprise the Javascript full-stack called MERN. We also utilized the <strong>PayPal API</strong> for checkout and the npm library called <strong>multer</strong> for handling our image upload file system. <strong>We were inspired</strong> to create a storefront app because there may be small-business owners who need websites that include checkout, and smaller projects like this can provide invaluable experience when it comes to getting hired. The project's source code is available on <a href="https://github.com/christophershaw21113/sneakerverse" target='_blank' rel='noreferrer'>GitHub</a>!</p>
                 </div>
             </div>
             {/* 
