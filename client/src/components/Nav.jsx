@@ -14,7 +14,7 @@ import nb from '../Images/Logos/NB.svg'
 
 
 const Nav = (props) => {
-    const { cookieValue, user, welcome, setWelcome, loggedIn, setLoggedIn, setCount, count, order, setBrand } = props
+    const { cookieValue, user, welcome, setWelcome, setCount, count, order, setBrand } = props
     const navigate = useNavigate()
     const isSmallScreen = useMediaQuery({ maxWidth: 775 })
     const isMedScreen = useMediaQuery({ maxWidth: 975 })
@@ -34,7 +34,6 @@ const Nav = (props) => {
                 // console.log(res.data)
                 navigate('/')
                 setWelcome("Guest")
-                setLoggedIn(false)
                 setCount(count + 1)
                 window.location.reload()
             })
@@ -100,7 +99,7 @@ const Nav = (props) => {
             <div id="cart" className='cart-login-btn'>
                 <div><FontAwesomeIcon icon={faCartShopping} style={{ color: "#fff" }} onClick={navCart} /><span>{order.length}</span>&nbsp;&nbsp;</div>
                 {
-                    (loggedIn) ?
+                    (user) ?
                         <button className='logout' onClick={logout}>Logout</button>
                         :
                         <button className='reglog' onClick={navRegister}>Sign Up/Login</button>

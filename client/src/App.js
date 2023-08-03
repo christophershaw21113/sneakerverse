@@ -19,7 +19,6 @@ import AllSneaks from './components/AllSneaks'
 import About from './components/About'
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false)
   const [welcome, setWelcome] = useState()
   const [count, setCount] = useState(0)
   const [user, setUser] = useState()
@@ -34,7 +33,6 @@ function App() {
     if (cookieValue) {
       setWelcome(user?.firstName)
       setUser(jwtdecode(cookieValue))
-      setLoggedIn(true)
     } else {
       setWelcome("Guest")
     }
@@ -43,7 +41,7 @@ function App() {
 
   return (
     <div>
-      <Nav cookieValue={cookieValue} user={user} setUser={setUser} welcome={welcome} setWelcome={setWelcome} loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} order={order} setBrand={setBrand} brand={brand} />
+      <Nav cookieValue={cookieValue} user={user} setUser={setUser} welcome={welcome} setWelcome={setWelcome} count={count} setCount={setCount} order={order} setBrand={setBrand} brand={brand} />
       {/* <ToastContainer transition={Slide} /> */}
       <Routes>
         <Route element={<PrivateRoutes />}>
@@ -59,8 +57,8 @@ function App() {
         <Route path="/sneakerverse/yeezy" element={<AllSneaks brand={brand} />} />
         <Route path="/sneakerverse/newbalance" element={<AllSneaks brand={brand} />} />
         <Route path='/shoes/:id' element={<ProductDetail order={order} setOrder={setOrder} />} />
-        <Route path="/sneakerverse/register" element={<Register setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
-        <Route path="/sneakerverse/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} count={count} setCount={setCount} />} />
+        <Route path="/sneakerverse/register" element={<Register count={count} setCount={setCount} />} />
+        <Route path="/sneakerverse/login" element={<Login count={count} setCount={setCount} />} />
         <Route path="/sneakerverse/cart" element={<Cart order={order} setOrder={setOrder} />} />
         <Route path="/sneakerverse/about" element={<About />} />
         <Route path="/*" element={<NotFound />} />
