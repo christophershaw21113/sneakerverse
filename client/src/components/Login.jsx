@@ -5,7 +5,7 @@ import sneakerverseBK from '../../src/sneakerverseBK.png'
 import LS from '../Images/RegLog/leon-skibitzki-NMyuo1hoCAA-unsplash.jpg'
 
 const Login = (props) => {
-  const { count, setCount, loggedIn, setLoggedIn } = props
+  const { count, setCount } = props
   const navigate = useNavigate()
   const [errors, setErrors] = useState({})
   const [userInfo, setUserInfo] = useState({
@@ -26,7 +26,6 @@ const Login = (props) => {
       .then(res => {
         // console.log(res)
         navigate("/")
-        setLoggedIn(true)
         setCount(count + 1)
         window.location.reload()
       })
