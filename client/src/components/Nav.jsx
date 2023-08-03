@@ -6,11 +6,11 @@ import { useNavigate, Link } from 'react-router-dom'
 import jwtdecode from 'jwt-decode'
 import sneakerverse from '../../src/sneakerverse.png'
 import { useMediaQuery } from 'react-responsive';
-import nike from '../Logos/Nike.svg'
-import adidas from '../Logos/Adidas.svg'
-import aj from '../Logos/AJ.png'
-import yzy from '../Logos/YZY.png'
-import nb from '../Logos/NB.svg'
+import nike from '../Images/Logos/Nike.svg'
+import adidas from '../Images/Logos/Adidas.svg'
+import aj from '../Images/Logos/AJ.png'
+import yzy from '../Images/Logos/YZY.png'
+import nb from '../Images/Logos/NB.svg'
 
 
 const Nav = (props) => {
