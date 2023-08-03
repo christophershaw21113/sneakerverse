@@ -1,6 +1,41 @@
 import React, { useState } from "react";
+import AR from '../Images/Slides/alexander-rotker-l8p1aWZqHvE-unsplash.jpg'
+import DJ from '../Images/Slides/diego-jaramillo-bJlZg69x5lg-unsplash.jpg'
+import LK from '../Images/Slides/lefteris-kallergis-j1GiPlvSGWI-unsplash.jpg'
+import RDLS from '../Images/Slides/raul-de-los-santos-6tpdFZtbj0E-unsplash.jpg'
+import TS from '../Images/Slides/taylor-smith-aDZ5YIuedQg-unsplash.jpg'
 
-const ImageSlider = ({ slides }) => {
+const ImageSlider = () => {
+
+  const slides = [
+    {
+      url: `${TS}`,
+      title: 'Jordan 1',
+      alt: 'Chicago Air Jordan 1s on Basketball Court'
+    },
+    {
+      url: `${LK}`,
+      title: 'Air Max 90',
+      alt: 'Multicolored Air Max 90 on curb during the day'
+    },
+    {
+      url: `${DJ}`,
+      title: 'Yeezy 350',
+      alt: 'Person holding up Yeezy 350 Glow'
+    },
+    {
+      url: `${RDLS}`,
+      title: 'New Balance',
+      alt: 'New Balance shoes in fall leaves'
+    },
+    {
+      // url: `${url}/alexander-rotker-l8p1aWZqHvE-unsplash.jpg`,
+      url: `${AR}`,
+      title: 'Nike Air Max 90',
+      alt: 'Royal blue nike floating'
+    }
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {

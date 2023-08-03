@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ImageSlider from './ImageSlider';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardImage, MDBContainer, MDBRipple, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import { useMediaQuery } from 'react-responsive';
 
 
-
 const Home = () => {
-  const { id } = useParams();
   const [shoes, setShoes] = useState([]);
-  const url = 'www.sneakerverse.net';
+  // const url = 'https://www.sneakerverse.net';
+  const backendURL = "http://localhost:8000"
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/shoes/`)
+      .get(`${backendURL}/api/shoes/`)
       .then(res => {
         setShoes(res.data);
       })
@@ -21,33 +20,6 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const slides = [
-    {
-      url: `https://${url}/taylor-smith-aDZ5YIuedQg-unsplash.jpg`,
-      title: 'Jordan 1',
-      alt: 'Chicago Air Jordan 1s on Basketball Court'
-    },
-    {
-      url: `https://${url}/lefteris-kallergis-j1GiPlvSGWI-unsplash.jpg`,
-      title: 'Air Max 90',
-      alt: 'Multicolored Air Max 90 on curb during the day'
-    },
-    {
-      url: `https://${url}/diego-jaramillo-bJlZg69x5lg-unsplash.jpg`,
-      title: 'Yeezy 350',
-      alt: 'Person holding up Yeezy 350 Glow'
-    },
-    {
-      url: `https://${url}/raul-de-los-santos-6tpdFZtbj0E-unsplash.jpg`,
-      title: 'New Balance',
-      alt: 'New Balance shoes in fall leaves'
-    },
-    {
-      url: `https://${url}/alexander-rotker-l8p1aWZqHvE-unsplash.jpg`,
-      title: 'Nike Air Max 90',
-      alt: 'Royal blue nike floating'
-    }
-  ];
 
   const containerStyles = {
     width: '100%',
@@ -84,41 +56,41 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <div style={pageContainer} className="carousel">
-        <div style={containerStyles}>
-          <ImageSlider slides={slides} />
-        </div>
-        <div style={{ marginTop: isSmallScreen ? '10%' : '5%' }}>
-          <h2 style={{ textAlign: 'center' }}>Recent Releases</h2>
-        </div>
-        <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>
-          {shoes
-            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-            .slice(0, 3)
-            .map((shoe, index) => (
-              <MDBCard key={index} style={styleCard.card}>
-                <MDBRipple rippleColor="light" rippleTag="div" className="bg-image hover-overlay">
-                  <MDBCardImage src={`http://localhost:8000/uploads/${shoe.image}`} width="100%" alt={shoe.name} />
-                </MDBRipple>
-                <MDBCardBody style={styleCard.container}>
-                  <MDBCardTitle>
-                    <Link to={`/shoes/${shoe._id}`}><h3>{shoe.name}</h3></Link>
-                    <p>{shoe.brand}</p>
-                    {shoe.discountedPrice > 1 ? (
-                      <div style={{ display: 'inline' }}>
-                        <p><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></p>
-                      </div>
-                    ) : (
-                      <span>${shoe.price}</span>
-                    )}
-                  </MDBCardTitle>
-                </MDBCardBody>
-              </MDBCard>
-            ))}
-        </MDBContainer>
+    // <div>
+    <div style={pageContainer} className="carousel">
+      <div style={containerStyles}>
+        <ImageSlider />
       </div>
+      <div style={{ marginTop: isSmallScreen ? '10%' : '5%' }}>
+        <h2 style={{ textAlign: 'center' }}>Recent Releases</h2>
+      </div>
+      <MDBContainer style={{ display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap' }}>
+        {shoes
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .slice(0, 3)
+          .map((shoe, index) => (
+            <MDBCard key={index} style={styleCard.card}>
+              <MDBRipple rippleColor="light" rippleTag="div" className="bg-image hover-overlay">
+                <MDBCardImage src={`${backendURL}/uploads/${shoe.image}`} width="100%" alt={shoe.name} />
+              </MDBRipple>
+              <MDBCardBody style={styleCard.container}>
+                <MDBCardTitle>
+                  <Link to={`/shoes/${shoe._id}`}><h3>{shoe.name}</h3></Link>
+                  <p>{shoe.brand}</p>
+                  {shoe.discountedPrice > 1 ? (
+                    <div style={{ display: 'inline' }}>
+                      <p><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></p>
+                    </div>
+                  ) : (
+                    <span>${shoe.price}</span>
+                  )}
+                </MDBCardTitle>
+              </MDBCardBody>
+            </MDBCard>
+          ))}
+      </MDBContainer>
     </div>
+    // </div>
   );
 };
 
