@@ -109,27 +109,21 @@ const AdminDashboard = (props) => {
     }
 
     // Pagination
-  const itemsPerPage = 5
-  const totalPages = Math.ceil(products.length / itemsPerPage)
-  const pageNumbers = []
+    const itemsPerPage = 5
+    const totalPages = Math.ceil(products.length / itemsPerPage)
+    const pageNumbers = []
 
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i)
-  }
+    for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i)
+    }
 
-  const indexOfLastProduct= currentPage * itemsPerPage
-  const indexOfFirstProduct = indexOfLastProduct- itemsPerPage
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
+    const indexOfLastProduct = currentPage * itemsPerPage
+    const indexOfFirstProduct = indexOfLastProduct - itemsPerPage
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
 
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber)
-  }
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     return (
         <div className='admin-container'>
@@ -203,7 +197,10 @@ const AdminDashboard = (props) => {
                         <th>Name</th>
                         <th>Brand</th>
                         <th>Price</th>
-                        <th>Color</th>
+                        {isSmallScreen ?
+                            null :
+                            <th>Color</th>
+                        }
                         <th>Size</th>
                         {isSmallScreen ?
                             null :
@@ -222,7 +219,10 @@ const AdminDashboard = (props) => {
                                     <td><><Link className='product-name' to={`/shoes/${shoe?._id}`}>{shoe?.name}</Link></></td>
                                     <td className='product-brand'>{shoe.brand}</td>
                                     <td className='product-price'><strong style={{ textDecoration: 'line-through' }}>${shoe.price}</strong> <span style={{ color: 'red' }}>${shoe.discountedPrice}</span></td>
-                                    <td className='product-color'>{shoe.color}</td>
+                                    {isSmallScreen ?
+                                        null :
+                                        <td className='product-color'>{shoe.color}</td>
+                                    }
                                     <td className='product-size'>{shoe.size}{shoe.gender}</td>
                                     {isSmallScreen ?
                                         null :
@@ -240,21 +240,20 @@ const AdminDashboard = (props) => {
                                 </tr>
                             )
                         })}
-                 
-                         </tbody>
-                        </table>
-                        <div className="custom-pagination">
-                        <ul className="pagination">
-                            {pageNumbers.map((pageNumber) => (
-                            <li style={{textAlign: 'center'}} key={pageNumber} className={`page-item ${pageNumber === currentPage ? 'active' : ''}`}>
-                                <button onClick={() => handlePageChange(pageNumber)} className="page-link">
+                </tbody>
+            </table>
+            <div className="custom-pagination" style={{ marginBottom: "100px" }}>
+                <ul className="pagination">
+                    {pageNumbers.map((pageNumber) => (
+                        <li style={{ textAlign: 'center' }} key={pageNumber} className={`page-item ${pageNumber === currentPage ? 'active' : ''}`}>
+                            <button onClick={() => handlePageChange(pageNumber)} className="page-link">
                                 {pageNumber}
-                                </button>
-                            </li>
-                            ))}
-                        </ul>
-                        </div>
-                         </div>
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
     )
 }
 

@@ -3,10 +3,12 @@ import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 import sneakerverseBK from '../../src/sneakerverseBK.png'
 import LS from '../Images/RegLog/leon-skibitzki-NMyuo1hoCAA-unsplash.jpg'
+import { useMediaQuery } from 'react-responsive';
 
 const Login = (props) => {
   const { count, setCount } = props
   const navigate = useNavigate()
+  const isSmallScreen = useMediaQuery({ maxWidth: 768 })
   const [errors, setErrors] = useState({})
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -37,10 +39,14 @@ const Login = (props) => {
       })
   }
   return (
-    <div style={{ marginTop: "170px", marginBottom: "120px", display: 'flex', justifyContent: 'center', width: '800px', }}>
-      <div style={{ display: 'flex' }}>
-        <img src={LS} alt='' width='100%' style={{ marginTop: 0 }} />
-      </div>
+    <div style={{ marginTop: "170px", marginBottom: "120px", display: 'flex', justifyContent: 'center' }}>
+      {
+        !isSmallScreen ?
+          <div style={{ display: 'flex' }}>
+            <img src={LS} alt='' width='100%' style={{ marginTop: 0 }} />
+          </div>
+          : null
+      }
       <form className='login-form' onSubmit={handleFormSubmit} style={{ padding: '10px 100px' }}>
         <img src={sneakerverseBK} alt="SneakerVerse" style={{ height: "70px", display: 'flex', marginTop: '10px' }} />
         <h2 style={{ width: '100%', textAlign: 'center', marginTop: '20px', whiteSpace: 'nowrap' }}>Login to Your Account</h2>

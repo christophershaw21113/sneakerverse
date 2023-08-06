@@ -151,7 +151,7 @@ const AllSneaks = (props) => {
               </MDBCard>
             ))}
         </MDBContainer>
-        <div className="custom-pagination">
+        <div className="custom-pagination" style={{ paddingBottom: "100px" }}>
           <ul className="pagination">
             {pageNumbers.map((number) => (
               <li style={{ textAlign: "center" }} key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
