@@ -13,15 +13,15 @@
 #### Bonuses that will be included: Deploying Application, Protected Routes, Responsive Application, File Upload on database
 
 ### Product Backlog 
-#### [x] Pagination (admin table)
-#### [] Updating card styles on (home, allsneaks) (add to cart button)
-#### [x] Creating Hamburger menu (home)
-#### [] Cleaning up css and making every page mobile responsive
+#### [x] Pagination (admin table & all sneaks)
+#### [] Update card styles (home, allsneaks) (add to cart button)
+#### [x] Create Hamburger menu (home)
+#### [] Clean up css and making every page mobile responsive
 #### [x] Add feature list to about page
 #### [] Store cart in cookie/localstorage
 #### [] User detail and user edit (display past orders)
-#### [] Shoe sizes
+#### [] Shoe size functionality
 
 ### Fixes
-#### [] Pagination (admin table) (CSS- hidden by footer)
-#### [] RegLog on mobile
+#### [x] Pagination (admin table) (CSS- hidden by footer)
+#### [x] RegLog on mobile
