@@ -3,10 +3,13 @@ import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 import sneakerverse from '../../src/sneakerverseBK.png'
 import MFP from '../Images/RegLog/maria-fernanda-pissioli-DTZV8WDM1Ho-unsplash.jpg'
+import { useMediaQuery } from 'react-responsive';
 
 const Register = () => {
     // const url = 'www.sneakerverse.net';
     const navigate = useNavigate()
+    const isSmallScreen = useMediaQuery({ maxWidth: 768 })
+
     const [errors, setErrors] = useState({})
     const [userInfo, setUserInfo] = useState({
         firstName: "",
@@ -46,10 +49,14 @@ const Register = () => {
     }
 
     return (
-        <div style={{ marginTop: "170px", marginBottom: "120px", display: 'flex', justifyContent: 'center', width: '900px', }}>
-            <div style={{ display: 'flex' }}>
-                <img src={MFP} alt='Air force ones pointing towards the blue sky' width='100%' style={{ marginTop: 0 }} />
-            </div>
+        <div style={{ marginTop: "170px", marginBottom: "120px", display: 'flex', justifyContent: 'center' }}>
+            {
+                !isSmallScreen ?
+                    <div style={{ display: 'flex' }}>
+                        <img src={MFP} alt='Air force ones pointing towards the blue sky' width='100%' style={{ marginTop: 0 }} />
+                    </div>
+                    : null
+            }
             <form className='login-form' onSubmit={handleFormSubmit} style={{ padding: '10px 100px' }}>
                 <img src={sneakerverse} alt="SneakerVerse" style={{ height: "70px", display: 'flex', marginTop: '10px' }} />
                 <h2 style={{ width: '100%', textAlign: 'center', marginTop: '20px', whiteSpace: 'nowrap' }}>Register</h2>
