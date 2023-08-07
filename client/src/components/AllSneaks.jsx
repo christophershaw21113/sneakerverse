@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardImage, MDBContainer, MDBRipple, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import { useMediaQuery } from 'react-responsive';
+import { sneakerverseContext } from '../App';
 
-const AllSneaks = (props) => {
-  const { brand, setBrand } = props
+const AllSneaks = () => {
+  const { brand } = useContext(sneakerverseContext)
   const [allSneaks, setAllSneaks] = useState([]);
   const [sortOption, setSortOption] = useState('');
   const [searchQuery, setSearchQuery] = useState('')
