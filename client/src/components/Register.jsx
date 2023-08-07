@@ -49,7 +49,7 @@ const Register = () => {
     }
 
     return (
-        <div style={{ marginTop: "170px", marginBottom: "120px", display: 'flex', justifyContent: 'center' }}>
+        <div style={{ marginTop: "170px", marginBottom: "120px", display: 'flex', justifyContent: 'center', width:'900px' }}>
             {
                 !isSmallScreen ?
                     <div style={{ display: 'flex' }}>

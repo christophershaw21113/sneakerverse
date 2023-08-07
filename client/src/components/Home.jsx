@@ -27,13 +27,23 @@ const Home = () => {
     margin: '0 auto'
   };
 
-  const isSmallScreen = useMediaQuery({ maxWidth: 890 });
-  const isGalS8Pl = useMediaQuery({maxWidth: 360})
-  const isiPhoneSE = useMediaQuery({maxWidth: 375})
-  const isiPhoneXR = useMediaQuery({maxWidth: 414})
+  const isSmallScreen = useMediaQuery({ maxWidth: 890 })
+
+  const is320 = useMediaQuery({ maxWidth: 321 })
+  const is353 = useMediaQuery({ maxWidth: 354 })
+  const is360 = useMediaQuery({ maxWidth: 361 })
+  const is375 = useMediaQuery({ maxWidth: 376 })
+  const is393 = useMediaQuery({ maxWidth: 394 })
+  const is414 = useMediaQuery({ maxWidth: 415 })
+  const is600 = useMediaQuery({ maxWidth: 601 })
+  const is820 = useMediaQuery({ maxWidth: 821 })
+  const is1024 = useMediaQuery({ maxWidth: 1025 })
+  const is1440 = useMediaQuery({ maxWidth: 1441 })
+  const is2560 = useMediaQuery({ maxWidth: 2561 })
+
   const pageContainer = {
     marginTop: '85px',
-    height: isGalS8Pl ? '220vh' : isiPhoneSE ? '250vh' : isiPhoneXR ? '200vh' : '180vh'
+    height: is320 ? '240vh' : is353 ? '215vh' : is360 ? '255vh' : is375 ? '250vh' : is393 ? '215vh' : is414 ? '190vh' : is600 ? '185vh' : is820 ? '150vh' : is2560 ? "155vh" : '180vh'
   };
 
   const styleCard = {
@@ -41,7 +51,7 @@ const Home = () => {
       boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
       transition: '0.3s',
       width: '350px',
-      marginBottom: '15px',
+      marginBottom: '30px',
       marginTop: '30px',
       paddingBottom: '15px'
 
