@@ -80,14 +80,14 @@ footer {
   margin: 0;
   position: fixed;
   right: 0;
-  top: 117px;
+  top: 97px;
   background-color: #1C1C1C;
   list-style: none;
 }
 
 @media (max-width: 550px) {
   .mobile-ul {
-    top: 116px;
+    top: 97px;
   }
 }
 
